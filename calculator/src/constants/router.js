@@ -1,1 +1,4 @@
-export const HOME_PAGE_ROUTE = '/'
+export const Pages = {
+  HOME_PAGE_ROUTE: '/',
+  CALCULATOR: '/calculator',
+}
