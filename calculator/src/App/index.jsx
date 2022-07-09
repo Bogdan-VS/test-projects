@@ -22,11 +22,6 @@ export default () => (
       <Switch>
         <Route
           exact
-          path={HOME_PAGE_ROUTE}
-          component={HomePage}
-        />
-        <Route
-          exact
           path={CALCULATOR}
           component={Calculator}
         />

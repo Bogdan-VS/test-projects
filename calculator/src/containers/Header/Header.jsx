@@ -1,4 +1,6 @@
+import { Pages } from '@/constants'
 import React, { lazy } from 'react'
+import { Link } from 'react-router-dom'
 
 import {
   StyledButtonContainer,
@@ -17,8 +19,12 @@ export const Header = () => {
       <StyledWrapper>
         <StyledTitle>Calculator</StyledTitle>
         <StyledButtonContainer>
-          <HeaderButton name="Home" />
-          <HeaderButton name="Settings" />
+          <Link to={Pages.CALCULATOR}>
+            <HeaderButton name="Home" />
+          </Link>
+          <Link to={Pages.SETTINGS}>
+            <HeaderButton name="Settings" />
+          </Link>
         </StyledButtonContainer>
       </StyledWrapper>
     </StyledHeader>
