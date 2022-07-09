@@ -30,6 +30,6 @@ export default createGlobalStyle`
   }
 
   #root {
-    background: linear-gradient(to bottom, #c06c84da, #6c5b7bda);
+    background: #d3e7f1;
   }
 `

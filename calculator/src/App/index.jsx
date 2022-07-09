@@ -4,6 +4,9 @@ import { Switch, Route } from 'react-router-dom'
 import { Pages } from '@/constants'
 
 import Loader from '@/components/Loader'
+const ErrorBoundary = lazy(() =>
+  import('@/containers/ErrorBoundary/ErrorBoundary'),
+)
 
 const Calculator = lazy(() =>
   import('@/srceens/Calculator'),
@@ -17,19 +20,24 @@ const { CALCULATOR, ERROR, SETTINGS } = Pages
 
 export default () => (
   <Suspense fallback={<Loader />}>
-    <Header />
-    <Main>
-      <Switch>
-        <Route
-          exact
-          path={CALCULATOR}
-          component={Calculator}
-        />
-        <Route exact path={SETTINGS}
-component={Settings} />
-        <Route exact path={ERROR}
+    <ErrorBoundary>
+      <Header />
+      <Main>
+        <Switch>
+          <Route
+            exact
+            path={CALCULATOR}
+            component={Calculator}
+          />
+          <Route
+            exact
+            path={SETTINGS}
+            component={Settings}
+          />
+          <Route exact path={ERROR}
 component={Error404} />
-      </Switch>
-    </Main>
+        </Switch>
+      </Main>
+    </ErrorBoundary>
   </Suspense>
 )

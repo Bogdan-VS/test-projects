@@ -4,6 +4,7 @@ export const CLEAR_RESULT = 'clear_reult'
 export const FULL_CLEAR = 'full_clear'
 export const CLEAR = 'clear'
 export const EXPRESSION = 'expression'
+export const HAS_ERROR = 'has_error'
 
 export const inputValueCreator = payload => ({
   type: INPUT_VALUE,
@@ -30,4 +31,8 @@ export const addResultCreator = payload => ({
 
 export const clearResultCreator = () => ({
   type: CLEAR_RESULT,
+})
+
+export const hasErrorCreator = () => ({
+  type: HAS_ERROR,
 })
