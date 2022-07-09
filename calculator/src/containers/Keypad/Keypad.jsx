@@ -13,12 +13,12 @@ import {
 
 import { calculate, tokenize } from '@/utils/calcOperations'
 import { calcMessage } from '@/constants/message'
-import { btnValues } from '@/constants/buttons'
 import {
   clear,
   equal,
   fullClear,
-} from '@/constants/calcBtn'
+  btnValues,
+} from '@/constants/buttons'
 
 const CalcBtn = lazy(() => import('@/components/calcBtn'))
 
