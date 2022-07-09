@@ -1,19 +1,22 @@
 import History from '@/components/History'
 import React, { lazy } from 'react'
 
-import { CalculatorStyles } from './components'
+import {
+  StyledCalculator,
+  StyledWrapper,
+} from './components'
 
 const Display = lazy(() => import('@/components/Display'))
 const Keypad = lazy(() => import('@/containers/Keypad'))
 
 export const Calculator = () => {
   return (
-    <React.Fragment>
-      <CalculatorStyles>
+    <StyledWrapper>
+      <StyledCalculator>
         <Display />
         <Keypad />
-      </CalculatorStyles>
+      </StyledCalculator>
       <History />
-    </React.Fragment>
+    </StyledWrapper>
   )
 }
