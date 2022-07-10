@@ -1,4 +1,4 @@
-import History from '@/components/History'
+import History from '@/containers/History'
 import React, { lazy } from 'react'
 
 import {

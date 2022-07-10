@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import ControlPanel from '../ControlPanel'
 import {
   ContentItemStyled,
   ContentStyled,
@@ -24,6 +25,7 @@ export const History = () => {
 
   return (
     <HistoryStyled>
+      <ControlPanel />
       <TitleStyled>History</TitleStyled>
       <ContentStyled>{expressionCollection}</ContentStyled>
     </HistoryStyled>

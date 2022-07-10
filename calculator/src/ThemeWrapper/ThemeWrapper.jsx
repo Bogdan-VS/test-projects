@@ -19,7 +19,6 @@ export const ThemeWrapper = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    console.log(theme)
     isLightTheme
       ? dispatch(changeThemeCreator(lightTheme))
       : dispatch(changeThemeCreator(darkTheme))

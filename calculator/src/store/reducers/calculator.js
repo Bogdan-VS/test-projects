@@ -6,12 +6,15 @@ import {
   FULL_CLEAR,
   CLEAR,
   CLEAR_RESULT,
+  CLEAR_HISTORY,
+  TOGGLE_FULL_HISTORY,
 } from '../actionCreators'
 
 const INITIAL_STATE = {
   initValue: '0',
   result: '',
   expression: [],
+  isFullHistoryOpen: false,
 }
 
 export default handleActions(
@@ -62,7 +65,18 @@ export default handleActions(
       }
     },
     [FULL_CLEAR]: (state, action) => ({
-      ...INITIAL_STATE,
+      ...state,
+      initValue: '0',
+      result: '',
+      expression: state.expression,
+    }),
+    [CLEAR_HISTORY]: (state, action) => ({
+      ...state,
+      expression: [],
+    }),
+    [TOGGLE_FULL_HISTORY]: (state, action) => ({
+      ...state,
+      isFullHistoryOpen: !state.isFullHistoryOpen,
     }),
   },
   INITIAL_STATE,

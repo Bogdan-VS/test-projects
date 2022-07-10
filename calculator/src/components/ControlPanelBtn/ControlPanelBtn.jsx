@@ -1,0 +1,27 @@
+import React, { useCallback } from 'react'
+
+import { useDispatch } from 'react-redux'
+
+import { clearHistory } from '@/constants/buttons'
+import {
+  clearHistoryCreator,
+  toggleHistoryCreator,
+} from '@/store/actionCreators'
+
+import { StyledControlBtn } from './components'
+
+export const ControlPanelBtn = ({ name }) => {
+  const dispatch = useDispatch()
+
+  const btnHandler = useCallback(() => {
+    name === clearHistory
+      ? dispatch(clearHistoryCreator())
+      : dispatch(toggleHistoryCreator())
+  })
+
+  return (
+    <StyledControlBtn onClick={btnHandler}>
+      {name}
+    </StyledControlBtn>
+  )
+}

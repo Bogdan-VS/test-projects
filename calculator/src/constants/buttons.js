@@ -35,7 +35,11 @@ export const numbers = [
   '9',
   '.',
 ]
+
 export const operations = ['+', '-', '/', '*', '(', ')']
 export const clear = 'CE'
 export const fullClear = 'C'
 export const equal = '='
+
+export const clearHistory = 'Clear history'
+export const fullHistory = 'Full history'
