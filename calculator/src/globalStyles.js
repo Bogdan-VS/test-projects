@@ -30,6 +30,6 @@ export default createGlobalStyle`
   }
 
   #root {
-    background: #d3e7f1;
+    background: ${theme.colors.bgPrimary};
   }
 `

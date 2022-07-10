@@ -55,3 +55,33 @@ export default {
     error,
   },
 }
+
+export const lightTheme = {
+  colors: {
+    bgPrimary: '#607d8b',
+    bgSecondary: '#ffffff',
+    digitBtn: '#e4ff07',
+    line: '#49758b',
+    text: '#990f04',
+    error: '#c86464',
+    black: '#000000',
+    white: '#ffffff',
+    switchBtnPrimary: '#eed3ca',
+  },
+  font: 'sans-serif',
+  isLight: true,
+}
+
+export const darkTheme = {
+  colors: {
+    bgPrimary: '#607d8b',
+    bgSecondary: '#ffffff',
+    text: '#990f04',
+    error: '#c86464',
+    black: '#000000',
+    white: '#ffffff',
+    switchBtnPrimary: '#607d8b',
+  },
+  font: 'sans-serif',
+  isLight: false,
+}

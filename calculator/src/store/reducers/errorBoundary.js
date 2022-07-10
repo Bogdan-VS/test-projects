@@ -8,7 +8,6 @@ const INITIAL_STATE = {
 export default handleActions(
   {
     [HAS_ERROR]: (state, action) => {
-      console.log(1)
       return {
         ...state,
         hasError: true,

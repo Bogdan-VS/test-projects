@@ -3,7 +3,8 @@ import styled from 'styled-components'
 export const HistoryStyled = styled.div`
   height: 100%;
   padding: 20px;
-  border-left: 2px solid #607d8b;
+  border-left: 2px solid
+    ${({ theme }) => theme.colors.bgPrimary};
   overflow-y: auto;
 `
 

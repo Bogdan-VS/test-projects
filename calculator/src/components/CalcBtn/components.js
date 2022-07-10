@@ -2,8 +2,9 @@ import styled from 'styled-components'
 
 export const StyledCalcBtn = styled.button`
   display: flex;
-  border: 1px solid #607d8b;
-  background: transparent;
+  border: none;
+  background-color: ${({ theme }) =>
+    theme.colors.bgPrimary};
   font-size: 40px;
   -webkit-box-pack: center;
   justify-content: center;
@@ -11,12 +12,14 @@ export const StyledCalcBtn = styled.button`
   align-items: center;
   padding: 5px;
   border-radius: 4px;
-  color: #607d8b;
+  color: ${({ theme }) => theme.colors.digitBtn};
+  opacity: 1;
   cursor: pointer;
   transition: 0.3s;
 
   &:hover {
-    background-color: #607d8b;
-    color: #d3e7f1;
+    background-color: ${({ theme }) =>
+      theme.colors.bgPrimary};
+    color: ${({ theme }) => theme.colors.bgSecondary};
   }
 `

@@ -3,7 +3,8 @@ import styled from 'styled-components'
 export const StyledHeader = styled.header`
   width: inherit;
   height: 80px;
-  background-color: #607d8b;
+  background-color: ${({ theme }) =>
+    theme.colors.bgPrimary};
 `
 
 export const StyledWrapper = styled.div`

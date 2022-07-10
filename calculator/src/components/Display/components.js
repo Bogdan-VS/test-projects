@@ -4,7 +4,8 @@ export const StyledWrapperDisplay = styled.div`
   height: 100px;
   display: flex;
   align-items: center;
-  border-bottom: 2px solid #607d8b;
+  border-bottom: 2px solid
+    ${({ theme }) => theme.colors.bgPrimary};
 `
 
 export const StyledDisplay = styled.div`

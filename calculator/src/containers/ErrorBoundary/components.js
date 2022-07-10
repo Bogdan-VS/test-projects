@@ -8,5 +8,5 @@ export const StyledErrorBoundary = styled.div`
 export const StyledTitle = styled.h2`
   text-align: center;
   padding-top: 30px;
-  color: #ed143d;
+  color: ${({ theme }) => theme.color.error};
 `

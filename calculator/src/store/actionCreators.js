@@ -5,6 +5,8 @@ export const FULL_CLEAR = 'full_clear'
 export const CLEAR = 'clear'
 export const EXPRESSION = 'expression'
 export const HAS_ERROR = 'has_error'
+export const CHANGE_THEME = 'change_theme'
+export const CHECK_THEME = 'check_theme'
 
 export const inputValueCreator = payload => ({
   type: INPUT_VALUE,
@@ -35,4 +37,13 @@ export const clearResultCreator = () => ({
 
 export const hasErrorCreator = () => ({
   type: HAS_ERROR,
+})
+
+export const changeThemeCreator = payload => ({
+  type: CHANGE_THEME,
+  payload,
+})
+
+export const checkThemeCreator = () => ({
+  type: CHECK_THEME,
 })
