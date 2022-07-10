@@ -14,7 +14,11 @@ class ThemeBtn extends Component {
   render() {
     return (
       <StyledThemeBtn>
-        <StyledTitle>Theme</StyledTitle>
+        <StyledTitle>
+          {this.props.theme.isLightTheme
+            ? 'Light theme'
+            : 'Dark theme'}
+        </StyledTitle>
         <StyledSwitchBtn
           onClick={() => this.props.checkThemeCreator()}
         />

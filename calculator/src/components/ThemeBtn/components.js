@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const StyledThemeBtn = styled.div`
   display: flex;
   column-gap: 10px;
+  align-items: center;
 `
 
 export const StyledTitle = styled.h3`
