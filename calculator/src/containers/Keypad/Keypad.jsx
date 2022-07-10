@@ -1,4 +1,5 @@
 import React, { lazy, useCallback, useEffect } from 'react'
+
 import { useDispatch, useSelector } from 'react-redux'
 
 import { StyledKeypad } from './components'
@@ -14,10 +15,10 @@ import {
 import { calculate, tokenize } from '@/utils/calcOperations'
 import { calcMessage } from '@/constants/message'
 import {
-  clear,
-  equal,
-  fullClear,
-  btnValues,
+  CLEAR,
+  EQUAL,
+  FULL_CLEAR,
+  BUTTONS_MAP,
 } from '@/constants/buttons'
 
 const CalcBtn = lazy(() => import('@/components/calcBtn'))
@@ -34,13 +35,13 @@ export const Keypad = () => {
   const sumValue = useCallback(
     value => {
       switch (value) {
-        case clear:
+        case CLEAR:
           dispatch(clearCreator())
           break
-        case fullClear:
+        case FULL_CLEAR:
           dispatch(fullClearCreator())
           break
-        case equal:
+        case EQUAL:
           dispatch(
             addResultCreator(
               calculate(tokenize(initValue)),
@@ -68,7 +69,7 @@ export const Keypad = () => {
     }
   }, [dispatch, result])
 
-  const btnCollection = btnValues.map(value => {
+  const btnCollection = BUTTONS_MAP.map(value => {
     return (
       <CalcBtn
         key={value}

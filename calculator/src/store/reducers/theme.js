@@ -1,7 +1,11 @@
 import { handleActions } from 'redux-actions'
 
 import { lightTheme } from '@/theme'
-import { CHANGE_THEME, CHECK_THEME } from '../actionCreators'
+
+import {
+  CHANGE_THEME,
+  CHECK_THEME,
+} from '../actionCreators'
 
 const INITIAL_STATE = {
   theme: lightTheme,

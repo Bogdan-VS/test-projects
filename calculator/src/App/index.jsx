@@ -1,13 +1,14 @@
 import React, { lazy, Suspense } from 'react'
+
 import { Switch, Route } from 'react-router-dom'
 
 import { Pages } from '@/constants'
 
 import Loader from '@/components/Loader'
+
 const ErrorBoundary = lazy(() =>
   import('@/containers/ErrorBoundary/ErrorBoundary'),
 )
-
 const Calculator = lazy(() =>
   import('@/srceens/Calculator'),
 )

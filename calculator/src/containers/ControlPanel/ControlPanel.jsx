@@ -4,15 +4,15 @@ import ControlPanelBtn from '@/components/ControlPanelBtn'
 
 import { StyledControlPanel } from './components'
 import {
-  clearHistory,
-  fullHistory,
+  CLEAR_HISTORY,
+  FULL_HISTORY,
 } from '@/constants/buttons'
 
 export const ControlPanel = () => {
   return (
     <StyledControlPanel>
-      <ControlPanelBtn name={clearHistory} />
-      <ControlPanelBtn name={fullHistory} />
+      <ControlPanelBtn name={CLEAR_HISTORY} />
+      <ControlPanelBtn name={FULL_HISTORY} />
     </StyledControlPanel>
   )
 }

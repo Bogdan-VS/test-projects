@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 
 import { useDispatch } from 'react-redux'
 
-import { clearHistory } from '@/constants/buttons'
+import { CLEAR_HISTORY } from '@/constants/buttons'
 import {
   clearHistoryCreator,
   toggleHistoryCreator,
@@ -14,7 +14,7 @@ export const ControlPanelBtn = ({ name }) => {
   const dispatch = useDispatch()
 
   const btnHandler = useCallback(() => {
-    name === clearHistory
+    name === CLEAR_HISTORY
       ? dispatch(clearHistoryCreator())
       : dispatch(toggleHistoryCreator())
   })

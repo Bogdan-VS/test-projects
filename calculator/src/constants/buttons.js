@@ -1,4 +1,4 @@
-export const btnValues = [
+export const BUTTONS_MAP = [
   'C',
   '7',
   '8',
@@ -22,7 +22,7 @@ export const btnValues = [
   '%',
 ]
 
-export const numbers = [
+export const NUMBERS = [
   '0',
   '1',
   '2',
@@ -36,10 +36,10 @@ export const numbers = [
   '.',
 ]
 
-export const operations = ['+', '-', '/', '*', '(', ')']
-export const clear = 'CE'
-export const fullClear = 'C'
-export const equal = '='
+export const OPERATIONS = ['+', '-', '/', '*', '(', ')']
+export const CLEAR = 'CE'
+export const FULL_CLEAR = 'C'
+export const EQUAL = '='
 
-export const clearHistory = 'Clear history'
-export const fullHistory = 'Full history'
+export const CLEAR_HISTORY = 'Clear history'
+export const FULL_HISTORY = 'Full history'

@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react'
 
 import { BrowserRouter } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+
 import { ThemeProvider } from 'styled-components'
 
 import Application from '@/App'
 import GlobalStyles from '@/globalStyles'
 
-import { useDispatch, useSelector } from 'react-redux'
 import { changeThemeCreator } from '@/store/actionCreators'
 
 import { darkTheme, lightTheme } from '@/theme'

@@ -1,6 +1,10 @@
-import { Pages } from '@/constants'
-import React, { lazy } from 'react'
+import React from 'react'
+
 import { Link } from 'react-router-dom'
+
+import { Pages } from '@/constants'
+
+import HeaderButton from '@/components/HeaderButton'
 
 import {
   StyledButtonContainer,
@@ -8,10 +12,6 @@ import {
   StyledTitle,
   StyledWrapper,
 } from './components'
-
-const HeaderButton = lazy(() =>
-  import('@/components/HeaderButton'),
-)
 
 export const Header = () => {
   return (

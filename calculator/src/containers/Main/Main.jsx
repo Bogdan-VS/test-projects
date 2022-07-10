@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { StyledMain } from './components'
 
 export const Main = ({ children }) => {

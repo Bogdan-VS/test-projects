@@ -1,6 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
-
-import theme from './theme'
+import { lightTheme } from './theme'
 
 export default createGlobalStyle`
   * {
@@ -8,7 +7,7 @@ export default createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
 
-    font-family: ${theme.font};
+    font-family: ${lightTheme.font};
   }
 
   html, body {
@@ -30,6 +29,6 @@ export default createGlobalStyle`
   }
 
   #root {
-    background: ${theme.colors.bgPrimary};
+    background: ${lightTheme.colors.bgPrimary};
   }
 `

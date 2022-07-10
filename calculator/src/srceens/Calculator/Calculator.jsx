@@ -1,13 +1,13 @@
+import React from 'react'
+
 import History from '@/containers/History'
-import React, { lazy } from 'react'
+import Display from '@/components/Display'
+import Keypad from '@/containers/Keypad'
 
 import {
   StyledCalculator,
   StyledWrapper,
 } from './components'
-
-const Display = lazy(() => import('@/components/Display'))
-const Keypad = lazy(() => import('@/containers/Keypad'))
 
 export const Calculator = () => {
   return (
