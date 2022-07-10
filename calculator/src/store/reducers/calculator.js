@@ -14,6 +14,7 @@ const INITIAL_STATE = {
   initValue: '0',
   result: '',
   expression: [],
+  historyOfExpression: [],
   isFullHistoryOpen: false,
 }
 
@@ -26,6 +27,10 @@ export default handleActions(
           ...state,
           expression: [
             ...state.expression,
+            state.initValue,
+          ],
+          historyOfExpression: [
+            ...state.historyOfExpression,
             state.initValue,
           ],
           initValue: state.result,
@@ -68,7 +73,6 @@ export default handleActions(
       ...state,
       initValue: '0',
       result: '',
-      expression: state.expression,
     }),
     [CLEAR_HISTORY]: (state, action) => ({
       ...state,

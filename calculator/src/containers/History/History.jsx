@@ -5,15 +5,28 @@ import {
   ContentItemStyled,
   ContentStyled,
   HistoryStyled,
+  StyledFullHistory,
   TitleStyled,
 } from './components'
 
 export const History = () => {
-  const { expression } = useSelector(
-    state => state.calculator,
-  )
+  const {
+    expression,
+    isFullHistoryOpen,
+    historyOfExpression,
+  } = useSelector(state => state.calculator)
 
   const expressionCollection = expression.map(
+    (value, index) => {
+      return (
+        <ContentItemStyled key={`${value}${index}`}>
+          {value}
+        </ContentItemStyled>
+      )
+    },
+  )
+
+  const fullExpressionCollection = historyOfExpression.map(
     (value, index) => {
       return (
         <ContentItemStyled key={`${value}${index}`}>
@@ -28,6 +41,9 @@ export const History = () => {
       <ControlPanel />
       <TitleStyled>History</TitleStyled>
       <ContentStyled>{expressionCollection}</ContentStyled>
+      <StyledFullHistory isOpen={isFullHistoryOpen}>
+        {fullExpressionCollection}
+      </StyledFullHistory>
     </HistoryStyled>
   )
 }
