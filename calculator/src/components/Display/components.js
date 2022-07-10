@@ -13,4 +13,6 @@ export const StyledDisplay = styled.div`
   padding: 10px;
   text-align: end;
   font-size: 30px;
+  color: ${({ theme }) => theme.colors.textPrimary};
+  box-shadow: ${({ theme }) => theme.boxShadow};
 `

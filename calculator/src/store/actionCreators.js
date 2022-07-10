@@ -9,6 +9,7 @@ export const CHANGE_THEME = 'change_theme'
 export const CHECK_THEME = 'check_theme'
 export const CLEAR_HISTORY = 'clear_history'
 export const TOGGLE_FULL_HISTORY = 'toggle_full_history'
+export const CLEAR_ALL_HISTORY = 'clear_all_history'
 
 export const inputValueCreator = payload => ({
   type: INPUT_VALUE,
@@ -56,4 +57,8 @@ export const clearHistoryCreator = () => ({
 
 export const toggleHistoryCreator = () => ({
   type: TOGGLE_FULL_HISTORY,
+})
+
+export const clearAllHistoryCreator = () => ({
+  type: CLEAR_ALL_HISTORY,
 })

@@ -8,6 +8,7 @@ import {
   CLEAR_RESULT,
   CLEAR_HISTORY,
   TOGGLE_FULL_HISTORY,
+  CLEAR_ALL_HISTORY,
 } from '../actionCreators'
 
 const INITIAL_STATE = {
@@ -81,6 +82,9 @@ export default handleActions(
     [TOGGLE_FULL_HISTORY]: (state, action) => ({
       ...state,
       isFullHistoryOpen: !state.isFullHistoryOpen,
+    }),
+    [CLEAR_ALL_HISTORY]: (state, action) => ({
+      ...INITIAL_STATE,
     }),
   },
   INITIAL_STATE,

@@ -7,7 +7,7 @@ export const StyledThemeBtn = styled.div`
 `
 
 export const StyledTitle = styled.h3`
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.colors.bgPrimary};
   padding: 20px;
 `
 export const StyledSwitchBtn = styled.div`
@@ -15,8 +15,7 @@ export const StyledSwitchBtn = styled.div`
   width: 57px;
   height: 30px;
   border-radius: 19px;
-  background: ${({ theme }) =>
-    theme.colors.switchBtnPrimary};
+  background: ${({ theme }) => theme.colors.bgPrimary};
   z-index: 0;
   margin: 0;
   padding: 0;

@@ -19,7 +19,9 @@ export const History = () => {
   const expressionCollection = expression.map(
     (value, index) => {
       return (
-        <ContentItemStyled key={`${value}${index}`}>
+        <ContentItemStyled
+          className="expCollection"
+          key={`${value}${index}`}>
           {value}
         </ContentItemStyled>
       )

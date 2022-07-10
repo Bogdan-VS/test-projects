@@ -16,7 +16,9 @@ export const StyledWrapper = styled.div`
   align-items: center;
 `
 
-export const StyledTitle = styled.h1``
+export const StyledTitle = styled.h1`
+  color: ${({ theme }) => theme.colors.textPrimary};
+`
 
 export const StyledButtonContainer = styled.div`
   display: flex;

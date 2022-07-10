@@ -1,3 +1,4 @@
+import ClearAllHistory from '@/components/ClearAllHistory/ClearAllHistory'
 import ThemeBtn from '@/components/ThemeBtn/ThemeBtn'
 import React, { Component } from 'react'
 
@@ -14,6 +15,7 @@ export class SettingsWrapper extends Component {
       <StyledSettingsWrapper>
         <StyledTitle>Settings</StyledTitle>
         <ThemeBtn />
+        <ClearAllHistory />
       </StyledSettingsWrapper>
     )
   }

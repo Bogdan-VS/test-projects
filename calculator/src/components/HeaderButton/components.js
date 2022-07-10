@@ -10,16 +10,26 @@ export const StyledHeaderButton = styled.button`
   padding-bottom: 3px;
 
   &.home {
+    color: ${({ location, theme }) =>
+      location === '/'
+        ? `${theme.colors.textPrimary}`
+        : `${theme.colors.white}`};
+
     border-bottom: ${({ location, theme }) =>
       location === '/'
-        ? `2px solid ${theme.colors.black}`
+        ? `2px solid ${theme.colors.textPrimary}`
         : `2px solid ${theme.colors.bgPrimary}`};
 
   }
   &.settings {
+    color: ${({ location, theme }) =>
+      location === '/settings'
+        ? `${theme.colors.textPrimary}`
+        : `${theme.colors.white}`};
+
     border-bottom: ${({ location, theme }) =>
       location === '/settings'
-        ? `2px solid ${theme.colors.black}`
+        ? `2px solid ${theme.colors.textPrimary}`
         : `2px solid ${theme.colors.bgPrimary}`};
   }
 

@@ -12,8 +12,9 @@ export const StyledCalcBtn = styled.button`
   align-items: center;
   padding: 5px;
   border-radius: 4px;
-  color: ${({ theme }) => theme.colors.digitBtn};
+  color: ${({ theme }) => theme.colors.white};
   opacity: 1;
+  box-shadow: ${({ theme }) => theme.boxShadow};
   cursor: pointer;
   transition: 0.3s;
 
@@ -84,6 +85,6 @@ export const StyledCalcBtn = styled.button`
   &:hover {
     background-color: ${({ theme }) =>
       theme.colors.bgPrimary};
-    color: ${({ theme }) => theme.colors.bgSecondary};
+    color: ${({ theme }) => theme.colors.textPrimary};
   }
 `

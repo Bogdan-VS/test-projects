@@ -1,9 +1,10 @@
 import styled from 'styled-components'
 
-export const StyledControlBtn = styled.button`
+export const StyledClearAllHistory = styled.button`
   width: 120px;
-  height: 35px;
+  height: 50px;
   display: flex;
+  margin: 20px;
   border: none;
   background-color: ${({ theme }) =>
     theme.colors.bgPrimary};
