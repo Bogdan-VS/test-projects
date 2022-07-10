@@ -20,5 +20,5 @@ export const StyledTitle = styled.h1``
 
 export const StyledButtonContainer = styled.div`
   display: flex;
-  column-gap: 5px;
+  column-gap: 15px;
 `

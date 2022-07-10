@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const StyledWrapperDisplay = styled.div`
-  height: 100px;
+  height: 80px;
   display: flex;
   align-items: center;
   border-bottom: 2px solid

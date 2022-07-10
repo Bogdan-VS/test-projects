@@ -9,7 +9,7 @@ export const StyledWrapper = styled.div`
   height: 100%;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 75% 23%;
+  grid-template-columns: 65% 33%;
   column-gap: 2%;
   padding-top: 2%;
 `

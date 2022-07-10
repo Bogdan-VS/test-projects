@@ -20,10 +20,13 @@ export const Header = () => {
         <StyledTitle>Calculator</StyledTitle>
         <StyledButtonContainer>
           <Link to={Pages.CALCULATOR}>
-            <HeaderButton name="Home" />
+            <HeaderButton name="Home" className="home" />
           </Link>
           <Link to={Pages.SETTINGS}>
-            <HeaderButton name="Settings" />
+            <HeaderButton
+              name="Settings"
+              className="settings"
+            />
           </Link>
         </StyledButtonContainer>
       </StyledWrapper>
