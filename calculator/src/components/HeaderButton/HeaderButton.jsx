@@ -2,6 +2,8 @@ import React from 'react'
 
 import { useLocation } from 'react-router-dom'
 
+import PropType from 'prop-types'
+
 import { StyledHeaderButton } from './components'
 
 export const HeaderButton = ({ name, className }) => {
@@ -14,4 +16,9 @@ export const HeaderButton = ({ name, className }) => {
       {name}
     </StyledHeaderButton>
   )
+}
+
+HeaderButton.PropType = {
+  name: PropType.string,
+  className: PropType.string,
 }

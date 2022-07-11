@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
 
+import PropsType from 'prop-types'
+
 import { checkThemeCreator } from '@/store/actionCreators'
 
 import {
@@ -25,6 +27,11 @@ class ThemeBtn extends Component {
       </StyledThemeBtn>
     )
   }
+}
+
+ThemeBtn.PropsType = {
+  isLightTheme: PropsType.string,
+  checkThemeCreator: PropsType.func,
 }
 
 const mapStateToProps = state => {

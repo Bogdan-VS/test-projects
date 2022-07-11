@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
 
+import PropTypes from 'prop-types'
+
 import { StyledClearAllHistory } from './components'
 
 import { clearAllHistoryCreator } from '@/store/actionCreators'
@@ -17,6 +19,10 @@ class ClearAllHistory extends Component {
       </StyledClearAllHistory>
     )
   }
+}
+
+ClearAllHistory.PropTypes = {
+  clearAllHistoryCreator: PropTypes.func,
 }
 
 const mapStateToProps = state => {

@@ -2,6 +2,8 @@ import React, { useCallback } from 'react'
 
 import { useDispatch } from 'react-redux'
 
+import PropType from 'prop-types'
+
 import { CLEAR_HISTORY } from '@/constants/buttons'
 import {
   clearHistoryCreator,
@@ -24,4 +26,8 @@ export const ControlPanelBtn = ({ name }) => {
       {name}
     </StyledControlBtn>
   )
+}
+
+ControlPanelBtn.PropType = {
+  name: PropType.string,
 }

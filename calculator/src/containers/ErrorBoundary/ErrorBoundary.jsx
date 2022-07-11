@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
 
+import PropsType from 'prop-types'
+
 import { hasErrorCreator } from '@/store/actionCreators'
 import {
   StyledErrorBoundary,
@@ -22,6 +24,11 @@ class ErrorBoundary extends Component {
       this.props.children
     )
   }
+}
+
+ErrorBoundary.PropsType = {
+  hasError: PropsType.string,
+  hasErrorCreator: PropsType.func,
 }
 
 const mapStateToProps = state => {
