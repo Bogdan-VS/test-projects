@@ -1,0 +1,64 @@
+export const INPUT_VALUE = 'input_value'
+export const ADD_RESULT = 'add_result'
+export const CLEAR_RESULT = 'clear_reult'
+export const FULL_CLEAR = 'full_clear'
+export const CLEAR = 'clear'
+export const EXPRESSION = 'expression'
+export const HAS_ERROR = 'has_error'
+export const CHANGE_THEME = 'change_theme'
+export const CHECK_THEME = 'check_theme'
+export const CLEAR_HISTORY = 'clear_history'
+export const TOGGLE_FULL_HISTORY = 'toggle_full_history'
+export const CLEAR_ALL_HISTORY = 'clear_all_history'
+
+export const inputValueCreator = payload => ({
+  type: INPUT_VALUE,
+  payload,
+})
+
+export const addExpressionCreator = payload => ({
+  type: EXPRESSION,
+  payload,
+})
+
+export const fullClearCreator = () => ({
+  type: FULL_CLEAR,
+})
+
+export const clearCreator = () => ({
+  type: CLEAR,
+})
+
+export const addResultCreator = payload => ({
+  type: ADD_RESULT,
+  payload,
+})
+
+export const clearResultCreator = () => ({
+  type: CLEAR_RESULT,
+})
+
+export const hasErrorCreator = () => ({
+  type: HAS_ERROR,
+})
+
+export const changeThemeCreator = payload => ({
+  type: CHANGE_THEME,
+  payload,
+})
+
+export const checkThemeCreator = () => ({
+  type: CHECK_THEME,
+})
+
+export const clearHistoryCreator = () => ({
+  type: CLEAR_HISTORY,
+})
+
+export const toggleHistoryCreator = () => ({
+  type: TOGGLE_FULL_HISTORY,
+})
+
+export const clearAllHistoryCreator = () => ({
+  type: CLEAR_ALL_HISTORY,
+})
