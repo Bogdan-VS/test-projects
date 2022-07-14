@@ -20,10 +20,6 @@ const isRightParenthesis = ch => {
   return /\)/.test(ch)
 }
 
-const dColl = []
-const opColl = []
-const expColl = []
-
 const preOper = {
   '-': 12,
   '+': 12,
@@ -117,6 +113,11 @@ export const tokenize = str => {
 
 export const calculate = tokenCollection => {
   let resultWithError = ''
+  let result = 0
+
+  const dColl = []
+  const opColl = []
+  const expColl = []
 
   const calcResult = args => {
     const [firstValue, operate, secondValue] = args
@@ -229,6 +230,9 @@ export const calculate = tokenCollection => {
         opColl.push(elem)
       } else if (brackets.close === elem) {
         while (opColl[opColl.length - 1] !== '(') {
+          if (opColl.length === 0) {
+            return calcMessage.errorExpression
+          }
           calcStack(
             expColl,
             +dColl[dColl.length - 2],
@@ -240,6 +244,11 @@ export const calculate = tokenCollection => {
         }
 
         opColl.pop()
+
+        if (opColl.length === 0 && dColl.length === 1) {
+          const [res] = dColl
+          result = res
+        }
       }
     } else {
       resultWithError += calcMessage.errorValue
@@ -247,6 +256,10 @@ export const calculate = tokenCollection => {
   })
 
   while (opColl.length > 0) {
+    if (dColl.lenght === 0) {
+      return calcMessage.errorExpression
+    }
+
     expColl.push([
       +dColl[dColl.length - 2],
       opColl[opColl.length - 1],
@@ -262,8 +275,9 @@ export const calculate = tokenCollection => {
     if (opColl.length === 0) {
       return +result ? result : calcMessage.errorExpression
     }
+
     dColl.push(result)
   }
 
-  return resultWithError || calcMessage.errorValue
+  return result || resultWithError || calcMessage.errorValue
 }

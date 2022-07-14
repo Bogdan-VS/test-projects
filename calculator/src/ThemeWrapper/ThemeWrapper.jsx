@@ -23,10 +23,6 @@ export const ThemeWrapper = () => {
     isLightTheme
       ? dispatch(changeThemeCreator(lightTheme))
       : dispatch(changeThemeCreator(darkTheme))
-
-    if (isLightTheme) {
-      dispatch(changeThemeCreator(lightTheme))
-    }
   }, [dispatch, isLightTheme])
 
   return (
