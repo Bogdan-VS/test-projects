@@ -23,7 +23,6 @@ export default handleActions(
   {
     [INPUT_VALUE]: (state, action) => {
       if (state.result) {
-        console.log(state.initValue)
         return {
           ...state,
           expression: [
