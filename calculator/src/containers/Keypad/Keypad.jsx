@@ -1,18 +1,22 @@
-import React, { lazy, useCallback, useEffect } from 'react'
+import React, {
+  lazy,
+  useEffect,
+  useCallback,
+} from 'react'
 
-import { useDispatch, useSelector } from 'react-redux'
+import {
+  useDispatch,
+  useSelector,
+} from 'react-redux'
 
 import { StyledKeypad } from './components'
 
-import {
-  inputValueCreator,
-  addResultCreator,
-  fullClearCreator,
-  clearCreator,
-  clearResultCreator,
-} from '@/store/actionCreators'
+import { actionCreatorList } from '@/store/actionCreators'
 
-import { calculate, tokenize } from '@/utils/calcOperations'
+import {
+  calculate,
+  tokenize,
+} from '@/utils/calcOperations'
 import { calcMessage } from '@/constants/message'
 import {
   CLEAR,
@@ -21,9 +25,14 @@ import {
   BUTTONS_MAP,
 } from '@/constants/buttons'
 
-const CalcBtn = lazy(() => import('@/components/calcBtn'))
+const CalcBtn = lazy(() =>
+  import('@/components/calcBtn'),
+)
 
-const { errorValue, errorExpression } = calcMessage
+const {
+  errorValue,
+  errorExpression,
+} = calcMessage
 
 export const Keypad = () => {
   const { initValue, result } = useSelector(
@@ -33,23 +42,31 @@ export const Keypad = () => {
   const dispatch = useDispatch()
 
   const sumValue = useCallback(
-    value => {
+    value => () => {
       switch (value) {
         case CLEAR:
-          dispatch(clearCreator())
+          dispatch(
+            actionCreatorList.clearCreator(),
+          )
           break
         case FULL_CLEAR:
-          dispatch(fullClearCreator())
+          dispatch(
+            actionCreatorList.fullClearCreator(),
+          )
           break
         case EQUAL:
           dispatch(
-            addResultCreator(
+            actionCreatorList.addResultCreator(
               calculate(tokenize(initValue)),
             ),
           )
           break
         default:
-          dispatch(inputValueCreator(value))
+          dispatch(
+            actionCreatorList.inputValueCreator(
+              value,
+            ),
+          )
       }
     },
     [dispatch, initValue],
@@ -61,11 +78,19 @@ export const Keypad = () => {
       result === errorExpression
     ) {
       setTimeout(() => {
-        dispatch(clearResultCreator())
+        dispatch(
+          actionCreatorList.clearResultCreator(),
+        )
       }, 2000)
     } else if (+result) {
-      dispatch(inputValueCreator(result))
-      dispatch(clearResultCreator())
+      dispatch(
+        actionCreatorList.inputValueCreator(
+          result,
+        ),
+      )
+      dispatch(
+        actionCreatorList.clearResultCreator(),
+      )
     }
   }, [dispatch, result])
 
@@ -74,10 +99,12 @@ export const Keypad = () => {
       <CalcBtn
         key={value}
         name={value}
-        onClick={() => sumValue(value)}
+        onClick={sumValue(value)}
       />
     )
   })
 
-  return <StyledKeypad>{btnCollection}</StyledKeypad>
+  return (
+    <StyledKeypad>{btnCollection}</StyledKeypad>
+  )
 }

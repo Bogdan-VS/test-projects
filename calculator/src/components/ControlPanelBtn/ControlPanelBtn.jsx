@@ -5,29 +5,32 @@ import { useDispatch } from 'react-redux'
 import PropType from 'prop-types'
 
 import { CLEAR_HISTORY } from '@/constants/buttons'
-import {
-  clearHistoryCreator,
-  toggleHistoryCreator,
-} from '@/store/actionCreators'
+import { actionCreatorList } from '@/store/actionCreators'
 
 import { StyledControlBtn } from './components'
 
-export const ControlPanelBtn = ({ name }) => {
-  const dispatch = useDispatch()
+export const ControlPanelBtn = React.memo(
+  ({ name }) => {
+    const dispatch = useDispatch()
 
-  const btnHandler = useCallback(() => {
-    name === CLEAR_HISTORY
-      ? dispatch(clearHistoryCreator())
-      : dispatch(toggleHistoryCreator())
-  })
+    const btnHandler = useCallback(() => {
+      name === CLEAR_HISTORY
+        ? dispatch(
+            actionCreatorList.clearHistoryCreator(),
+          )
+        : dispatch(
+            actionCreatorList.toggleHistoryCreator(),
+          )
+    }, [name])
 
-  return (
-    <StyledControlBtn onClick={btnHandler}>
-      {name}
-    </StyledControlBtn>
-  )
-}
+    return (
+      <StyledControlBtn onClick={btnHandler}>
+        {name}
+      </StyledControlBtn>
+    )
+  },
+)
 
-ControlPanelBtn.PropType = {
+ControlPanelBtn.propType = {
   name: PropType.string,
 }

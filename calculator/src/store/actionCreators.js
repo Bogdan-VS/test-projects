@@ -1,64 +1,111 @@
-export const INPUT_VALUE = 'input_value'
-export const ADD_RESULT = 'add_result'
-export const CLEAR_RESULT = 'clear_reult'
-export const FULL_CLEAR = 'full_clear'
-export const CLEAR = 'clear'
-export const EXPRESSION = 'expression'
-export const HAS_ERROR = 'has_error'
-export const CHANGE_THEME = 'change_theme'
-export const CHECK_THEME = 'check_theme'
-export const CLEAR_HISTORY = 'clear_history'
-export const TOGGLE_FULL_HISTORY = 'toggle_full_history'
-export const CLEAR_ALL_HISTORY = 'clear_all_history'
+export const typeActions = {
+  INPUT_VALUE: 'INPUT_VALUE',
+  ADD_RESULT: 'ADD_RESULT',
+  CLEAR_RESULT: 'CLEAR_RESULT',
+  FULL_CLEAR: 'FULL_CLEAR',
+  CLEAR: 'CLEAR',
+  EXPRESSION: 'EXPRESSION',
+  HAS_ERROR: 'HAS_ERROR',
+  CHANGE_THEME: 'CHANGE_THEME',
+  ADD_CURRENT_THEME: 'ADD_CURRENT_THEME',
+  CLEAR_HISTORY: 'CLEAR_HISTORY',
+  TOGGLE_FULL_HISTORY: 'TOGGLE_FULL_HISTORY',
+  CLEAR_ALL_HISTORY: 'CLEAR_ALL_HISTORY',
+}
 
-export const inputValueCreator = payload => ({
-  type: INPUT_VALUE,
-  payload,
-})
+export const actionCreatorList = {
+  inputValueCreator: payload => ({
+    type: typeActions.INPUT_VALUE,
+    payload,
+  }),
+  addExpressionCreator: payload => ({
+    type: typeActions.EXPRESSION,
+    payload,
+  }),
+  fullClearCreator: () => ({
+    type: typeActions.FULL_CLEAR,
+  }),
+  clearCreator: () => ({
+    type: typeActions.CLEAR,
+  }),
+  addResultCreator: payload => ({
+    type: typeActions.ADD_RESULT,
+    payload,
+  }),
+  clearResultCreator: () => ({
+    type: typeActions.CLEAR_RESULT,
+  }),
+  hasErrorCreator: () => ({
+    type: typeActions.HAS_ERROR,
+  }),
+  changeThemeCreator: payload => ({
+    type: typeActions.CHANGE_THEME,
+    payload,
+  }),
+  addCurrentThemeCreator: payload => ({
+    type: typeActions.ADD_CURRENT_THEME,
+    payload,
+  }),
+  clearHistoryCreator: () => ({
+    type: typeActions.CLEAR_HISTORY,
+  }),
+  toggleHistoryCreator: () => ({
+    type: typeActions.TOGGLE_FULL_HISTORY,
+  }),
+  clearAllHistoryCreator: () => ({
+    type: typeActions.CLEAR_ALL_HISTORY,
+  }),
+}
 
-export const addExpressionCreator = payload => ({
-  type: EXPRESSION,
-  payload,
-})
+// export const inputValueCreator: payload => ({
+//   type: typeActions.INPUT_VALUE,
+//   payload,
+// })
 
-export const fullClearCreator = () => ({
-  type: FULL_CLEAR,
-})
+// export const addExpressionCreator: payload => ({
+//   type: typeActions.EXPRESSION,
+//   payload,
+// })
 
-export const clearCreator = () => ({
-  type: CLEAR,
-})
+// export const fullClearCreator: () => ({
+//   type: typeActions.FULL_CLEAR,
+// })
 
-export const addResultCreator = payload => ({
-  type: ADD_RESULT,
-  payload,
-})
+// export const clearCreator: () => ({
+//   type: typeActions.CLEAR,
+// })
 
-export const clearResultCreator = () => ({
-  type: CLEAR_RESULT,
-})
+// export const addResultCreator: payload => ({
+//   type: typeActions.ADD_RESULT,
+//   payload,
+// })
 
-export const hasErrorCreator = () => ({
-  type: HAS_ERROR,
-})
+// export const clearResultCreator: () => ({
+//   type: typeActions.CLEAR_RESULT,
+// })
 
-export const changeThemeCreator = payload => ({
-  type: CHANGE_THEME,
-  payload,
-})
+// export const hasErrorCreator: () => ({
+//   type: typeActions.HAS_ERROR,
+// })
 
-export const checkThemeCreator = () => ({
-  type: CHECK_THEME,
-})
+// export const changeThemeCreator: payload => ({
+//   type: typeActions.CHANGE_THEME,
+//   payload,
+// })
 
-export const clearHistoryCreator = () => ({
-  type: CLEAR_HISTORY,
-})
+// export const addCurrentThemeCreator: payload => ({
+//   type: typeActions.ADD_CURRENT_THEME,
+//   payload,
+// })
 
-export const toggleHistoryCreator = () => ({
-  type: TOGGLE_FULL_HISTORY,
-})
+// export const clearHistoryCreator: () => ({
+//   type: typeActions.CLEAR_HISTORY,
+// })
 
-export const clearAllHistoryCreator = () => ({
-  type: CLEAR_ALL_HISTORY,
-})
+// export const toggleHistoryCreator: () => ({
+//   type: typeActions.TOGGLE_FULL_HISTORY,
+// })
+
+// export const clearAllHistoryCreator: () => ({
+//   type: typeActions.CLEAR_ALL_HISTORY,
+// })

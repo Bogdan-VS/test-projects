@@ -1,5 +1,5 @@
 import { handleActions } from 'redux-actions'
-import { HAS_ERROR } from '../actionCreators'
+import { typeActions } from '../actionCreators'
 
 const INITIAL_STATE = {
   hasError: false,
@@ -7,7 +7,7 @@ const INITIAL_STATE = {
 
 export default handleActions(
   {
-    [HAS_ERROR]: (state, action) => {
+    [typeActions.HAS_ERROR]: (state, action) => {
       return {
         ...state,
         hasError: true,

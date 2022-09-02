@@ -6,7 +6,10 @@ import PropType from 'prop-types'
 
 import { StyledHeaderButton } from './components'
 
-export const HeaderButton = ({ name, className }) => {
+export const HeaderButton = ({
+  name,
+  className,
+}) => {
   const location = useLocation()
 
   return (
@@ -18,7 +21,7 @@ export const HeaderButton = ({ name, className }) => {
   )
 }
 
-HeaderButton.PropType = {
+HeaderButton.propType = {
   name: PropType.string,
   className: PropType.string,
 }

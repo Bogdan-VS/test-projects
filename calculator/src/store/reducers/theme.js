@@ -1,26 +1,25 @@
 import { handleActions } from 'redux-actions'
 
-import { lightTheme } from '@/theme'
+import { themes } from '@/theme'
 
 import {
-  CHANGE_THEME,
-  CHECK_THEME,
+  typeActions,
 } from '../actionCreators'
 
 const INITIAL_STATE = {
-  theme: lightTheme,
-  isLightTheme: true,
+  theme: themes.lightTheme,
+  currentTheme: 'lightTheme',
 }
 
 export default handleActions(
   {
-    [CHANGE_THEME]: (state, action) => ({
+    [typeActions.CHANGE_THEME]: (state, action) => ({
       ...state,
       theme: action.payload,
     }),
-    [CHECK_THEME]: (state, action) => ({
+    [typeActions.ADD_CURRENT_THEME]: (state, action) => ({
       ...state,
-      isLightTheme: !state.isLightTheme,
+      currentTheme: action.payload,
     }),
   },
   INITIAL_STATE,

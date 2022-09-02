@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 
 import { useSelector } from 'react-redux'
 
@@ -14,39 +14,47 @@ import {
 
 export const History = () => {
   const {
-    expression,
+    expression = [],
     isFullHistoryOpen,
     historyOfExpression,
   } = useSelector(state => state.calculator)
 
-  const expressionCollection = expression.map(
-    (value, index) => {
-      return (
-        <ContentItemStyled
-          className="expCollection"
-          key={`${value}${index}`}>
-          {value}
-        </ContentItemStyled>
-      )
-    },
+  const expressionCollection = useMemo(
+    () =>
+      expression.map((value, index) => {
+        return (
+          <ContentItemStyled
+            className="expCollection"
+            key={`${value}${index}`}>
+            {value}
+          </ContentItemStyled>
+        )
+      }),
+    [expression],
   )
 
-  const fullExpressionCollection = historyOfExpression.map(
-    (value, index) => {
-      return (
-        <ContentItemStyled key={`${value}${index}`}>
-          {value}
-        </ContentItemStyled>
-      )
-    },
+  const fullExpressionCollection = useMemo(
+    () =>
+      historyOfExpression.map((value, index) => {
+        return (
+          <ContentItemStyled
+            key={`${value}${index}`}>
+            {value}
+          </ContentItemStyled>
+        )
+      }),
+    [historyOfExpression],
   )
 
   return (
     <HistoryStyled>
       <ControlPanel />
       <TitleStyled>History</TitleStyled>
-      <ContentStyled>{expressionCollection}</ContentStyled>
-      <StyledFullHistory isOpen={isFullHistoryOpen}>
+      <ContentStyled>
+        {expressionCollection}
+      </ContentStyled>
+      <StyledFullHistory
+        isOpen={isFullHistoryOpen}>
         {fullExpressionCollection}
       </StyledFullHistory>
     </HistoryStyled>

@@ -8,6 +8,6 @@ export const Main = ({ children }) => {
   return <StyledMain>{children}</StyledMain>
 }
 
-Main.PropsType = {
+Main.propsType = {
   children: PropsType.element,
 }

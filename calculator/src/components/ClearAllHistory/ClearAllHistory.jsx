@@ -6,22 +6,23 @@ import PropTypes from 'prop-types'
 
 import { StyledClearAllHistory } from './components'
 
-import { clearAllHistoryCreator } from '@/store/actionCreators'
+import { actionCreatorList } from '@/store/actionCreators'
 
 class ClearAllHistory extends Component {
-  clearHistory = () => this.props.clearAllHistoryCreator()
+  handleClearHistory = () =>
+    this.props.clearAllHistoryCreator()
 
   render() {
     return (
       <StyledClearAllHistory
-        onClick={() => this.clearHistory()}>
+        onClick={this.handleClearHistory}>
         Clear all history
       </StyledClearAllHistory>
     )
   }
 }
 
-ClearAllHistory.PropTypes = {
+ClearAllHistory.propTypes = {
   clearAllHistoryCreator: PropTypes.func,
 }
 
@@ -31,7 +32,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = () => {
   return {
-    clearAllHistoryCreator,
+    clearAllHistoryCreator:
+      actionCreatorList.clearAllHistoryCreator,
   }
 }
 

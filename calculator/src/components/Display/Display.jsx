@@ -14,13 +14,21 @@ export const Display = () => {
     state => state.calculator,
   )
 
+  const {
+    errorValue,
+    errorExpression,
+  } = calcMessage
+
+  const currentValue =
+    result === errorValue ||
+    result === errorExpression
+      ? result
+      : initValue
+
   return (
     <StyledWrapperDisplay>
       <StyledDisplay>
-        {result === calcMessage.errorValue ||
-        result === calcMessage.errorExpression
-          ? result
-          : initValue}
+        {currentValue}
       </StyledDisplay>
     </StyledWrapperDisplay>
   )

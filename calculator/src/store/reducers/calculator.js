@@ -1,15 +1,6 @@
 import { handleActions } from 'redux-actions'
 
-import {
-  ADD_RESULT,
-  INPUT_VALUE,
-  FULL_CLEAR,
-  CLEAR,
-  CLEAR_RESULT,
-  CLEAR_HISTORY,
-  TOGGLE_FULL_HISTORY,
-  CLEAR_ALL_HISTORY,
-} from '../actionCreators'
+import { typeActions } from '../actionCreators'
 
 const INITIAL_STATE = {
   initValue: '0',
@@ -21,7 +12,10 @@ const INITIAL_STATE = {
 
 export default handleActions(
   {
-    [INPUT_VALUE]: (state, action) => {
+    [typeActions.INPUT_VALUE]: (
+      state,
+      action,
+    ) => {
       if (state.result) {
         return {
           ...state,
@@ -45,19 +39,22 @@ export default handleActions(
             : state.initValue + action.payload,
       }
     },
-    [ADD_RESULT]: (state, action) => {
+    [typeActions.ADD_RESULT]: (state, action) => {
       return {
         ...state,
         result: action.payload,
       }
     },
-    [CLEAR_RESULT]: (state, action) => {
+    [typeActions.CLEAR_RESULT]: (
+      state,
+      action,
+    ) => {
       return {
         ...state,
         result: '',
       }
     },
-    [CLEAR]: (state, action) => {
+    [typeActions.CLEAR]: (state, action) => {
       if (state.initValue.length === 1)
         return { ...state, initValue: '0' }
 
@@ -69,20 +66,32 @@ export default handleActions(
         ),
       }
     },
-    [FULL_CLEAR]: (state, action) => ({
+    [typeActions.FULL_CLEAR]: (
+      state,
+      action,
+    ) => ({
       ...state,
       initValue: '0',
       result: '',
     }),
-    [CLEAR_HISTORY]: (state, action) => ({
+    [typeActions.CLEAR_HISTORY]: (
+      state,
+      action,
+    ) => ({
       ...state,
       expression: [],
     }),
-    [TOGGLE_FULL_HISTORY]: (state, action) => ({
+    [typeActions.TOGGLE_FULL_HISTORY]: (
+      state,
+      action,
+    ) => ({
       ...state,
       isFullHistoryOpen: !state.isFullHistoryOpen,
     }),
-    [CLEAR_ALL_HISTORY]: (state, action) => ({
+    [typeActions.CLEAR_ALL_HISTORY]: (
+      state,
+      action,
+    ) => ({
       ...INITIAL_STATE,
     }),
   },

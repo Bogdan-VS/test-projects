@@ -4,33 +4,43 @@ import { connect } from 'react-redux'
 
 import PropsType from 'prop-types'
 
-import { checkThemeCreator } from '@/store/actionCreators'
+import { actionCreatorList } from '@/store/actionCreators'
 
 import {
-  StyledSwitchBtn,
-  StyledThemeBtn,
-  StyledTitle,
+  StyledSelect,
+  StyledOption,
 } from './components'
 
 class ThemeBtn extends Component {
+  handleCurrentTheme = e => {
+    const { addCurrentThemeCreator } = this.props
+
+    addCurrentThemeCreator(e.target.value)
+  }
+
   render() {
+    const { currentTheme } = this.props.theme
+
     return (
-      <StyledThemeBtn>
-        <StyledTitle>
-          {this.props.theme.isLightTheme
-            ? 'Light theme'
-            : 'Dark theme'}
-        </StyledTitle>
-        <StyledSwitchBtn
-          onClick={() => this.props.checkThemeCreator()}
-        />
-      </StyledThemeBtn>
+      <StyledSelect
+        onChange={this.handleCurrentTheme}
+        value={currentTheme}>
+        <StyledOption value="lightTheme">
+          Light theme
+        </StyledOption>
+        <StyledOption value="darkTheme">
+          Dark theme
+        </StyledOption>
+        <StyledOption value="coloredTheme">
+          Colored theme
+        </StyledOption>
+      </StyledSelect>
     )
   }
 }
 
-ThemeBtn.PropsType = {
-  isLightTheme: PropsType.string,
+ThemeBtn.propsType = {
+  currentTheme: PropsType.string,
   checkThemeCreator: PropsType.func,
 }
 
@@ -40,7 +50,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = () => {
   return {
-    checkThemeCreator,
+    addCurrentThemeCreator:
+      actionCreatorList.addCurrentThemeCreator,
   }
 }
 

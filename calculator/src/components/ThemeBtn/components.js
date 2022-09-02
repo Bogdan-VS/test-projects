@@ -6,35 +6,29 @@ export const StyledThemeBtn = styled.div`
   align-items: center;
 `
 
-export const StyledTitle = styled.h3`
+export const StyledSelect = styled.select`
+  padding: 10px;
+  margin-left: 20px;
   color: ${({ theme }) => theme.colors.bgPrimary};
-  padding: 20px;
-`
-export const StyledSwitchBtn = styled.div`
-  display: inline-block;
-  width: 57px;
-  height: 30px;
-  border-radius: 19px;
-  background: ${({ theme }) => theme.colors.bgPrimary};
-  z-index: 0;
-  margin: 0;
-  padding: 0;
-  border: none;
+  background-color: ${({ theme }) =>
+    theme.colors.bgSecondary};
+  border: ${({ theme }) =>
+    `1px solid ${theme.colors.bgPrimary}`};
+  font-size: 30px;
+  border-radius: 3px;
+  transition: 0.3s;
   cursor: pointer;
-  position: relative;
-  transition-duration: 300ms;
 
-  &::after {
-    content: '';
-    height: 24px;
-    width: 24px;
-    border-radius: 17px;
-    background: #fff;
-    top: 3px;
-    left: ${({ theme }) =>
-      theme.isLight ? '3px' : '30px'};
-    transition-duration: 300ms;
-    position: absolute;
-    z-index: 1;
+  &:focus {
+    border: ${({ theme }) =>
+      `1px solid ${theme.colors.bgPrimary}`};
+    box-shadow: ${({ theme }) => theme.boxShadow};
+  }
+
+  &:focus-visible {
+    border: none;
+    outline: none;
   }
 `
+
+export const StyledOption = styled.option``
