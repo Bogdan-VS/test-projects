@@ -24,6 +24,7 @@ import {
   FULL_CLEAR,
   BUTTONS_MAP,
 } from '@/constants/buttons'
+import { searchOperations } from '@/utils/searchOperations'
 
 const CalcBtn = lazy(() =>
   import('@/components/calcBtn'),
@@ -56,7 +57,7 @@ export const Keypad = () => {
           break
         case EQUAL:
           dispatch(
-            actionCreatorList.addResultCreator(
+            actionCreatorList.countExpCreator(
               calculate(tokenize(initValue)),
             ),
           )
@@ -67,6 +68,16 @@ export const Keypad = () => {
               value,
             ),
           )
+
+          if (
+            searchOperations(value, initValue)
+          ) {
+            dispatch(
+              actionCreatorList.addResultCreator(
+                calculate(tokenize(initValue)),
+              ),
+            )
+          }
       }
     },
     [dispatch, initValue],

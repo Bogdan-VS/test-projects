@@ -115,7 +115,6 @@ export const tokenize = str => {
 }
 
 export const calculate = tokenCollection => {
-  console.log(tokenCollection)
   let resultWithError = ''
   let result = 0
 
@@ -293,7 +292,7 @@ export const calculate = tokenCollection => {
     opColl.pop()
 
     if (opColl.length === 0) {
-      return +result
+      return +result || result === '0'
         ? result
         : calcMessage.errorExpression
     }

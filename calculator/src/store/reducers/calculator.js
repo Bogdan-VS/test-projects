@@ -21,13 +21,20 @@ export default handleActions(
           ...state,
           expression: [
             ...state.expression,
-            state.initValue,
+            state.initValue.slice(
+              0,
+              state.initValue.length - 1,
+            ),
           ],
           historyOfExpression: [
             ...state.historyOfExpression,
             state.initValue,
           ],
-          initValue: state.result,
+          initValue:
+            state.result +
+            state.initValue[
+              state.initValue.length - 1
+            ],
         }
       }
 
@@ -39,6 +46,18 @@ export default handleActions(
             : state.initValue + action.payload,
       }
     },
+    [typeActions.COUNT_EXP]: (state, action) => ({
+      ...state,
+      expression: [
+        ...state.expression,
+        state.initValue,
+      ],
+      historyOfExpression: [
+        ...state.historyOfExpression,
+        state.initValue,
+      ],
+      initValue: action.payload,
+    }),
     [typeActions.ADD_RESULT]: (state, action) => {
       return {
         ...state,

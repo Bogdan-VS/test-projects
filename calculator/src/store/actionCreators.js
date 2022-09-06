@@ -1,5 +1,6 @@
 export const typeActions = {
   INPUT_VALUE: 'INPUT_VALUE',
+  COUNT_EXP: 'COUNT_EXP',
   ADD_RESULT: 'ADD_RESULT',
   CLEAR_RESULT: 'CLEAR_RESULT',
   FULL_CLEAR: 'FULL_CLEAR',
@@ -16,6 +17,10 @@ export const typeActions = {
 export const actionCreatorList = {
   inputValueCreator: payload => ({
     type: typeActions.INPUT_VALUE,
+    payload,
+  }),
+  countExpCreator: payload => ({
+    type: typeActions.COUNT_EXP,
     payload,
   }),
   addExpressionCreator: payload => ({
