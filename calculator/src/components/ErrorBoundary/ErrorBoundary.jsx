@@ -28,7 +28,7 @@ class ErrorBoundary extends Component {
   }
 }
 
-ErrorBoundary.PropsType = {
+ErrorBoundary.propsType = {
   hasError: PropsType.string,
   hasErrorCreator: PropsType.func,
 }
