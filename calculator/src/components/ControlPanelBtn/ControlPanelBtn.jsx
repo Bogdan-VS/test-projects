@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux'
 import PropType from 'prop-types'
 
 import { CLEAR_HISTORY } from '@/constants/buttons'
-import { actionCreatorList } from '@/store/actionCreators'
+import { actionCreatorList } from '@/store/actions/actionCreators'
 
 import { StyledControlBtn } from './components'
 

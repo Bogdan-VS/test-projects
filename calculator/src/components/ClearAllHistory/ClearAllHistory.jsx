@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 
 import { StyledClearAllHistory } from './components'
 
-import { actionCreatorList } from '@/store/actionCreators'
+import { actionCreatorList } from '@/store/actions/actionCreators'
 
 class ClearAllHistory extends Component {
   handleClearHistory = () =>

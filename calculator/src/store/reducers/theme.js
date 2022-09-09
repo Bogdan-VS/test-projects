@@ -2,9 +2,7 @@ import { handleActions } from 'redux-actions'
 
 import { themes } from '@/theme'
 
-import {
-  typeActions,
-} from '../actionCreators'
+import { typeActions } from '../actions/actionCreators'
 
 const INITIAL_STATE = {
   theme: themes.lightTheme,
@@ -13,11 +11,17 @@ const INITIAL_STATE = {
 
 export default handleActions(
   {
-    [typeActions.CHANGE_THEME]: (state, action) => ({
+    [typeActions.CHANGE_THEME]: (
+      state,
+      action,
+    ) => ({
       ...state,
       theme: action.payload,
     }),
-    [typeActions.ADD_CURRENT_THEME]: (state, action) => ({
+    [typeActions.ADD_CURRENT_THEME]: (
+      state,
+      action,
+    ) => ({
       ...state,
       currentTheme: action.payload,
     }),

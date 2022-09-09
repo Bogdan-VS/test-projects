@@ -175,7 +175,7 @@ export const calculate = tokenCollection => {
   }
 
   tokenCollection.forEach(elem => {
-    if (+elem) {
+    if (+elem || elem === '0') {
       dColl.push(elem)
     } else if (preOper[elem]) {
       if (

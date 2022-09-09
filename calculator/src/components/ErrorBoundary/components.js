@@ -6,7 +6,7 @@ export const StyledErrorBoundary = styled.div`
 `
 
 export const StyledTitle = styled.h2`
-  text-align: center;
+  text-align: ${({ theme }) => theme.jsContent};
   padding-top: 30px;
   color: ${({ theme }) => theme.colors.error};
 `

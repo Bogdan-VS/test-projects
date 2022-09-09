@@ -13,11 +13,12 @@ export const StyledWrapper = styled.div`
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: ${({ theme }) => theme.jsContent};
 `
 
 export const StyledTitle = styled.h1`
-  color: ${({ theme }) => theme.colors.textPrimary};
+  color: ${({ theme }) =>
+    theme.colors.textPrimary};
 `
 
 export const StyledButtonContainer = styled.div`

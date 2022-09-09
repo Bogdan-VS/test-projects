@@ -22,9 +22,8 @@ import Loader from '@/components/Loader'
 import { ThemeProvider } from 'styled-components'
 import GlobalStyles from '@/globalStyles'
 import { themes } from '@/theme'
-import { actionCreatorList } from '@/store/actionCreators'
+import { actionCreatorList } from '@/store/actions/actionCreators'
 import ErrorBoundary from '@/components/ErrorBoundary/ErrorBoundary'
-// import { ErrorBoundary } from '@/components/ErrorBoundary'
 
 const Calculator = lazy(() =>
   import('@/pages/Calculator'),

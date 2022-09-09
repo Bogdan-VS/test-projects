@@ -11,7 +11,7 @@ import {
 
 import { StyledKeypad } from './components'
 
-import { actionCreatorList } from '@/store/actionCreators'
+import { actionCreatorList } from '@/store/actions/actionCreators'
 
 import {
   calculate,
@@ -19,12 +19,14 @@ import {
 } from '@/utils/calcOperations'
 import { calcMessage } from '@/constants/message'
 import {
-  CLEAR,
-  EQUAL,
-  FULL_CLEAR,
+  commands,
   BUTTONS_MAP,
+  OPERATIONS,
 } from '@/constants/buttons'
-import { searchOperations } from '@/utils/searchOperations'
+import {
+  changeSign,
+  searchOperations,
+} from '@/utils/searchOperations'
 
 const CalcBtn = lazy(() =>
   import('@/components/calcBtn'),
@@ -36,26 +38,47 @@ const {
 } = calcMessage
 
 export const Keypad = () => {
-  const { initValue, result } = useSelector(
-    state => state.calculator,
-  )
+  const {
+    initValue,
+    result,
+    isSign,
+    currentExpression,
+  } = useSelector(state => state.calculator)
 
   const dispatch = useDispatch()
 
   const sumValue = useCallback(
     value => () => {
       switch (value) {
-        case CLEAR:
+        case commands.CLEAR:
           dispatch(
             actionCreatorList.clearCreator(),
           )
           break
-        case FULL_CLEAR:
+        case commands.FULL_CLEAR:
           dispatch(
             actionCreatorList.fullClearCreator(),
           )
           break
-        case EQUAL:
+        case commands.SIGN:
+          dispatch(
+            actionCreatorList.switchSignCreator(),
+          )
+          dispatch(
+            actionCreatorList.changeHistoryCreator(
+              changeSign(
+                currentExpression,
+                isSign,
+              ),
+            ),
+          )
+          dispatch(
+            actionCreatorList.changeExpCreator(
+              changeSign(initValue, isSign),
+            ),
+          )
+          break
+        case commands.EQUAL:
           dispatch(
             actionCreatorList.countExpCreator(
               calculate(tokenize(initValue)),
@@ -63,24 +86,39 @@ export const Keypad = () => {
           )
           break
         default:
-          dispatch(
-            actionCreatorList.inputValueCreator(
-              value,
-            ),
-          )
-
           if (
-            searchOperations(value, initValue)
+            result !== errorValue ||
+            result !== errorExpression
           ) {
             dispatch(
-              actionCreatorList.addResultCreator(
-                calculate(tokenize(initValue)),
+              actionCreatorList.inputValueCreator(
+                value,
               ),
             )
+
+            if (OPERATIONS.includes(value))
+              dispatch(
+                actionCreatorList.resetSignCreator(),
+              )
+
+            if (
+              searchOperations(value, initValue)
+            ) {
+              dispatch(
+                actionCreatorList.addResultCreator(
+                  calculate(tokenize(initValue)),
+                ),
+              )
+            }
           }
       }
     },
-    [dispatch, initValue],
+    [
+      dispatch,
+      initValue,
+      currentExpression,
+      isSign,
+    ],
   )
 
   useEffect(() => {
@@ -93,7 +131,7 @@ export const Keypad = () => {
           actionCreatorList.clearResultCreator(),
         )
       }, 2000)
-    } else if (+result) {
+    } else if (+result || result === '0') {
       dispatch(
         actionCreatorList.inputValueCreator(
           result,

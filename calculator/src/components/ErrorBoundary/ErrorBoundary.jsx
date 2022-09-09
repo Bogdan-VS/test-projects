@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 import PropsType from 'prop-types'
 
-import { actionCreatorList } from '@/store/actionCreators'
+import { actionCreatorList } from '@/store/actions/actionCreators'
 import {
   StyledErrorBoundary,
   StyledTitle,

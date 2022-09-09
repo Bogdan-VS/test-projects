@@ -8,10 +8,13 @@ export const StyledClearAllHistory = styled.button`
   border: none;
   background-color: ${({ theme }) =>
     theme.colors.bgPrimary};
-  -webkit-box-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  align-items: center;
+  -webkit-box-pack: ${({ theme }) =>
+    theme.jsContent};
+  justify-content: ${({ theme }) =>
+    theme.jsContent};
+  -webkit-box-align: ${({ theme }) =>
+    theme.jsContent};
+  align-items: ${({ theme }) => theme.jsContent};
   border-radius: 4px;
   color: ${({ theme }) => theme.colors.white};
   box-shadow: ${({ theme }) => theme.boxShadow};
@@ -21,6 +24,7 @@ export const StyledClearAllHistory = styled.button`
   &:hover {
     background-color: ${({ theme }) =>
       theme.colors.bgPrimary};
-    color: ${({ theme }) => theme.colors.textPrimary};
+    color: ${({ theme }) =>
+      theme.colors.textPrimary};
   }
 `

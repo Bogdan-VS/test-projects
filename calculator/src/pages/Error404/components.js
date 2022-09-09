@@ -3,14 +3,15 @@ import styled from 'styled-components'
 export const StyledError404 = styled.div`
   heigth: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: ${({ theme }) =>
+    theme.jsContent};
+  align-items: ${({ theme }) => theme.jsContent};
 `
 
 export const StyledWrapper = styled.div``
 
 export const StyledTitle = styled.h2`
-  text-align: center;
+  text-align: ${({ theme }) => theme.jsContent};
   font-size: 75px;
   margin: 30px 0;
 `

@@ -2,6 +2,8 @@ import React, { useMemo } from 'react'
 
 import { useSelector } from 'react-redux'
 
+import uniqid from 'uniqid'
+
 import ControlPanel from '../ControlPanel'
 
 import {
@@ -25,7 +27,7 @@ export const History = () => {
         return (
           <ContentItemStyled
             className="expCollection"
-            key={`${value}${index}`}>
+            key={uniqid()}>
             {value}
           </ContentItemStyled>
         )

@@ -15,6 +15,7 @@ export const themes = {
     isLight: true,
     boxShadow:
       '0px 0px 10px 6px rgb(213, 177, 177, 0.25) inset',
+    jsContent: 'center',
   },
 
   darkTheme: {
@@ -31,6 +32,7 @@ export const themes = {
     isLight: false,
     boxShadow:
       '0px 0px 10px 6px rgba(255, 255, 255, 0.25) inset',
+    jsContent: 'center',
   },
 
   coloredTheme: {
@@ -47,5 +49,6 @@ export const themes = {
     isLight: false,
     boxShadow:
       '0px 0px 10px 6px rgba(255, 255, 255, 0.25) inset',
+    jsContent: 'center',
   },
 }
