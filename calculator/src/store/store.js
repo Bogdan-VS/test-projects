@@ -19,7 +19,7 @@ const saveSubsetFilter = createFilter(
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['theme', 'calculator'],
+  whitelist: ['settings', 'calculator'],
   transforms: [saveSubsetFilter],
   stateReconciler: autoMergeLevel2,
 }

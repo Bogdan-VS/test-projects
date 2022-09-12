@@ -3,6 +3,7 @@ export const typeActions = {
   COUNT_EXP: 'COUNT_EXP',
   ADD_RESULT: 'ADD_RESULT',
   SWITCH_SIGN: 'CHANGE_SIGN',
+  SWITCH_COMPONENTS: 'SWITCH_COMPONENTS',
   RESET_SIGN: 'RESET_SIGN',
   CHANGE_EXP: 'CHANGE_EXP',
   CLEAR_RESULT: 'CLEAR_RESULT',
@@ -34,6 +35,9 @@ export const actionCreatorList = {
   }),
   switchSignCreator: () => ({
     type: typeActions.SWITCH_SIGN,
+  }),
+  switchComponentsCreator: () => ({
+    type: typeActions.SWITCH_COMPONENTS,
   }),
   resetSignCreator: () => ({
     type: typeActions.RESET_SIGN,

@@ -3,8 +3,7 @@ import styled from 'styled-components'
 export const StyledHeader = styled.header`
   width: inherit;
   height: 80px;
-  background-color: ${({ theme }) =>
-    theme.colors.bgPrimary};
+  background-color: ${({ theme }) => theme.colors.bgPrimary};
 `
 
 export const StyledWrapper = styled.div`
@@ -17,11 +16,24 @@ export const StyledWrapper = styled.div`
 `
 
 export const StyledTitle = styled.h1`
-  color: ${({ theme }) =>
-    theme.colors.textPrimary};
+  color: ${({ theme }) => theme.colors.textPrimary};
 `
 
 export const StyledButtonContainer = styled.div`
   display: flex;
   column-gap: 15px;
+
+  a {
+    color: ${({ theme }) => theme.colors.white};
+  }
+
+  a:hover {
+    opacity: 0.8;
+  }
+
+  .active {
+    color: ${({ theme }) => theme.colors.textPrimary};
+    border-bottom: ${({ theme }) =>
+      `2px solid ${theme.colors.textPrimary}`};
+  }
 `

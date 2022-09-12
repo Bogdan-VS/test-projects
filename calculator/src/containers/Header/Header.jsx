@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 import { Pages } from '@/constants'
 
@@ -19,15 +19,18 @@ export const Header = () => {
       <StyledWrapper>
         <StyledTitle>Calculator</StyledTitle>
         <StyledButtonContainer>
-          <Link to={Pages.CALCULATOR}>
-            <HeaderButton name="Home" className="home" />
-          </Link>
-          <Link to={Pages.SETTINGS}>
-            <HeaderButton
-              name="Settings"
-              className="settings"
-            />
-          </Link>
+          <NavLink
+            to={Pages.CALCULATOR}
+            activeClassName="active"
+            exact>
+            <HeaderButton name="Home" />
+          </NavLink>
+          <NavLink
+            to={Pages.SETTINGS}
+            activeClassName="active"
+            exact>
+            <HeaderButton name="Settings" />
+          </NavLink>
         </StyledButtonContainer>
       </StyledWrapper>
     </StyledHeader>

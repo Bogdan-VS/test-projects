@@ -7,6 +7,7 @@ import { typeActions } from '../actions/actionCreators'
 const INITIAL_STATE = {
   theme: themes.lightTheme,
   currentTheme: 'lightTheme',
+  isFunComponents: true,
 }
 
 export default handleActions(
@@ -24,6 +25,10 @@ export default handleActions(
     ) => ({
       ...state,
       currentTheme: action.payload,
+    }),
+    [typeActions.SWITCH_COMPONENTS]: state => ({
+      ...state,
+      isFunComponents: !state.isFunComponents,
     }),
   },
   INITIAL_STATE,

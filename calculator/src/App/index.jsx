@@ -1,20 +1,9 @@
-import React, {
-  lazy,
-  Suspense,
-  useEffect,
-} from 'react'
+import React, { lazy, Suspense, useEffect } from 'react'
 
-import {
-  Switch,
-  Route,
-  BrowserRouter,
-} from 'react-router-dom'
+import { Switch, Route, BrowserRouter } from 'react-router-dom'
 
 import { PersistGate } from 'redux-persist/lib/integration/react'
-import {
-  useDispatch,
-  useSelector,
-} from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { persistor } from '@/store/store'
 import { Pages } from '@/constants'
@@ -24,28 +13,28 @@ import GlobalStyles from '@/globalStyles'
 import { themes } from '@/theme'
 import { actionCreatorList } from '@/store/actions/actionCreators'
 import ErrorBoundary from '@/components/ErrorBoundary/ErrorBoundary'
+import LoaderClass from '@/components/LoaderClass'
 
-const Calculator = lazy(() =>
-  import('@/pages/Calculator'),
+const Calculator = lazy(() => import('@/pages/Calculator'))
+const CalculatorClass = lazy(() =>
+  import('@/pages/CalculatorClass/CalculatorClass'),
 )
-const Main = lazy(() =>
-  import('@/containers/Main'),
+const Main = lazy(() => import('@/containers/Main'))
+const MainClass = lazy(() => import('@/containers/MainClass'))
+const Header = lazy(() => import('@/containers/Header'))
+const HeaderClass = lazy(() =>
+  import('@/containers/HeaderClass'),
 )
-const Header = lazy(() =>
-  import('@/containers/Header'),
-)
-const Settings = lazy(() =>
-  import('@/pages/Settings'),
-)
-const Error404 = lazy(() =>
-  import('@/pages/Error404'),
-)
+const Settings = lazy(() => import('@/pages/Settings'))
+const SettingsClass = lazy(() => import('@/pages/SettingsClass'))
+const Error404 = lazy(() => import('@/pages/Error404'))
+const Error404Class = lazy(() => import('@/pages/Error404Class'))
 
 const { CALCULATOR, ERROR, SETTINGS } = Pages
 
 export default () => {
-  const { theme, currentTheme } = useSelector(
-    state => state.theme,
+  const { theme, currentTheme, isFunComponents } = useSelector(
+    state => state.settings,
   )
 
   const dispatch = useDispatch()
@@ -60,11 +49,45 @@ export default () => {
     }
   }, [currentTheme])
 
+  if (!isFunComponents) {
+    return (
+      <ThemeProvider theme={theme}>
+        <PersistGate loading={null} persistor={persistor}>
+          <BrowserRouter>
+            <Suspense fallback={<LoaderClass />}>
+              <ErrorBoundary>
+                <HeaderClass />
+                <MainClass>
+                  <Switch>
+                    <Route
+                      exact
+                      path={CALCULATOR}
+                      component={CalculatorClass}
+                    />
+                    <Route
+                      exact
+                      path={SETTINGS}
+                      component={SettingsClass}
+                    />
+                    <Route
+                      exact
+                      path={ERROR}
+                      component={Error404Class}
+                    />
+                  </Switch>
+                </MainClass>
+              </ErrorBoundary>
+            </Suspense>
+            <GlobalStyles />
+          </BrowserRouter>
+        </PersistGate>
+      </ThemeProvider>
+    )
+  }
+
   return (
     <ThemeProvider theme={theme}>
-      <PersistGate
-        loading={null}
-        persistor={persistor}>
+      <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter>
           <Suspense fallback={<Loader />}>
             <ErrorBoundary>

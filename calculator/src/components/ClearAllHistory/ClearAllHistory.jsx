@@ -1,43 +1,23 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-import { connect } from 'react-redux'
-
-import PropTypes from 'prop-types'
+import { useDispatch } from 'react-redux'
 
 import { StyledClearAllHistory } from './components'
 
 import { actionCreatorList } from '@/store/actions/actionCreators'
 
-class ClearAllHistory extends Component {
-  handleClearHistory = () =>
-    this.props.clearAllHistoryCreator()
+export const ClearAllHistory = () => {
+  const dispatch = useDispatch()
 
-  render() {
-    return (
-      <StyledClearAllHistory
-        onClick={this.handleClearHistory}>
-        Clear all history
-      </StyledClearAllHistory>
+  const handleClearHistory = () =>
+    dispatch(
+      actionCreatorList.clearAllHistoryCreator(),
     )
-  }
-}
 
-ClearAllHistory.propTypes = {
-  clearAllHistoryCreator: PropTypes.func,
+  return (
+    <StyledClearAllHistory
+      onClick={handleClearHistory}>
+      Clear all history
+    </StyledClearAllHistory>
+  )
 }
-
-const mapStateToProps = state => {
-  return { calculator: state.calculator }
-}
-
-const mapDispatchToProps = () => {
-  return {
-    clearAllHistoryCreator:
-      actionCreatorList.clearAllHistoryCreator,
-  }
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps(),
-)(ClearAllHistory)

@@ -1,8 +1,9 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-import { connect } from 'react-redux'
-
-import PropsType from 'prop-types'
+import {
+  useDispatch,
+  useSelector,
+} from 'react-redux'
 
 import { actionCreatorList } from '@/store/actions/actionCreators'
 
@@ -11,51 +12,34 @@ import {
   StyledOption,
 } from './components'
 
-class ThemeBtn extends Component {
-  handleCurrentTheme = e => {
-    const { addCurrentThemeCreator } = this.props
+export const ThemeBtn = () => {
+  const { currentTheme } = useSelector(
+    state => state.settings,
+  )
 
-    addCurrentThemeCreator(e.target.value)
-  }
+  const dispatch = useDispatch()
 
-  render() {
-    const { currentTheme } = this.props.theme
-
-    return (
-      <StyledSelect
-        onChange={this.handleCurrentTheme}
-        value={currentTheme}>
-        <StyledOption value="lightTheme">
-          Light theme
-        </StyledOption>
-        <StyledOption value="darkTheme">
-          Dark theme
-        </StyledOption>
-        <StyledOption value="coloredTheme">
-          Colored theme
-        </StyledOption>
-      </StyledSelect>
+  const handleCurrentTheme = e => {
+    dispatch(
+      actionCreatorList.addCurrentThemeCreator(
+        e.target.value,
+      ),
     )
   }
-}
 
-ThemeBtn.propsType = {
-  currentTheme: PropsType.string,
-  checkThemeCreator: PropsType.func,
+  return (
+    <StyledSelect
+      onChange={handleCurrentTheme}
+      value={currentTheme}>
+      <StyledOption value="lightTheme">
+        Light theme
+      </StyledOption>
+      <StyledOption value="darkTheme">
+        Dark theme
+      </StyledOption>
+      <StyledOption value="coloredTheme">
+        Colored theme
+      </StyledOption>
+    </StyledSelect>
+  )
 }
-
-const mapStateToProps = state => {
-  return { theme: state.theme }
-}
-
-const mapDispatchToProps = () => {
-  return {
-    addCurrentThemeCreator:
-      actionCreatorList.addCurrentThemeCreator,
-  }
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps(),
-)(ThemeBtn)

@@ -39,8 +39,7 @@ export const History = () => {
     () =>
       historyOfExpression.map((value, index) => {
         return (
-          <ContentItemStyled
-            key={`${value}${index}`}>
+          <ContentItemStyled key={uniqid()}>
             {value}
           </ContentItemStyled>
         )

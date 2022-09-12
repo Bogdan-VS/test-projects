@@ -1,15 +1,13 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 import SettingsWrapper from '@/containers/SettingsWrapper'
 
 import { StyledSettings } from './components'
 
-export class Settings extends Component {
-  render() {
-    return (
-      <StyledSettings>
-        <SettingsWrapper />
-      </StyledSettings>
-    )
-  }
+export const Settings = () => {
+  return (
+    <StyledSettings>
+      <SettingsWrapper />
+    </StyledSettings>
+  )
 }

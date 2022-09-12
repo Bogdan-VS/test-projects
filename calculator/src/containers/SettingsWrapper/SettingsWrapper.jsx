@@ -1,21 +1,33 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-import ClearAllHistory from '@/components/ClearAllHistory/ClearAllHistory'
-import ThemeBtn from '@/components/ThemeBtn/ThemeBtn'
+import ClearAllHistory from '@/components/ClearAllHistory'
+import ThemeBtn from '@/components/ThemeBtn'
 
 import {
   StyledSettingsWrapper,
+  StyledSwitchComponentsBtn,
   StyledTitle,
 } from './components'
 
-export class SettingsWrapper extends Component {
-  render() {
-    return (
-      <StyledSettingsWrapper>
-        <StyledTitle>Settings</StyledTitle>
-        <ThemeBtn />
-        <ClearAllHistory />
-      </StyledSettingsWrapper>
-    )
+import { actionCreatorList } from '@/store/actions/actionCreators'
+import { useDispatch } from 'react-redux'
+
+export const SettingsWrapper = () => {
+  const dispatch = useDispatch()
+
+  const handleSwitchComponents = () => {
+    dispatch(actionCreatorList.switchComponentsCreator())
   }
+
+  return (
+    <StyledSettingsWrapper>
+      <StyledTitle>Settings</StyledTitle>
+      <ThemeBtn />
+      <ClearAllHistory />
+      <StyledSwitchComponentsBtn
+        onClick={handleSwitchComponents}>
+        Switch to class components
+      </StyledSwitchComponentsBtn>
+    </StyledSettingsWrapper>
+  )
 }
