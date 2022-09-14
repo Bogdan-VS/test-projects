@@ -16,14 +16,14 @@ import {
 
 export const History = () => {
   const {
-    expression = [],
+    currentHistory = [],
     isFullHistoryOpen,
-    historyOfExpression,
+    fullHistory,
   } = useSelector(state => state.calculator)
 
   const expressionCollection = useMemo(
     () =>
-      expression.map((value, index) => {
+      currentHistory.map((value, index) => {
         return (
           <ContentItemStyled
             className="expCollection"
@@ -32,30 +32,27 @@ export const History = () => {
           </ContentItemStyled>
         )
       }),
-    [expression],
+    [currentHistory],
   )
 
   const fullExpressionCollection = useMemo(
     () =>
-      historyOfExpression.map((value, index) => {
+      fullHistory.map((value, index) => {
         return (
           <ContentItemStyled key={uniqid()}>
             {value}
           </ContentItemStyled>
         )
       }),
-    [historyOfExpression],
+    [fullHistory],
   )
 
   return (
     <HistoryStyled>
       <ControlPanel />
       <TitleStyled>History</TitleStyled>
-      <ContentStyled>
-        {expressionCollection}
-      </ContentStyled>
-      <StyledFullHistory
-        isOpen={isFullHistoryOpen}>
+      <ContentStyled>{expressionCollection}</ContentStyled>
+      <StyledFullHistory isOpen={isFullHistoryOpen}>
         {fullExpressionCollection}
       </StyledFullHistory>
     </HistoryStyled>

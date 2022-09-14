@@ -9,27 +9,21 @@ import { actionCreatorList } from '@/store/actions/actionCreators'
 
 import { StyledControlBtn } from './components'
 
-export const ControlPanelBtn = React.memo(
-  ({ name }) => {
-    const dispatch = useDispatch()
+export const ControlPanelBtn = React.memo(({ name }) => {
+  const dispatch = useDispatch()
 
-    const btnHandler = useCallback(() => {
-      name === CLEAR_HISTORY
-        ? dispatch(
-            actionCreatorList.clearHistoryCreator(),
-          )
-        : dispatch(
-            actionCreatorList.toggleHistoryCreator(),
-          )
-    }, [name])
+  const btnHandler = useCallback(() => {
+    name === CLEAR_HISTORY
+      ? dispatch(actionCreatorList.clearHistoryCreator())
+      : dispatch(actionCreatorList.toggleHistoryCreator())
+  }, [name])
 
-    return (
-      <StyledControlBtn onClick={btnHandler}>
-        {name}
-      </StyledControlBtn>
-    )
-  },
-)
+  return (
+    <StyledControlBtn onClick={btnHandler}>
+      {name}
+    </StyledControlBtn>
+  )
+})
 
 ControlPanelBtn.propType = {
   name: PropType.string,

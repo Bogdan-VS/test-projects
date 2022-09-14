@@ -4,8 +4,6 @@ import { connect } from 'react-redux'
 
 import PropType from 'prop-types'
 
-import { calcMessage } from '@/constants/message'
-
 import {
   StyledDisplay,
   StyledWrapperDisplay,
@@ -13,39 +11,22 @@ import {
 
 class DisplayClass extends Component {
   render() {
-    const { result, initValue } = this.props
-
-    const {
-      errorValue,
-      errorExpression,
-    } = calcMessage
-
-    const currentValue =
-      this.props.result === errorValue ||
-      result === errorExpression
-        ? result
-        : initValue
+    const { currentResult } = this.props
 
     return (
       <StyledWrapperDisplay>
-        <StyledDisplay>
-          {currentValue}
-        </StyledDisplay>
+        <StyledDisplay>{currentResult}</StyledDisplay>
       </StyledWrapperDisplay>
     )
   }
 }
 
 DisplayClass.propType = {
-  result: PropType.string,
-  initValue: PropType.string,
+  currentResult: PropType.string,
 }
 
 const mapStateToProps = state => ({
-  result: state.calculator.result,
-  initValue: state.calculator.initValue,
+  currentResult: state.calculator.currentResult,
 })
 
-export default connect(mapStateToProps)(
-  DisplayClass,
-)
+export default connect(mapStateToProps)(DisplayClass)

@@ -19,12 +19,12 @@ import {
 class HistoryClass extends Component {
   render() {
     const {
-      expression = [],
-      historyOfExpression,
+      currentHistory = [],
+      fullHistory,
       isFullHistoryOpen,
     } = this.props
 
-    const expressionCollection = expression.map(
+    const expressionCollection = currentHistory.map(
       (value, index) => {
         return (
           <ContentItemStyled
@@ -36,7 +36,7 @@ class HistoryClass extends Component {
       },
     )
 
-    const fullExpressionCollection = historyOfExpression.map(
+    const fullExpressionCollection = fullHistory.map(
       (value, index) => {
         return (
           <ContentItemStyled key={uniqid()}>
@@ -50,11 +50,8 @@ class HistoryClass extends Component {
       <HistoryStyled>
         <ControlPanelClass />
         <TitleStyled>History</TitleStyled>
-        <ContentStyled>
-          {expressionCollection}
-        </ContentStyled>
-        <StyledFullHistory
-          isOpen={isFullHistoryOpen}>
+        <ContentStyled>{expressionCollection}</ContentStyled>
+        <StyledFullHistory isOpen={isFullHistoryOpen}>
           {fullExpressionCollection}
         </StyledFullHistory>
       </HistoryStyled>
@@ -63,19 +60,15 @@ class HistoryClass extends Component {
 }
 
 HistoryClass.propsType = {
-  expression: PropsType.array,
+  currentHistory: PropsType.array,
   isFullHistoryOpen: PropsType.bool,
-  historyOfExpression: PropsType.array,
+  fullHistory: PropsType.array,
 }
 
 const mapStateToProps = state => ({
-  expression: state.calculator.expression,
-  isFullHistoryOpen:
-    state.calculator.isFullHistoryOpen,
-  historyOfExpression:
-    state.calculator.historyOfExpression,
+  currentHistory: state.calculator.currentHistory,
+  isFullHistoryOpen: state.calculator.isFullHistoryOpen,
+  fullHistory: state.calculator.fullHistory,
 })
 
-export default connect(mapStateToProps)(
-  HistoryClass,
-)
+export default connect(mapStateToProps)(HistoryClass)

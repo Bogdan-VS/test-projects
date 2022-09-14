@@ -67,10 +67,7 @@ export const tokenize = str => {
     } else if (char === '.') {
       numberBuffer.push(char)
     } else if (isOperator(char)) {
-      if (
-        numberBuffer.length === 0 &&
-        char === '-'
-      ) {
+      if (numberBuffer.length === 0 && char === '-') {
         numberBuffer.push(char)
       } else {
         emptyNumberBufferAsLiteral()
@@ -123,33 +120,19 @@ export const calculate = tokenCollection => {
   const expColl = []
 
   const calcResult = args => {
-    const [
-      firstValue,
-      operate,
-      secondValue,
-    ] = args
+    const [firstValue, operate, secondValue] = args
 
     switch (operate) {
       case '+':
-        return String(
-          +(firstValue + secondValue).toFixed(3),
-        )
+        return String(+(firstValue + secondValue).toFixed(3))
       case '-':
-        return String(
-          +(firstValue - secondValue).toFixed(3),
-        )
+        return String(+(firstValue - secondValue).toFixed(3))
       case '/':
-        return String(
-          +(firstValue / secondValue).toFixed(3),
-        )
+        return String(+(firstValue / secondValue).toFixed(3))
       case '*':
-        return String(
-          +(firstValue * secondValue).toFixed(3),
-        )
+        return String(+(firstValue * secondValue).toFixed(3))
       case '%':
-        return String(
-          +(firstValue % secondValue).toFixed(3),
-        )
+        return String(+(firstValue % secondValue).toFixed(3))
     }
   }
 
@@ -163,9 +146,7 @@ export const calculate = tokenCollection => {
   ) => {
     expression.push([firstVal, oper, secondVal])
 
-    const result = calcResult(
-      expression[expression.length - 1],
-    )
+    const result = calcResult(expression[expression.length - 1])
 
     digitColl.pop()
     digitColl.pop()
@@ -180,20 +161,16 @@ export const calculate = tokenCollection => {
     } else if (preOper[elem]) {
       if (
         opColl.length === 0 ||
-        opColl[opColl.length - 1] ===
-          brackets.open ||
-        opColl[opColl.length - 1] ===
-          brackets.close
+        opColl[opColl.length - 1] === brackets.open ||
+        opColl[opColl.length - 1] === brackets.close
       ) {
         opColl.push(elem)
       } else if (
-        preOper[elem] >
-        preOper[opColl[opColl.length - 1]]
+        preOper[elem] > preOper[opColl[opColl.length - 1]]
       ) {
         opColl.push(elem)
       } else if (
-        preOper[elem] <
-        preOper[opColl[opColl.length - 1]]
+        preOper[elem] < preOper[opColl[opColl.length - 1]]
       ) {
         calcStack(
           expColl,
@@ -205,8 +182,7 @@ export const calculate = tokenCollection => {
         )
 
         if (
-          preOper[opColl[opColl.length - 1]] ===
-          preOper[elem]
+          preOper[opColl[opColl.length - 1]] === preOper[elem]
         ) {
           calcStack(
             expColl,
@@ -220,8 +196,7 @@ export const calculate = tokenCollection => {
 
         opColl.push(elem)
       } else if (
-        preOper[elem] ===
-        preOper[opColl[opColl.length - 1]]
+        preOper[elem] === preOper[opColl[opColl.length - 1]]
       ) {
         calcStack(
           expColl,
@@ -241,9 +216,7 @@ export const calculate = tokenCollection => {
       if (brackets.open === elem) {
         opColl.push(elem)
       } else if (brackets.close === elem) {
-        while (
-          opColl[opColl.length - 1] !== '('
-        ) {
+        while (opColl[opColl.length - 1] !== '(') {
           if (opColl.length === 0) {
             return calcMessage.errorExpression
           }
@@ -259,10 +232,7 @@ export const calculate = tokenCollection => {
 
         opColl.pop()
 
-        if (
-          opColl.length === 0 &&
-          dColl.length === 1
-        ) {
+        if (opColl.length === 0 && dColl.length === 1) {
           const [res] = dColl
           result = res
         }
@@ -283,9 +253,7 @@ export const calculate = tokenCollection => {
       +dColl[dColl.length - 1],
     ])
 
-    const result = calcResult(
-      expColl[expColl.length - 1],
-    )
+    const result = calcResult(expColl[expColl.length - 1])
 
     dColl.pop()
     dColl.pop()
@@ -300,9 +268,5 @@ export const calculate = tokenCollection => {
     dColl.push(result)
   }
 
-  return (
-    result ||
-    resultWithError ||
-    calcMessage.errorValue
-  )
+  return result || resultWithError || calcMessage.errorValue
 }

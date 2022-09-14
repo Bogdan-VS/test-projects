@@ -1,147 +1,109 @@
-import React, {
-  lazy,
-  useEffect,
-  useCallback,
-} from 'react'
+import React, { lazy, useEffect, useCallback } from 'react'
 
-import {
-  useDispatch,
-  useSelector,
-} from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { StyledKeypad } from './components'
 
 import { actionCreatorList } from '@/store/actions/actionCreators'
 
-import {
-  calculate,
-  tokenize,
-} from '@/utils/calcOperations'
-import { calcMessage } from '@/constants/message'
-import {
-  commands,
-  BUTTONS_MAP,
-  OPERATIONS,
-} from '@/constants/buttons'
+import { commands, BUTTONS_MAP } from '@/constants/buttons'
 import {
   changeSign,
+  checkUncorrectMessage,
   searchOperations,
 } from '@/utils/searchOperations'
 
-const CalcBtn = lazy(() =>
-  import('@/components/calcBtn'),
-)
+import {
+  Calculator,
+  AddInputValue,
+  CalcExp,
+  SwitchSign,
+  Equal,
+  ClearResult,
+  FullClearResult,
+} from '@/utils/calculate'
 
-const {
-  errorValue,
-  errorExpression,
-} = calcMessage
+const CalcBtn = lazy(() => import('@/components/calcBtn'))
+
+const calc = new Calculator()
 
 export const Keypad = () => {
   const {
-    initValue,
-    result,
+    inputValue,
+    currentResult,
+    currentHistory,
     isSign,
-    currentExpression,
   } = useSelector(state => state.calculator)
 
   const dispatch = useDispatch()
+
+  const updateData = () => {
+    dispatch(
+      actionCreatorList.addCurrentResultCreator(calc.inputValue),
+    )
+  }
 
   const sumValue = useCallback(
     value => () => {
       switch (value) {
         case commands.CLEAR:
-          dispatch(
-            actionCreatorList.clearCreator(),
-          )
+          calc.executeCommand(new ClearResult())
+          updateData()
           break
         case commands.FULL_CLEAR:
-          dispatch(
-            actionCreatorList.fullClearCreator(),
-          )
+          calc.executeCommand(new FullClearResult())
+          dispatch(actionCreatorList.clearInputValueCreator())
+          updateData()
           break
         case commands.SIGN:
-          dispatch(
-            actionCreatorList.switchSignCreator(),
-          )
-          dispatch(
-            actionCreatorList.changeHistoryCreator(
-              changeSign(
-                currentExpression,
-                isSign,
-              ),
-            ),
-          )
+          calc.executeCommand(new SwitchSign(isSign))
+          updateData()
           dispatch(
             actionCreatorList.changeExpCreator(
-              changeSign(initValue, isSign),
+              changeSign(inputValue),
             ),
           )
+          dispatch(actionCreatorList.switchSignCreator())
           break
         case commands.EQUAL:
+          calc.executeCommand(new Equal())
+          updateData()
           dispatch(
-            actionCreatorList.countExpCreator(
-              calculate(tokenize(initValue)),
+            actionCreatorList.addCurrentHistoryCreator(
+              inputValue,
             ),
           )
           break
         default:
-          if (
-            result !== errorValue ||
-            result !== errorExpression
-          ) {
-            dispatch(
-              actionCreatorList.inputValueCreator(
-                value,
-              ),
-            )
+          calc.executeCommand(new AddInputValue(value))
 
-            if (OPERATIONS.includes(value))
-              dispatch(
-                actionCreatorList.resetSignCreator(),
-              )
-
-            if (
-              searchOperations(value, initValue)
-            ) {
-              dispatch(
-                actionCreatorList.addResultCreator(
-                  calculate(tokenize(initValue)),
-                ),
-              )
-            }
+          if (searchOperations(value, calc.inputValue)) {
+            calc.executeCommand(new CalcExp())
           }
+
+          updateData()
+          dispatch(actionCreatorList.inputValueCreator(value))
+          dispatch(actionCreatorList.resetSignCreator())
       }
     },
-    [
-      dispatch,
-      initValue,
-      currentExpression,
-      isSign,
-    ],
+    [dispatch, isSign, inputValue],
   )
 
   useEffect(() => {
-    if (
-      result === errorValue ||
-      result === errorExpression
-    ) {
+    if (checkUncorrectMessage(currentResult)) {
+      calc.executeCommand(
+        new AddInputValue(currentHistory.at(-1)),
+      )
+
       setTimeout(() => {
         dispatch(
-          actionCreatorList.clearResultCreator(),
+          actionCreatorList.addCurrentResultCreator(
+            calc.inputValue,
+          ),
         )
       }, 2000)
-    } else if (+result || result === '0') {
-      dispatch(
-        actionCreatorList.inputValueCreator(
-          result,
-        ),
-      )
-      dispatch(
-        actionCreatorList.clearResultCreator(),
-      )
     }
-  }, [dispatch, result])
+  })
 
   const btnCollection = BUTTONS_MAP.map(value => {
     return (
@@ -153,7 +115,5 @@ export const Keypad = () => {
     )
   })
 
-  return (
-    <StyledKeypad>{btnCollection}</StyledKeypad>
-  )
+  return <StyledKeypad>{btnCollection}</StyledKeypad>
 }

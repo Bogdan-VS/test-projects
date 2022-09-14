@@ -1,24 +1,26 @@
+import { calcMessage } from '@/constants/message'
+
 export const searchOperations = (oper, exp) => {
   const reg = /[(,)]/gm
   const stack = []
-  const isOper = ['+', '-', '/', '*'].includes(
-    oper,
-  )
+
+  const count = exp
+    .split('')
+    .filter(
+      el => ['+', '-', '/', '*'].includes(el) && el === oper,
+    )
 
   exp
     .split('')
     .filter(el => el.match(reg))
     .forEach(el => {
-      if (
-        el === ')' &&
-        stack[stack.length - 1] === '('
-      ) {
+      if (el === ')' && stack[stack.length - 1] === '(') {
         stack.pop()
       } else stack.push(el)
     })
 
   return (
-    isOper &&
+    count.length > 1 &&
     stack.length === 0 &&
     exp.split('').includes(oper)
   )
@@ -29,7 +31,7 @@ export const changeSign = (exp, isSign) => {
 
   for (let i = exp.length - 1; i >= 0; i--) {
     if (['+', '-', '/', '*'].includes(exp[i])) {
-      if (!isSign) {
+      if (isSign) {
         res.splice(i + 1, 0, '-')
       } else {
         res.splice(i, 1)
@@ -39,5 +41,12 @@ export const changeSign = (exp, isSign) => {
     }
   }
 
-  return !isSign ? `-${exp}` : exp
+  return isSign ? `-${exp}` : exp
+}
+
+export const checkUncorrectMessage = value => {
+  return (
+    value === calcMessage.errorValue ||
+    (value === calcMessage.errorExpression && true)
+  )
 }

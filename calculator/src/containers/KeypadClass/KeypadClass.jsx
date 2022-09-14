@@ -8,87 +8,93 @@ import { StyledKeypad } from './components'
 
 import { actionCreatorList } from '@/store/actions/actionCreators'
 
-import { calculate, tokenize } from '@/utils/calcOperations'
-import { calcMessage } from '@/constants/message'
-import {
-  commands,
-  BUTTONS_MAP,
-  OPERATIONS,
-} from '@/constants/buttons'
+import { commands, BUTTONS_MAP } from '@/constants/buttons'
 import {
   changeSign,
+  checkUncorrectMessage,
   searchOperations,
 } from '@/utils/searchOperations'
 
+import {
+  Calculator,
+  AddInputValue,
+  CalcExp,
+  SwitchSign,
+  Equal,
+  ClearResult,
+  FullClearResult,
+} from '@/utils/calculate'
+
 const CalcBtn = lazy(() => import('@/components/calcBtn'))
 
-const { errorValue, errorExpression } = calcMessage
+const calc = new Calculator()
 
 class KeypadClass extends Component {
+  updateData = () => {
+    this.props.addCurrentResultCreator(calc.inputValue)
+  }
+
   handleSumValue = value => () => {
     const {
-      clearCreator,
-      fullClearCreator,
-      switchSignCreator,
-      changeHistoryCreator,
-      changeExpCreator,
-      countExpCreator,
       inputValueCreator,
       resetSignCreator,
-      addResultCreator,
-      currentExpression,
+      clearInputValueCreator,
+      switchSignCreator,
+      changeExpCreator,
+      addCurrentHistoryCreator,
+      inputValue,
       isSign,
-      initValue,
-      result,
     } = this.props
 
     switch (value) {
       case commands.CLEAR:
-        clearCreator()
+        calc.executeCommand(new ClearResult())
+        this.updateData()
         break
       case commands.FULL_CLEAR:
-        fullClearCreator()
+        calc.executeCommand(new FullClearResult())
+        clearInputValueCreator()
+        this.updateData()
         break
       case commands.SIGN:
+        calc.executeCommand(new SwitchSign(isSign))
+        this.updateData()
+        changeExpCreator(changeSign(inputValue))
         switchSignCreator()
-        changeHistoryCreator(
-          changeSign(currentExpression, isSign),
-        )
-        changeExpCreator(changeSign(initValue, isSign))
         break
       case commands.EQUAL:
-        countExpCreator(calculate(tokenize(initValue)))
+        calc.executeCommand(new Equal())
+        this.updateData()
+        addCurrentHistoryCreator(inputValue)
         break
       default:
-        if (
-          result !== errorValue ||
-          result !== errorExpression
-        ) {
-          inputValueCreator(value)
+        calc.executeCommand(new AddInputValue(value))
 
-          if (OPERATIONS.includes(value)) resetSignCreator()
-
-          if (searchOperations(value, initValue)) {
-            addResultCreator(calculate(tokenize(initValue)))
-          }
+        if (searchOperations(value, calc.inputValue)) {
+          calc.executeCommand(new CalcExp())
         }
+
+        this.updateData()
+        inputValueCreator(value)
+        resetSignCreator()
     }
   }
 
   componentDidUpdate() {
     const {
-      result,
-      clearResultCreator,
-      inputValueCreator,
+      currentResult,
+      currentHistory,
+      addCurrentResultCreator,
     } = this.props
 
-    if (result === errorValue || result === errorExpression) {
+    if (checkUncorrectMessage(currentResult)) {
+      calc.executeCommand(
+        new AddInputValue(currentHistory.at(-1)),
+      )
+
       setTimeout(() => {
-        clearResultCreator()
+        addCurrentResultCreator(calc.inputValue)
       }, 2000)
-    } else if (+result || result === '0') {
-      inputValueCreator(result)
-      clearResultCreator()
     }
   }
 
@@ -108,30 +114,30 @@ class KeypadClass extends Component {
 }
 
 KeypadClass.propsType = {
-  initValue: PropsType.string,
-  result: PropsType.string,
+  inputValue: PropsType.string,
+  currentResult: PropsType.string,
   isSign: PropsType.bool,
-  currentExpression: PropsType.array,
+  currentHistory: PropsType.array,
 }
 
 const mapStateToProps = state => ({
-  initValue: state.calculator.initValue,
-  result: state.calculator.result,
+  inputValue: state.calculator.inputValue,
+  currentResult: state.calculator.currentResult,
   isSign: state.calculator.isSign,
-  currentExpression: state.calculator.currentExpression,
+  currentHistory: state.calculator.currentHistory,
 })
 
 const mapDispatchToProps = () => ({
-  clearCreator: actionCreatorList.clearCreator,
-  fullClearCreator: actionCreatorList.fullClearCreator,
+  addCurrentResultCreator:
+    actionCreatorList.addCurrentResultCreator,
+  clearInputValueCreator:
+    actionCreatorList.clearInputValueCreator,
+  addCurrentHistoryCreator:
+    actionCreatorList.addCurrentHistoryCreator,
   switchSignCreator: actionCreatorList.switchSignCreator,
-  changeHistoryCreator: actionCreatorList.changeHistoryCreator,
   changeExpCreator: actionCreatorList.changeExpCreator,
-  countExpCreator: actionCreatorList.countExpCreator,
   inputValueCreator: actionCreatorList.inputValueCreator,
   resetSignCreator: actionCreatorList.resetSignCreator,
-  addResultCreator: actionCreatorList.addResultCreator,
-  clearResultCreator: actionCreatorList.clearResultCreator,
 })
 
 export default connect(

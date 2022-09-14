@@ -2,34 +2,19 @@ import React from 'react'
 
 import { useSelector } from 'react-redux'
 
-import { calcMessage } from '@/constants/message'
-
 import {
   StyledDisplay,
   StyledWrapperDisplay,
 } from './components'
 
 export const Display = () => {
-  const { initValue, result } = useSelector(
+  const { currentResult } = useSelector(
     state => state.calculator,
   )
 
-  const {
-    errorValue,
-    errorExpression,
-  } = calcMessage
-
-  const currentValue =
-    result === errorValue ||
-    result === errorExpression
-      ? result
-      : initValue
-
   return (
     <StyledWrapperDisplay>
-      <StyledDisplay>
-        {currentValue}
-      </StyledDisplay>
+      <StyledDisplay>{currentResult}</StyledDisplay>
     </StyledWrapperDisplay>
   )
 }
