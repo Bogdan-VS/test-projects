@@ -1,0 +1,6 @@
+.todoWrapper {
+  display: flex;
+  margin-top: 20px;
+  justify-content: center;
+  column-gap: 20px;
+}

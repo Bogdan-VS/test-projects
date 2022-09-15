@@ -1,3 +1,10 @@
-import { TodoWrapper } from '../containers/TodoWrapper';
+import { Provider } from 'react-redux';
 
-export const App = () => <TodoWrapper />;
+import { TodoWrapper } from '../containers/TodoWrapper';
+import { store } from '../store/store';
+
+export const App = () => (
+  <Provider store={store}>
+    <TodoWrapper />
+  </Provider>
+);
