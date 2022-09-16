@@ -30,6 +30,7 @@ export const Todos = () => {
         ({ todo, id, checked }) => (
           <div className="todosWrapper" key={id}>
             <input
+              checked={checked}
               type="checkbox"
               value={checked}
               onChange={handleChecked(id)}
