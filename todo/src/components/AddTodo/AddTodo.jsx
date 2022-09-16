@@ -23,11 +23,12 @@ export const AddTodo = () => {
   return (
     <form className="todoWrapper" onSubmit={handleSubmit(handleTodo)}>
       <input
+        className="addInput"
         type="text"
         placeholder="What should be done?"
         {...register('todo')}
       />
-      <input type="submit" value="Add Todo" />
+      <input className="addTodo" type="submit" value="Add Todo" />
     </form>
   );
 };

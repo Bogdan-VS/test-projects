@@ -1,10 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
+
 import { actionCreators } from '../../store/actions/todoAction';
+import { filterTodos, searchTodos } from '../../utils/filter';
 
 import './todos.css';
 
 export const Todos = () => {
-  const { todos } = useSelector((state) => state.todo);
+  const { todos, todo, activeTodos } = useSelector((state) => state.todo);
 
   const dispatch = useDispatch();
 
@@ -24,20 +26,28 @@ export const Todos = () => {
 
   return (
     <>
-      {todos.map(({ todo, id, checked }) => (
-        <div className="todosWrapper" key={id}>
-          <input type="checkbox" value={checked} onChange={handleChecked(id)} />
-          <p
-            className="description"
-            style={{
-              textDecoration: `${checked ? 'line-through' : 'none'}`,
-            }}
-          >
-            {todo}
-          </p>
-          <button onClick={handleDelete(id)}>Delete</button>
-        </div>
-      ))}
+      {filterTodos(searchTodos(todos, todo), activeTodos).map(
+        ({ todo, id, checked }) => (
+          <div className="todosWrapper" key={id}>
+            <input
+              type="checkbox"
+              value={checked}
+              onChange={handleChecked(id)}
+            />
+            <p
+              className="description"
+              style={{
+                textDecoration: `${checked ? 'line-through' : 'none'}`,
+              }}
+            >
+              {todo}
+            </p>
+            <button className="deleteTodo" onClick={handleDelete(id)}>
+              Delete
+            </button>
+          </div>
+        )
+      )}
     </>
   );
 };
