@@ -9,15 +9,15 @@ import { persistor } from '@/store/store'
 import { Pages } from '@/constants'
 import Loader from '@/components/Loader'
 import { ThemeProvider } from 'styled-components'
-import GlobalStyles from '@/globalStyles'
-import { themes } from '@/theme'
+import GlobalStyles from '@/theme/globalStyles'
+import { themes } from '@/theme/theme'
 import { actionCreatorList } from '@/store/actions/actionCreators'
-import ErrorBoundary from '@/components/ErrorBoundary/ErrorBoundary'
+import ErrorBoundary from '@/components/ErrorBoundary'
 import LoaderClass from '@/components/LoaderClass'
 
 const Calculator = lazy(() => import('@/pages/Calculator'))
 const CalculatorClass = lazy(() =>
-  import('@/pages/CalculatorClass/CalculatorClass'),
+  import('@/pages/CalculatorClass'),
 )
 const Main = lazy(() => import('@/containers/Main'))
 const MainClass = lazy(() => import('@/containers/MainClass'))

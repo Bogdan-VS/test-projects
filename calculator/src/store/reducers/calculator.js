@@ -15,22 +15,12 @@ const INITIAL_STATE = {
 
 export default handleActions(
   {
-    [typeActions.INPUT_VALUE]: (
-      state,
-      action,
-    ) => {
+    [typeActions.INPUT_VALUE]: (state, action) => {
       if (state.result) {
         return {
           ...state,
-          initValue: OPERATIONS.includes(
-            state.initValue[
-              state.initValue.length - 1
-            ],
-          )
-            ? state.result +
-              state.initValue[
-                state.initValue.length - 1
-              ]
+          initValue: OPERATIONS.includes(state.initValue.at(-1))
+            ? state.result + state.initValue.at(-1)
             : state.result,
         }
       }
@@ -45,16 +35,12 @@ export default handleActions(
         currentExpression:
           state.initValue === '0'
             ? action.payload
-            : state.currentExpression +
-              action.payload,
+            : state.currentExpression + action.payload,
       }
     },
     [typeActions.COUNT_EXP]: (state, action) => ({
       ...state,
-      expression: [
-        ...state.expression,
-        state.currentExpression,
-      ],
+      expression: [...state.expression, state.currentExpression],
       historyOfExpression: [
         ...state.historyOfExpression,
         state.currentExpression,
@@ -73,24 +59,15 @@ export default handleActions(
       ...state,
       isHistoryOpen: !state.isHistoryOpen,
     }),
-    [typeActions.CHANGE_EXP]: (
-      state,
-      action,
-    ) => ({
+    [typeActions.CHANGE_EXP]: (state, action) => ({
       ...state,
       initValue: action.payload,
     }),
-    [typeActions.CHANGE_HISTORY]: (
-      state,
-      action,
-    ) => ({
+    [typeActions.CHANGE_HISTORY]: (state, action) => ({
       ...state,
       currentExpression: action.payload,
     }),
-    [typeActions.ADD_RESULT]: (
-      state,
-      action,
-    ) => ({
+    [typeActions.ADD_RESULT]: (state, action) => ({
       ...state,
       result: action.payload,
     }),

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { themes } from '@/theme'
+import { themes } from '@/theme/theme'
 
 import { Loader } from './components'
 
