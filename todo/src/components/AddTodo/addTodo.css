@@ -1,0 +1,38 @@
+.todoWrapper {
+  display: flex;
+  margin-top: 20px;
+  justify-content: center;
+  column-gap: 20px;
+}
+
+.addInput {
+  width: 50%;
+  height: 30px;
+  padding-left: 10px;
+  outline: none;
+  transition: 0.3s;
+}
+
+.addInput:focus,
+.addInput:focus-visible {
+  border: 2px solid #4caf50;
+  border-radius: 4px;
+}
+
+.addTodo {
+  width: 75px;
+  height: 35px;
+  border: none;
+  background-color: #4caf50;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  color: rgb(255, 255, 255);
+  opacity: 0.8;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.addTodo:hover {
+  opacity: 1;
+}

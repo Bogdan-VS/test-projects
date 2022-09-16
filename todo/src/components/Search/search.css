@@ -1,0 +1,12 @@
+.searchInput {
+  height: 30px;
+  padding-left: 10px;
+  outline: none;
+  transition: 0.3s;
+}
+
+.searchInput:focus,
+.searchInput:focus-visible {
+  border: 2px solid #00bcd4;
+  border-radius: 4px;
+}
