@@ -1,12 +1,23 @@
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+
+import uniqid from 'uniqid';
+
+import { actionCreators } from '../../store/actions/todoAction';
 
 import './addTodo.css';
 
 export const AddTodo = () => {
-  const { register, handleSubmit } = useForm();
+  const dispatch = useDispatch();
+
+  const { register, handleSubmit, reset } = useForm();
 
   const handleTodo = ({ todo }) => {
-    console.log(todo);
+    const data = { todo, id: uniqid(), checked: false };
+
+    dispatch(actionCreators.addTodoCreator(data));
+
+    reset();
   };
 
   return (
