@@ -1,3 +1,4 @@
+import { OPERATIONS } from '@/constants/buttons'
 import { handleActions } from 'redux-actions'
 import { typeActions } from '../actions/actionCreators'
 
@@ -33,7 +34,11 @@ export default handleActions(
     }),
     [typeActions.INPUT_VALUE]: (state, action) => ({
       ...state,
-      inputValue: state.inputValue + action.payload,
+      inputValue:
+        state.inputValue === '0' &&
+        !OPERATIONS.includes(action.payload)
+          ? action.payload
+          : state.inputValue + action.payload,
     }),
     [typeActions.CLEAR_HISTORY]: state => ({
       ...state,
