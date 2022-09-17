@@ -3,9 +3,10 @@ import { typeActions } from '../actions/actionCreators'
 
 const INITIAL_STATE = {
   currentResult: '0',
+  tempValue: '',
   currentHistory: [],
   fullHistory: [],
-  inputValue: '',
+  inputValue: '0',
   isSign: true,
   isFullHistoryOpen: false,
   isHistoryOpen: true,
@@ -17,32 +18,35 @@ export default handleActions(
       ...state,
       currentResult: action.payload,
     }),
+    [typeActions.ADD_TEMP_VALUE]: (state, action) => ({
+      ...state,
+      tempValue: action.payload,
+    }),
+    [typeActions.CLEAR_TEMP_VALUE]: state => ({
+      ...state,
+      tempValue: '',
+    }),
     [typeActions.ADD_CURRENT_HISTORY]: (state, action) => ({
       ...state,
       currentHistory: [...state.currentHistory, action.payload],
       fullHistory: [...state.fullHistory, action.payload],
     }),
-    [typeActions.INPUT_VALUE]: (state, action) => {
-      console.log(action.payload, state.inputValue)
-      return {
-        ...state,
-        inputValue: state.inputValue + action.payload,
-      }
-    },
-    [typeActions.CLEAR_HISTORY]: state => {
-      return {
-        ...state,
-        currentHistory: [],
-        inputValue: '',
-      }
-    },
+    [typeActions.INPUT_VALUE]: (state, action) => ({
+      ...state,
+      inputValue: state.inputValue + action.payload,
+    }),
+    [typeActions.CLEAR_HISTORY]: state => ({
+      ...state,
+      currentHistory: [],
+      inputValue: '',
+    }),
     [typeActions.CHANGE_EXP]: (state, action) => ({
       ...state,
       inputValue: action.payload,
     }),
     [typeActions.CLEAR_INPUT_VALUE]: state => ({
       ...state,
-      inputValue: '',
+      inputValue: '0',
     }),
     [typeActions.SWITCH_SIGN]: state => ({
       ...state,

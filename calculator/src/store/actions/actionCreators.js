@@ -14,12 +14,21 @@ export const typeActions = {
   SWITCH_COMPONENTS: 'SWITCH_COMPONENTS',
   CHANGE_THEME: 'CHANGE_THEME',
   ADD_CURRENT_THEME: 'ADD_CURRENT_THEME',
+  ADD_TEMP_VALUE: 'ADD_TEMP_VALUE',
+  CLEAR_TEMP_VALUE: 'CLEAR_TEMP_VALUE',
 }
 
 export const actionCreatorList = {
   addCurrentResultCreator: payload => ({
     type: typeActions.ADD_CURRENT_RESULT,
     payload,
+  }),
+  addTempValueCreator: payload => ({
+    type: typeActions.ADD_TEMP_VALUE,
+    payload,
+  }),
+  clearTempValueCreator: () => ({
+    type: typeActions.CLEAR_TEMP_VALUE,
   }),
   addCurrentHistoryCreator: payload => ({
     type: typeActions.ADD_CURRENT_HISTORY,

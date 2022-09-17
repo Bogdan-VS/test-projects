@@ -1,3 +1,4 @@
+import { OPERATIONS } from '@/constants/buttons'
 import { calculate, tokenize } from './calcOperations'
 import {
   changeSign,
@@ -20,7 +21,8 @@ export class AddInputValue {
   }
 
   exec = value =>
-    value === '0' || checkUncorrectMessage(value)
+    (value === '0' || checkUncorrectMessage(value)) &&
+    !OPERATIONS.includes(this.value)
       ? this.value
       : value + this.value
 }
@@ -32,8 +34,9 @@ export class CalcExp {
 
   exec = value => {
     const exp = value.slice(0, value.length - 1)
+    const res = calculate(tokenize(exp))
 
-    return calculate(tokenize(exp)) + value.at(-1)
+    return checkUncorrectMessage(res) ? res : res + value.at(-1)
   }
 }
 
