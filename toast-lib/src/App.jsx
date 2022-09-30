@@ -1,5 +1,3 @@
-import React from 'react'
-
 import ToastSettings from './containers/ToastSettings'
 
 import GlobalStyles from './globalStyles/globalStyles'

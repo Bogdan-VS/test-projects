@@ -1,4 +1,4 @@
-import React from 'react'
+import PropTypes from 'prop-types'
 
 import { StyledButton } from './components'
 
@@ -9,3 +9,9 @@ const ToastBtn = ({ name, onClick, color }) => (
 )
 
 export default ToastBtn
+
+ToastBtn.propTypes = {
+  name: PropTypes.string,
+  color: PropTypes.string,
+  onClick: PropTypes.func,
+}

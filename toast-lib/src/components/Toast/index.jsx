@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
+
+import PropTypes from 'prop-types'
 
 import {
   StyledCloseBtn,
@@ -11,7 +13,7 @@ import {
   StyledDescriptionBox,
 } from './components'
 
-export const Toast = ({
+const Toast = ({
   toastList,
   position,
   delay,
@@ -26,6 +28,15 @@ export const Toast = ({
     setList([...toastList])
   }, [toastList])
 
+  const handleDelete = (id) => () => {
+    const index = list.findIndex((el) => el.id === id)
+    const currentList = [...list]
+    currentList.splice(index, 1)
+
+    setList(currentList)
+    updateToastList(currentList)
+  }
+
   useEffect(() => {
     const autoClean = setInterval(() => {
       if (list.length && toastList.length && isAutoClean) {
@@ -37,15 +48,6 @@ export const Toast = ({
       clearInterval(autoClean)
     }
   }, [list, toastList, isAutoClean, delay])
-
-  const handleDelete = (id) => () => {
-    const index = list.findIndex((el) => el.id === id)
-    const currentList = [...list]
-    currentList.splice(index, 1)
-
-    setList(currentList)
-    updateToastList(currentList)
-  }
 
   const handleDragEnd = (id) => () => {
     handleDelete(id)()
@@ -80,4 +82,16 @@ export const Toast = ({
     </StyledWrapper>,
     document.getElementById('popap'),
   )
+}
+
+export default Toast
+
+Toast.propTypes = {
+  toastList: PropTypes.array,
+  position: PropTypes.string,
+  delay: PropTypes.number,
+  isAutoClean: PropTypes.bool,
+  animation: PropTypes.string,
+  indent: PropTypes.string,
+  updateToastList: PropTypes.func,
 }
