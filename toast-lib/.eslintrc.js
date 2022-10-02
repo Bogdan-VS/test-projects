@@ -17,11 +17,13 @@ module.exports = {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
   },
+  parser: '@babel/eslint-parser',
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
     },
     sourceType: 'module',
+    requireConfigFile: false,
   },
   plugins: ['react'],
   rules: {
@@ -36,5 +38,7 @@ module.exports = {
     'react/require-default-props': 'off',
     'react/forbid-prop-types': 'off',
     'import/extensions': 'off',
+    'react/jsx-props-no-spreading': 'off',
+    'import/prefer-default-export': 'off',
   },
 }

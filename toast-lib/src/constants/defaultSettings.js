@@ -1,3 +1,5 @@
+import uniqid from 'uniqid'
+
 import {
   BsFillExclamationCircleFill,
   BsCheckCircleFill,
@@ -52,3 +54,21 @@ export const defaultParams = {
   delay: 2000,
   toastCount: 3,
 }
+
+export const defaultToastProps = [
+  {
+    name: 'Title',
+    position: 'top-right',
+    delay: 2000,
+    color: '#ed143d',
+    subtitle: 'Subtitle',
+    animation: 'transition',
+    firstIndent: '12',
+    secondIndent: '12',
+    toastCount: 3,
+    id: uniqid(),
+    icon: (
+      <BsFillExclamationCircleFill size="40px" color="#ffffff" />
+    ),
+  },
+]

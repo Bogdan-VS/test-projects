@@ -2,10 +2,10 @@
   "name": "toast-lib",
   "version": "1.0.0",
   "description": "toast library",
-  "main": "public/cjs/index.js",
-  "module": "public/esm/index.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
   "files": [
-    "public"
+    "dist"
   ],
   "author": "Bogdan Samonov",
   "license": "MIT",
@@ -17,11 +17,14 @@
   "dependencies": {
     "react-icons": "^4.4.0",
     "storybook": "^6.5.12",
-    "styled-components": "^5.3.5"
+    "styled-components": "^5.3.5",
+    "uniqid": "^5.4.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.18.10",
     "@babel/core": "^7.19.1",
+    "@babel/eslint-parser": "^7.19.1",
+    "@babel/plugin-transform-arrow-functions": "^7.18.6",
     "@babel/preset-env": "^7.19.1",
     "@babel/preset-react": "^7.18.6",
     "@rollup/plugin-alias": "^3.1.9",
@@ -39,6 +42,7 @@
     "@storybook/react": "^6.5.12",
     "@storybook/testing-library": "^0.0.13",
     "babel-loader": "^8.2.5",
+    "babel-plugin-module-resolver": "^4.1.0",
     "eslint": "^8.24.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.5.0",

@@ -13,13 +13,21 @@ import {
   StyledDescriptionBox,
 } from './components'
 
+import {
+  defaultToastProps,
+  defaultParams,
+} from '../../constants/defaultSettings'
+
 const Toast = ({
-  toastList,
-  position,
-  delay,
-  isAutoClean,
-  animation,
-  indent,
+  toastList = defaultToastProps,
+  position = defaultParams.position,
+  delay = defaultParams.delay,
+  isAutoClean = false,
+  animation = defaultParams.animation,
+  indent = {
+    firstIndent: defaultParams.indentY,
+    secondIndent: defaultParams.indentX,
+  },
   updateToastList,
 }) => {
   const [list, setList] = useState(toastList)
@@ -80,7 +88,7 @@ const Toast = ({
         </StyledNotification>
       ))}
     </StyledWrapper>,
-    document.getElementById('popap'),
+    document.getElementById('docs-root'),
   )
 }
 

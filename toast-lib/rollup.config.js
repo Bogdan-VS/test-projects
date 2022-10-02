@@ -8,17 +8,20 @@ import alias from '@rollup/plugin-alias'
 import replace from '@rollup/plugin-replace'
 import { terser } from 'rollup-plugin-terser'
 
+const packageJson = require('./package.json')
+
 export default {
   input: './src/index.js',
   output: [
     {
-      file: 'dist/index.js',
+      file: packageJson.main,
       format: 'cjs',
+      sourcemap: true,
     },
     {
-      file: 'dist/index.es.js',
+      file: packageJson.module,
       format: 'esm',
-      exports: 'named',
+      sourcemap: true,
     },
   ],
   plugins: [
