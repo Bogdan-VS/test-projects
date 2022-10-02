@@ -1,15 +1,7 @@
 {
-  "presets": ["@babel/env", "@babel/preset-react"],
+  "presets": ["@babel/preset-env", "@babel/preset-react"],
   "plugins": [
-    [
-      "babel-plugin-module-resolver",
-      {
-        "root": ["./src"],
-        "alias": {
-          "@": "./src"
-        }
-      }
-    ],
-    ["@babel/plugin-transform-arrow-functions", { "spec": true }]
+    "@babel/plugin-transform-react-jsx",
+    "@babel/plugin-transform-arrow-functions"
   ]
 }

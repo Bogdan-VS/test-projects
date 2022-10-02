@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 import uniqid from 'uniqid'
 
@@ -7,7 +7,7 @@ import {
   buttonList,
   defaultParams,
 } from '../../constants/defaultSettings'
-import { Toast } from '../../components/Toast'
+import Toast from '../../components/Toast'
 import { Singelton } from '../../utils/singelton'
 
 import {
@@ -21,7 +21,6 @@ import {
   StyledPositionWrapper,
   StyledInputNum,
 } from './components'
-import ToastBtn from '../../components/ToastBtn'
 
 const ToastSettings = () => {
   const [toastList, setToastList] = useState([])
@@ -70,20 +69,18 @@ const ToastSettings = () => {
       const data = {
         ...example.getData(),
         id: uniqid(),
-        icon: icon,
+        icon,
       }
 
       if (!toastLimit) {
         setToastList([...toastList, data])
+      } else if (toastList.length !== toastCount) {
+        setToastList([...toastList, data])
       } else {
-        if (toastList.length !== toastCount) {
-          setToastList([...toastList, data])
-        } else {
-          const currentList = [...toastList]
-          currentList.shift()
+        const currentList = [...toastList]
+        currentList.shift()
 
-          setToastList([...currentList, data])
-        }
+        setToastList([...currentList, data])
       }
     }
 
