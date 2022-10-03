@@ -1,3 +1,5 @@
+import React from 'react'
+
 import ToastBtn from './index'
 
 export default {

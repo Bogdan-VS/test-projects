@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
 
 import PropTypes from 'prop-types'
@@ -100,6 +100,6 @@ Toast.propTypes = {
   delay: PropTypes.number,
   isAutoClean: PropTypes.bool,
   animation: PropTypes.string,
-  indent: PropTypes.string,
+  indent: PropTypes.object,
   updateToastList: PropTypes.func,
 }

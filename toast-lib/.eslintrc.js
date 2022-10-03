@@ -32,6 +32,7 @@ module.exports = {
       { extensions: ['.js', '.jsx'] },
     ],
     'import/no-unresolved': 'off',
+    'react/jsx-uses-react': '1',
     'react/function-component-definition': 'off',
     'react/jsx-boolean-value': 'off',
     'import/no-extraneous-dependencies': 'off',

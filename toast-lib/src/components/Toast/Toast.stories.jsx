@@ -1,3 +1,5 @@
+import React from 'react'
+
 import Toast from './index'
 
 import { buttonList } from '../../constants/defaultSettings'
