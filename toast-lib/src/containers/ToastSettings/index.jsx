@@ -7,8 +7,9 @@ import {
   buttonList,
   defaultParams,
 } from '../../constants/defaultSettings'
-import Toast from '../../components/Toast'
+import { Toast } from '../../components/Toast'
 import { Singelton } from '../../utils/singelton'
+import Portal from '../../Portal'
 
 import {
   StyledBtnBox,
@@ -241,15 +242,17 @@ const ToastSettings = () => {
           />
         </StyledLabel>
       </StyledWrapper>
-      <Toast
-        toastList={toastList}
-        position={position}
-        delay={delay}
-        isAutoClean={isAutoClean}
-        animation={animation}
-        indent={{ firstIndent, secondIndent }}
-        updateToastList={updateToastList}
-      />
+      <Portal>
+        <Toast
+          toastList={toastList}
+          position={position}
+          delay={delay}
+          isAutoClean={isAutoClean}
+          animation={animation}
+          indent={{ firstIndent, secondIndent }}
+          updateToastList={updateToastList}
+        />
+      </Portal>
     </>
   )
 }

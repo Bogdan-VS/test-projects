@@ -42,7 +42,9 @@ const Toast = ({
     currentList.splice(index, 1)
 
     setList(currentList)
-    updateToastList(currentList)
+    if (updateToastList) {
+      updateToastList(currentList)
+    }
   }
 
   useEffect(() => {
@@ -63,7 +65,7 @@ const Toast = ({
 
   if (toastList.length === 0) return null
 
-  return ReactDOM.createPortal(
+  return (
     <StyledWrapper
       className={position}
       animation={animation}
@@ -87,8 +89,7 @@ const Toast = ({
           </StyledCloseBtn>
         </StyledNotification>
       ))}
-    </StyledWrapper>,
-    document.getElementById('docs-root'),
+    </StyledWrapper>
   )
 }
 

@@ -1,6 +1,6 @@
 {
-  "name": "toast-lib",
-  "version": "1.0.0",
+  "name": "@bogdan_vs/toast-lib",
+  "version": "1.0.5",
   "description": "toast library",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -60,6 +60,7 @@
     "rollup-plugin-browsersync": "^1.3.3",
     "rollup-plugin-eslint": "^7.0.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-polyfill-node": "^0.10.2",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-visualizer": "^5.8.2"
   },
