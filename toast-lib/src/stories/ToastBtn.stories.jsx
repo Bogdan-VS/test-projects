@@ -1,6 +1,6 @@
 import React from 'react'
 
-import ToastBtn from './index'
+import ToastBtn from '@/components/ToastBtn'
 
 export default {
   title: 'ToastBtn',

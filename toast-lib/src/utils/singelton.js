@@ -13,6 +13,8 @@ export class Singelton {
     this.firstIndent = ''
     this.secondIndent = ''
     this.toastCount = ''
+    this.toasts = []
+    this.toastLimit = false
     Singelton.instance = this
     return this
   }
@@ -29,6 +31,35 @@ export class Singelton {
       secondIndent: this.secondIndent,
       toastCount: this.toastCount,
     }
+  }
+
+  generateToast = (toastOptions) => {
+    return toastOptions
+  }
+
+  getAllToasts = () => {
+    return this.toasts
+  }
+
+  addToast = (toast) => {
+    if (!this.toastLimit) {
+      this.toasts = [...this.toasts, toast]
+    } else if (this.toasts.length !== this.toastCount) {
+      this.toasts = [...this.toasts, toast]
+    } else {
+      const currentList = [...this.toasts]
+      currentList.shift()
+
+      this.toasts = [...currentList, toast]
+    }
+  }
+
+  removeToast = (id) => {
+    const index = this.toasts.findIndex((el) => el.id === id)
+    const currentList = [...this.toasts]
+    currentList.splice(index, 1)
+
+    this.toasts = currentList
   }
 
   changeTitle = (title) => {
@@ -65,5 +96,9 @@ export class Singelton {
 
   changeToastCount = (count) => {
     return (this.toastCount = count)
+  }
+
+  changeToastLimit = (value) => {
+    return (this.toastLimit = value)
   }
 }

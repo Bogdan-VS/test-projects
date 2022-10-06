@@ -1,15 +1,15 @@
-import { useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 import uniqid from 'uniqid'
 
-import ToastBtn from '../../components/ToastBtn'
+import ToastBtn from 'components/ToastBtn'
 import {
   buttonList,
   defaultParams,
-} from '../../constants/defaultSettings'
-import { Toast } from '../../components/Toast'
-import { Singelton } from '../../utils/singelton'
-import Portal from '../../Portal'
+} from 'constants/defaultSettings'
+import { Toast } from 'components/Toast'
+import { Singelton } from 'utils/singelton'
+import Portal from 'Portal'
 
 import {
   StyledBtnBox,
@@ -49,7 +49,7 @@ const ToastSettings = () => {
     defaultParams.toastCount,
   )
 
-  const handleCreateToast =
+  const handleCreateToast = useCallback(
     (name, icon, color, subtitle) => () => {
       const example = new Singelton()
 
@@ -72,18 +72,23 @@ const ToastSettings = () => {
         id: uniqid(),
         icon,
       }
-
-      if (!toastLimit) {
-        setToastList([...toastList, data])
-      } else if (toastList.length !== toastCount) {
-        setToastList([...toastList, data])
-      } else {
-        const currentList = [...toastList]
-        currentList.shift()
-
-        setToastList([...currentList, data])
-      }
-    }
+      const toast = example.generateToast(data)
+      example.addToast(toast)
+      setToastList(example.getAllToasts())
+    },
+    [
+      toastTitle,
+      colorToast,
+      toastSubtitle,
+      delay,
+      position,
+      animation,
+      firstIndent,
+      secondIndent,
+      toastCount,
+      toastList,
+    ],
+  )
 
   const handleTitle = (e) => {
     setToastTitle(e.target.value)
@@ -120,11 +125,17 @@ const ToastSettings = () => {
   }
 
   const handleCheckedLimit = () => {
+    const example = new Singelton()
+
+    example.changeToastLimit(!toastLimit)
     setToastLimit(!toastLimit)
   }
 
-  const updateToastList = (list) => {
-    setToastList(list)
+  const updateToastList = (id) => {
+    const example = new Singelton()
+
+    example.removeToast(id)
+    setToastList(example.getAllToasts())
   }
 
   const handleAnimation = (e) => {

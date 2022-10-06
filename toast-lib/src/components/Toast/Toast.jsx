@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import ReactDOM from 'react-dom'
 
 import PropTypes from 'prop-types'
 
@@ -16,7 +15,7 @@ import {
 import {
   defaultToastProps,
   defaultParams,
-} from '../../constants/defaultSettings'
+} from 'constants/defaultSettings'
 
 const Toast = ({
   toastList = defaultToastProps,

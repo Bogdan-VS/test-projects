@@ -1,8 +1,8 @@
 import React from 'react'
 
-import Toast from './Toast'
+import Toast from '@/components/Toast/Toast'
 
-import { buttonList } from '../../constants/defaultSettings'
+import { buttonList } from '@/constants/defaultSettings'
 
 export default {
   title: 'Toast',

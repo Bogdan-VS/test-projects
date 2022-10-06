@@ -41,12 +41,11 @@ export default {
     nodePolyfills({ os: true }),
     image(),
     alias({
-      resolve: ['.js', '.jsx'],
       entries: [
-        {
-          find: 'src',
-          replacement: './src',
-        },
+        { find: 'constants', replacement: '../../constants' },
+        { find: 'components', replacement: '../../components' },
+        { find: 'utils', replacement: '../../utils' },
+        { find: 'Portal', replacement: '../../Portal' },
       ],
     }),
     visualizer(),
