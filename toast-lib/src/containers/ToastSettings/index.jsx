@@ -21,7 +21,7 @@ import {
   StyledTitle,
   StyledPositionWrapper,
   StyledInputNum,
-} from './components'
+} from './styled'
 
 const ToastSettings = () => {
   const [toastList, setToastList] = useState([])

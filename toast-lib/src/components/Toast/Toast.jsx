@@ -10,7 +10,7 @@ import {
   StyledIconContainer,
   StyledSubtitle,
   StyledDescriptionBox,
-} from './components'
+} from './styled'
 
 import {
   defaultToastProps,

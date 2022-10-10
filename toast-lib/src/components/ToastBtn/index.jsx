@@ -2,7 +2,7 @@ import React from 'react'
 
 import PropTypes from 'prop-types'
 
-import { StyledButton } from './components'
+import { StyledButton } from './styled'
 
 const ToastBtn = ({ name, onClick, color }) => (
   <StyledButton onClick={onClick} color={color}>
