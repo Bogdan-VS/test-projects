@@ -21,6 +21,7 @@ import {
   StyledTitle,
   StyledPositionWrapper,
   StyledInputNum,
+  StyledPositionOpt,
 } from './styled'
 
 const ToastSettings = () => {
@@ -198,10 +199,18 @@ const ToastSettings = () => {
           <StyledPosition
             value={position}
             onChange={handlePosition}>
-            <option value="top-right">top-right</option>
-            <option value="bottom-right">bottom-right</option>
-            <option value="top-left">top-left</option>
-            <option value="bottom-left">bottom-left</option>
+            <StyledPositionOpt value="top-right">
+              top-right
+            </StyledPositionOpt>
+            <StyledPositionOpt value="bottom-right">
+              bottom-right
+            </StyledPositionOpt>
+            <StyledPositionOpt value="top-left">
+              top-left
+            </StyledPositionOpt>
+            <StyledPositionOpt value="bottom-left">
+              bottom-left
+            </StyledPositionOpt>
           </StyledPosition>
           <StyledInputNum
             value={firstIndent}
@@ -219,8 +228,12 @@ const ToastSettings = () => {
           <StyledPosition
             value={animation}
             onChange={handleAnimation}>
-            <option value="transition">transition</option>
-            <option value="opasity">opasity</option>
+            <StyledPositionOpt value="transition">
+              transition
+            </StyledPositionOpt>
+            <StyledPositionOpt value="opasity">
+              opasity
+            </StyledPositionOpt>
           </StyledPosition>
         </StyledPositionWrapper>
         <StyledLabel>

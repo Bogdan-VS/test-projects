@@ -7,10 +7,10 @@ import { Toast } from './components/Toast'
 
 function App() {
   return (
-    <div>
+    <>
       <ToastSettings />
       <GlobalStyles />
-    </div>
+    </>
   )
 }
 
