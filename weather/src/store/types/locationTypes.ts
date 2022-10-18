@@ -6,5 +6,5 @@ export interface ILocation {
 }
 
 export interface IInitStateLocation {
-  weather: IOpenWeatherMap
+  weather: IOpenWeatherMap | null
 }

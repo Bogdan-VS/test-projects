@@ -4,12 +4,15 @@ export interface IIpAPi {
 }
 
 export interface IOpenWeatherMap {
-  name: string
-  main: { temp: number }
-  weather: [
-    {
-      main: string
-      icon: string
-    },
-  ]
+  city: { name: string }
+  list: {
+    main: { temp: number }
+    weather: [
+      {
+        icon: string
+        main: string
+        description: string
+      },
+    ]
+  }[]
 }
