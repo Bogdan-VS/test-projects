@@ -1,18 +1,31 @@
 export interface IIpAPi {
   latitude: number
   longitude: number
+  city: string
 }
 
 export interface IOpenWeatherMap {
-  city: { name: string }
+  name: string
+  main: { temp: number }
+  weather: [
+    {
+      icon: string
+      main: string
+      description: string
+    },
+  ]
+}
+
+export interface IOpenWeatherForcast {
   list: {
+    dt: number
+    dt_txt: string
     main: { temp: number }
-    weather: [
-      {
-        icon: string
-        main: string
-        description: string
-      },
-    ]
+    wind: { speed: number }
+    weather: {
+      icon: string
+      main: string
+      description: string
+    }[]
   }[]
 }

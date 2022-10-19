@@ -1,7 +1,9 @@
-import { IOpenWeatherMap } from '../../api/types'
+import { IOpenWeatherForcast, IOpenWeatherMap } from '../../api/types'
+import { ILocation } from '../types/locationTypes'
 
-export interface ILocationActions {
+export interface ILocationAction {
   type: string
+  payload: ILocation
 }
 
 export interface IWeatherAction {
@@ -9,4 +11,14 @@ export interface IWeatherAction {
   payload: IOpenWeatherMap
 }
 
-export type LocationType = IWeatherAction
+export interface IWeatherForcast {
+  type: string
+  payload: IOpenWeatherForcast
+}
+
+export interface ICity {
+  type: string
+  payload: string
+}
+
+export type LocationType = IWeatherAction | ILocationAction | IWeatherForcast | ICity

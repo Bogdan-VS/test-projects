@@ -1,14 +1,22 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, ChangeEvent } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 import Weather from '../../components/Weather'
 import { RootState } from '../../store/reducers'
-import { getLocationCreator } from '../../store/actions/locationActions'
+import {
+  getCurrentCityCreator,
+  getLocationCreator,
+  getWeatherCreator,
+} from '../../store/actions/locationActions'
 
-import { MainWrapperStyled } from './styled'
+import { MainWrapperStyled, InfoWrapperStyled, FormStyled, InputStyled } from './styled'
+import { filterWeatherForDays } from '../../utils/filterWeatherForcast'
+import WeatherForcast from '../../components/WeatherForcast'
 
 const MainPage = () => {
-  const { weather } = useSelector((state: RootState) => state.location)
+  const { currentWeather, location, weatherForDays, city } = useSelector(
+    (state: RootState) => state.location,
+  )
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -16,18 +24,42 @@ const MainPage = () => {
   }, [])
 
   useEffect(() => {
-    console.log(weather)
-  }, [weather])
+    if (location) {
+      dispatch(getWeatherCreator())
+      dispatch(getCurrentCityCreator(location.city))
+    }
+  }, [location])
+
+  const handleCityName = (e: ChangeEvent<HTMLInputElement>) => {
+    dispatch(getCurrentCityCreator(e.target.value))
+    console.log(e.target.value)
+  }
 
   return (
-    <MainWrapperStyled bg={weather && weather.list[0].weather[0].description}>
-      {weather && (
+    <MainWrapperStyled bg={currentWeather && currentWeather.weather[0].description}>
+      {currentWeather && (
         <Weather
-          temp={weather.list[0].main.temp}
-          icon={weather.list[0].weather[0].icon}
-          city={weather.city.name}
-          weather={weather.list[0].weather[0].main}
+          temp={currentWeather.main.temp}
+          icon={currentWeather.weather[0].icon}
+          city={currentWeather.name}
+          weather={currentWeather.weather[0].main}
         />
+      )}
+      {weatherForDays && (
+        <InfoWrapperStyled>
+          <FormStyled>
+            <InputStyled type='text' value={city} onChange={handleCityName} />
+          </FormStyled>
+          {filterWeatherForDays(weatherForDays).map(({ dt, main, weather, wind }) => (
+            <WeatherForcast
+              key={dt}
+              temp={main.temp}
+              description={weather[0].description}
+              icon={weather[0].icon}
+              wind={wind.speed}
+            />
+          ))}
+        </InfoWrapperStyled>
       )}
     </MainWrapperStyled>
   )
