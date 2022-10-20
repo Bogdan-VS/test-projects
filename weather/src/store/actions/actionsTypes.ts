@@ -20,5 +20,9 @@ export interface ICity {
   type: string
   payload: string
 }
+export interface IErrorAction {
+  type: string
+  payload: string
+}
 
-export type LocationType = IWeatherAction | ILocationAction | IWeatherForcast | ICity
+export type LocationType = IWeatherAction | ILocationAction | IWeatherForcast | ICity | IErrorAction

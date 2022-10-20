@@ -7,6 +7,7 @@ export interface ILocation {
 }
 
 export interface IInitStateLocation {
+  error: string
   city: string
   location: ILocation | null
   currentWeather: IOpenWeatherMap | null

@@ -9,10 +9,21 @@ export enum LocationAction {
   GET_ALL_WEATHER = 'GET_ALL_WEATHER',
   GET_WEATHER_FOR_CAST = 'GET_WEATHER_FOR_CAST',
   GET_CURRENT_CITY = 'GET_CURRENT_CITY',
+  GET_WEATHER_FOR_CITY = 'GET_WEATHER_FOR_CITY',
+  SET_ERROR = 'SET_ERROR',
 }
 
 export const getLocationCreator = () => ({
   type: LocationAction.GET_LOCATION,
+})
+
+export const setErrorCreator = (payload: string) => ({
+  type: LocationAction.SET_ERROR,
+  payload,
+})
+
+export const setCityCreator = () => ({
+  type: LocationAction.GET_WEATHER_FOR_CITY,
 })
 
 export const getCurrentCityCreator = (payload: string) => ({

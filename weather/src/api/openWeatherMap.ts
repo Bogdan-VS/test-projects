@@ -18,3 +18,21 @@ export const getWeatherForcast = async (lat: number, lon: number) => {
 
   return data
 }
+
+export const getWeatherByCity = async (city: string) => {
+  const response = await fetch(
+    `${ApiLink.currentWeather}?q=${city}&units=metric&appid=${openWeatherKey}`,
+  )
+  const data: IOpenWeatherMap = await response.json()
+
+  return data
+}
+
+export const getWeatherByCityForcast = async (city: string) => {
+  const response = await fetch(
+    `${ApiLink.weatherForDays}?q=${city}&units=metric&appid=${openWeatherKey}`,
+  )
+  const data: IOpenWeatherForcast = await response.json()
+
+  return data
+}

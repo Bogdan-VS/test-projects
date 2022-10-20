@@ -4,6 +4,7 @@ import { LocationAction } from '../../actions/locationActions'
 import { IInitStateLocation, ILocation } from '../../types/locationTypes'
 
 const initState: IInitStateLocation = {
+  error: '',
   city: '',
   location: null,
   currentWeather: null,
@@ -22,6 +23,9 @@ const locationReducer = (state = initState, action: LocationType): IInitStateLoc
       return { ...state, weatherForDays: action.payload as IOpenWeatherForcast }
     case LocationAction.GET_CURRENT_CITY:
       return { ...state, city: action.payload as string }
+    case LocationAction.SET_ERROR:
+      console.log(action.payload)
+      return { ...state, error: action.payload as string }
     default:
       return { ...state }
   }

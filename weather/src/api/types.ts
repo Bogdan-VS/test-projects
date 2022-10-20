@@ -29,3 +29,8 @@ export interface IOpenWeatherForcast {
     }[]
   }[]
 }
+
+export interface IError {
+  cod: string
+  message: string
+}

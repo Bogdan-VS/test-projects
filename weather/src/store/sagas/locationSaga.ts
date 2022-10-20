@@ -1,4 +1,4 @@
-import { fork } from 'child_process'
+import { spawn } from 'child_process'
 import { takeEvery, put, call, select, take } from 'redux-saga/effects'
 import { getIp } from '../../api/getIp'
 import { getWeather, getWeatherForcast } from '../../api/openWeatherMap'

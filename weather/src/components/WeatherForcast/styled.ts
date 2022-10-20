@@ -29,6 +29,8 @@ export const IconStyled = styled.span`
   background: ${({ icon }: IStyledProps) => `top 0 left 0 / 100% 100% url(${iconLink}${icon}.png)`};
 `
 
+export const TymeInfoStyled = styled.span``
+
 export const WrapperInfoStyled = styled.div``
 
 export const TitleStyled = styled.h4``
