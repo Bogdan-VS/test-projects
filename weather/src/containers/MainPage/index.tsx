@@ -10,12 +10,20 @@ import {
   setCityCreator,
 } from '../../store/actions/locationActions'
 
-import { MainWrapperStyled, InfoWrapperStyled, FormStyled, InputStyled, DateStyled } from './styled'
+import {
+  MainWrapperStyled,
+  InfoWrapperStyled,
+  FormStyled,
+  InputStyled,
+  DateStyled,
+  LoadingStyled,
+} from './styled'
 import { filterWeatherForDays } from '../../utils/filterWeatherForcast'
 import WeatherForcast from '../../components/WeatherForcast'
+import WeatherByDays from '../../components/WeatherByDays'
 
 const MainPage = () => {
-  const { currentWeather, location, weatherForDays, city, error } = useSelector(
+  const { currentWeather, location, weatherForCast, city, error, weatherByDays } = useSelector(
     (state: RootState) => state.location,
   )
   const dispatch = useDispatch()
@@ -25,10 +33,11 @@ const MainPage = () => {
   }, [])
 
   useEffect(() => {
-    console.log(error)
-  }, [error])
+    console.log(weatherByDays)
+  }, [weatherByDays])
 
   useEffect(() => {
+    console.log('loc', location)
     if (location) {
       dispatch(getWeatherCreator())
       dispatch(getCurrentCityCreator(location.city))
@@ -55,16 +64,16 @@ const MainPage = () => {
           weather={currentWeather.weather[0].main}
         />
       ) : (
-        <h3>Loading...</h3>
+        <LoadingStyled>Loading...</LoadingStyled>
       )}
-      {weatherForDays && (
+      {weatherForCast && (
         <InfoWrapperStyled>
           <FormStyled onSubmit={handleSubmit}>
             <InputStyled type='text' value={city} onChange={handleCityName} />
             {error && <h3>{error}</h3>}
           </FormStyled>
-          <DateStyled>{`Date: ${weatherForDays.list[0].dt_txt.slice(0, 11)}`}</DateStyled>
-          {filterWeatherForDays(weatherForDays).map(({ dt, main, weather, wind, dt_txt }) => (
+          <DateStyled>{`Date: ${weatherForCast.list[0].dt_txt.slice(0, 11)}`}</DateStyled>
+          {filterWeatherForDays(weatherForCast).map(({ dt, main, weather, wind, dt_txt }) => (
             <WeatherForcast
               key={dt}
               temp={main.temp}
@@ -76,6 +85,10 @@ const MainPage = () => {
           ))}
         </InfoWrapperStyled>
       )}
+      {weatherByDays &&
+        weatherByDays.location.values.map(({ temp, icon, datetimeStr, wspd }) => (
+          <WeatherByDays key={datetimeStr} icon={icon} temp={temp} wind={wspd} date={datetimeStr} />
+        ))}
     </MainWrapperStyled>
   )
 }

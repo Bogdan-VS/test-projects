@@ -1,8 +1,18 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 interface StyledProps {
   bg: string | null
 }
+
+const bgAnim = keyframes`
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+`
 
 export const MainWrapperStyled = styled.div`
   display: flex;
@@ -10,6 +20,7 @@ export const MainWrapperStyled = styled.div`
   height: 100%;
   justify-content: flex-end;
   background: ${({ bg }: StyledProps) => `100% 100% / cover url('./assets/background/${bg}.jpg')`};
+  animation: 0.5s ${bgAnim};
 `
 
 export const InfoWrapperStyled = styled.div`
@@ -46,3 +57,12 @@ export const InputStyled = styled.input`
 `
 
 export const DateStyled = styled.h5``
+
+export const LoadingStyled = styled.h3`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 40px;
+`

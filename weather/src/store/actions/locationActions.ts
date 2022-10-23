@@ -1,4 +1,4 @@
-import { IOpenWeatherForcast, IOpenWeatherMap } from '../../api/types'
+import { IOpenWeatherForcast, IOpenWeatherMap, IWeatherVisualCrossing } from '../../api/types'
 import { ILocation } from '../types/locationTypes'
 
 export enum LocationAction {
@@ -10,6 +10,7 @@ export enum LocationAction {
   GET_WEATHER_FOR_CAST = 'GET_WEATHER_FOR_CAST',
   GET_CURRENT_CITY = 'GET_CURRENT_CITY',
   GET_WEATHER_FOR_CITY = 'GET_WEATHER_FOR_CITY',
+  GET_WEATHER_BY_DAYS = 'GET_WEATHER_BY_DAYS',
   SET_ERROR = 'SET_ERROR',
 }
 
@@ -28,6 +29,11 @@ export const setCityCreator = () => ({
 
 export const getCurrentCityCreator = (payload: string) => ({
   type: LocationAction.GET_CURRENT_CITY,
+  payload,
+})
+
+export const getWeatherByDaysCreator = (payload: IWeatherVisualCrossing) => ({
+  type: LocationAction.GET_WEATHER_BY_DAYS,
   payload,
 })
 

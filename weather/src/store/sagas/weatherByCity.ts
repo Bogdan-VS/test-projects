@@ -1,6 +1,7 @@
 import { takeEvery, put, call, select } from 'redux-saga/effects'
 import { getWeatherByCity, getWeatherByCityForcast } from '../../api/openWeatherMap'
 import { IError, IOpenWeatherForcast, IOpenWeatherMap } from '../../api/types'
+import { ErrorCode } from '../../constants/errorCode'
 import {
   getCurrentWeatherCreator,
   getWeatherForcastCreator,
@@ -17,7 +18,10 @@ function* currentWeatherWorker() {
     const city: string = yield select(currentState)
     const weather: IOpenWeatherMap | IError = yield call(getWeatherByCity, city)
 
-    if ((weather as IError).cod === '400') {
+    if (
+      (weather as IError).cod === ErrorCode.error400 ||
+      (weather as IError).cod === ErrorCode.error404
+    ) {
       throw Error((weather as IError).message)
     }
 
@@ -33,7 +37,10 @@ function* currentWeatherForcastWorker() {
     const city: string = yield select(currentState)
     const weather: IOpenWeatherForcast | IError = yield call(getWeatherByCityForcast, city)
 
-    if ((weather as IError).cod === '400') {
+    if (
+      (weather as IError).cod === ErrorCode.error400 ||
+      (weather as IError).cod === ErrorCode.error404
+    ) {
       throw Error((weather as IError).message)
     }
 

@@ -30,6 +30,17 @@ export interface IOpenWeatherForcast {
   }[]
 }
 
+export interface IWeatherVisualCrossing {
+  location: {
+    values: {
+      datetimeStr: string
+      temp: number
+      icon: string
+      wspd: number
+    }[]
+  }
+}
+
 export interface IError {
   cod: string
   message: string

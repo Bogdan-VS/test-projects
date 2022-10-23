@@ -1,4 +1,4 @@
-import { IOpenWeatherForcast, IOpenWeatherMap } from '../../api/types'
+import { IOpenWeatherForcast, IOpenWeatherMap, IWeatherVisualCrossing } from '../../api/types'
 
 export interface ILocation {
   latitude: number
@@ -11,5 +11,6 @@ export interface IInitStateLocation {
   city: string
   location: ILocation | null
   currentWeather: IOpenWeatherMap | null
-  weatherForDays: IOpenWeatherForcast | null
+  weatherForCast: IOpenWeatherForcast | null
+  weatherByDays: IWeatherVisualCrossing | null
 }

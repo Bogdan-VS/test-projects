@@ -1,4 +1,4 @@
-import { IOpenWeatherForcast, IOpenWeatherMap } from '../../api/types'
+import { IOpenWeatherForcast, IOpenWeatherMap, IWeatherVisualCrossing } from '../../api/types'
 import { ILocation } from '../types/locationTypes'
 
 export interface ILocationAction {
@@ -25,4 +25,15 @@ export interface IErrorAction {
   payload: string
 }
 
-export type LocationType = IWeatherAction | ILocationAction | IWeatherForcast | ICity | IErrorAction
+export interface IWeatherVisualCrossingAction {
+  type: string
+  payload: IWeatherVisualCrossing
+}
+
+export type LocationType =
+  | IWeatherAction
+  | ILocationAction
+  | IWeatherForcast
+  | ICity
+  | IErrorAction
+  | IWeatherVisualCrossingAction
