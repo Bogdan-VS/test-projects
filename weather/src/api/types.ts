@@ -45,3 +45,8 @@ export interface IError {
   cod: string
   message: string
 }
+
+export interface IErrorVisualCrossing {
+  errorCode: number
+  message: string
+}

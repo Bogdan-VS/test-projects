@@ -24,15 +24,47 @@ export const MainWrapperStyled = styled.div`
 `
 
 export const InfoWrapperStyled = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
   display: flex;
+  width: 100%;
+  height: 100%;
   flex-direction: column;
+  row-gap: 10px;
   color: #fff;
-  background-color: #2a282870;
   padding: 20px;
+  overflow: auto;
+  transition: 0.5s ease-in-out;
+
+  &.activeLeft {
+    visibility: hidden;
+    left: -320px;
+  }
+
+  &.activeRight {
+    visibility: hidden;
+    left: 320px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #607d8b;
+    border-radius: 3px;
+  }
 `
 
 export const FormStyled = styled.form`
+  position: relative;
   margin: 30px 0;
+  padding: 0 20px;
 `
 
 export const InputStyled = styled.input`
@@ -56,6 +88,13 @@ export const InputStyled = styled.input`
   }
 `
 
+export const ErrorMessageStyled = styled.span`
+  position: absolute;
+  color: #f44336;
+  top: 50px;
+  left: 20px;
+`
+
 export const DateStyled = styled.h5``
 
 export const LoadingStyled = styled.h3`
@@ -65,4 +104,36 @@ export const LoadingStyled = styled.h3`
   transform: translate(-50%, -50%);
   color: #fff;
   font-size: 40px;
+`
+
+export const MainWeatherContainerStyled = styled.div`
+  display: flex;
+  flex-direction: column;
+  background-color: #2a282870;
+`
+
+export const WeatherContainerStyled = styled.div`
+  position: relative;
+  display: grid;
+  width: 320px;
+  grid-template-columns: 1fr 1fr;
+  height: calc(100vh - 105px);
+  overflow: hidden;
+`
+
+export const SwitchBtnStyled = styled.button`
+  background: #607d8b;
+  border: 1px solid white;
+  padding: 5px;
+  border-radius: 4px;
+  margin: 0 auto 10px auto;
+  color: white;
+  transition: 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid #607d8b;
+    background: white;
+    color: #607d8b;
+  }
 `

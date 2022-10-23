@@ -8,6 +8,7 @@ import {
   getLocationCreator,
   getWeatherCreator,
   setCityCreator,
+  switchWeatherCreator,
 } from '../../store/actions/locationActions'
 
 import {
@@ -17,15 +18,18 @@ import {
   InputStyled,
   DateStyled,
   LoadingStyled,
+  MainWeatherContainerStyled,
+  WeatherContainerStyled,
+  SwitchBtnStyled,
+  ErrorMessageStyled,
 } from './styled'
 import { filterWeatherForDays } from '../../utils/filterWeatherForcast'
 import WeatherForcast from '../../components/WeatherForcast'
 import WeatherByDays from '../../components/WeatherByDays'
 
 const MainPage = () => {
-  const { currentWeather, location, weatherForCast, city, error, weatherByDays } = useSelector(
-    (state: RootState) => state.location,
-  )
+  const { currentWeather, location, weatherForCast, city, error, weatherByDays, isWeatherForCast } =
+    useSelector((state: RootState) => state.location)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -33,11 +37,6 @@ const MainPage = () => {
   }, [])
 
   useEffect(() => {
-    console.log(weatherByDays)
-  }, [weatherByDays])
-
-  useEffect(() => {
-    console.log('loc', location)
     if (location) {
       dispatch(getWeatherCreator())
       dispatch(getCurrentCityCreator(location.city))
@@ -49,9 +48,12 @@ const MainPage = () => {
   }
 
   const handleSubmit = (e: ChangeEvent<HTMLFormElement>) => {
-    console.log('start')
     e.preventDefault()
     dispatch(setCityCreator())
+  }
+
+  const handleSwitchWeather = () => {
+    dispatch(switchWeatherCreator())
   }
 
   return (
@@ -66,29 +68,43 @@ const MainPage = () => {
       ) : (
         <LoadingStyled>Loading...</LoadingStyled>
       )}
-      {weatherForCast && (
-        <InfoWrapperStyled>
-          <FormStyled onSubmit={handleSubmit}>
-            <InputStyled type='text' value={city} onChange={handleCityName} />
-            {error && <h3>{error}</h3>}
-          </FormStyled>
-          <DateStyled>{`Date: ${weatherForCast.list[0].dt_txt.slice(0, 11)}`}</DateStyled>
-          {filterWeatherForDays(weatherForCast).map(({ dt, main, weather, wind, dt_txt }) => (
-            <WeatherForcast
-              key={dt}
-              temp={main.temp}
-              description={weather[0].description}
-              icon={weather[0].icon}
-              wind={wind.speed}
-              time={dt_txt}
-            />
-          ))}
-        </InfoWrapperStyled>
-      )}
-      {weatherByDays &&
-        weatherByDays.location.values.map(({ temp, icon, datetimeStr, wspd }) => (
-          <WeatherByDays key={datetimeStr} icon={icon} temp={temp} wind={wspd} date={datetimeStr} />
-        ))}
+      <MainWeatherContainerStyled>
+        <FormStyled onSubmit={handleSubmit}>
+          <InputStyled type='text' value={city} onChange={handleCityName} />
+          {error && <ErrorMessageStyled>{error}</ErrorMessageStyled>}
+        </FormStyled>
+        <SwitchBtnStyled onClick={handleSwitchWeather}>Switch weather</SwitchBtnStyled>
+        <WeatherContainerStyled>
+          {weatherForCast && (
+            <InfoWrapperStyled className={`${!isWeatherForCast && 'activeLeft'}`}>
+              <DateStyled>{`Date: ${weatherForCast.list[0].dt_txt.slice(0, 11)}`}</DateStyled>
+              {filterWeatherForDays(weatherForCast).map(({ dt, main, weather, wind, dt_txt }) => (
+                <WeatherForcast
+                  key={dt}
+                  temp={main.temp}
+                  description={weather[0].description}
+                  icon={weather[0].icon}
+                  wind={wind.speed}
+                  time={dt_txt}
+                />
+              ))}
+            </InfoWrapperStyled>
+          )}
+          {weatherByDays && (
+            <InfoWrapperStyled className={`${isWeatherForCast && 'activeRight'}`}>
+              {weatherByDays.location.values.map(({ temp, icon, datetimeStr, wspd }) => (
+                <WeatherByDays
+                  key={datetimeStr}
+                  icon={icon}
+                  temp={temp}
+                  wind={wspd}
+                  date={datetimeStr}
+                />
+              ))}
+            </InfoWrapperStyled>
+          )}
+        </WeatherContainerStyled>
+      </MainWeatherContainerStyled>
     </MainWrapperStyled>
   )
 }

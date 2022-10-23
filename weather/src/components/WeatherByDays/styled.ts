@@ -6,7 +6,17 @@ interface IstyledProps {
 
 export const WrapperStyled = styled.div``
 
-export const DateStyled = styled.h3``
+export const InfoWrapperStyled = styled.div`
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
+  padding-bottom: 3px;
+  border-bottom: 1px solid #fff;
+`
+
+export const DateStyled = styled.h3`
+  font-size: 14px;
+`
 
 export const TempStyled = styled.h4``
 

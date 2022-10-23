@@ -16,7 +16,6 @@ import { ILocation } from '../types/locationTypes'
 const currentState = (state: RootState) => state.location.location
 
 export function* workerGetLocation() {
-  console.log(1)
   const location: ILocation = yield getIp()
   yield put(setLocationCreator(location))
 }

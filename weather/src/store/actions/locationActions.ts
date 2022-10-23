@@ -12,10 +12,15 @@ export enum LocationAction {
   GET_WEATHER_FOR_CITY = 'GET_WEATHER_FOR_CITY',
   GET_WEATHER_BY_DAYS = 'GET_WEATHER_BY_DAYS',
   SET_ERROR = 'SET_ERROR',
+  SWITCH_CURRENT_WEATHER = 'SWITCH_CURRENT_WEATHER',
 }
 
 export const getLocationCreator = () => ({
   type: LocationAction.GET_LOCATION,
+})
+
+export const switchWeatherCreator = () => ({
+  type: LocationAction.SWITCH_CURRENT_WEATHER,
 })
 
 export const setErrorCreator = (payload: string) => ({

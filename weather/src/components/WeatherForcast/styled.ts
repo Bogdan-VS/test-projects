@@ -10,6 +10,8 @@ export const WrapperContainerStyled = styled.div`
   display: flex;
   align-items: center;
   column-gap: 10px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid #fff;
 `
 
 export const TempStyled = styled.h3``
@@ -31,7 +33,9 @@ export const IconStyled = styled.span`
 
 export const TymeInfoStyled = styled.span``
 
-export const WrapperInfoStyled = styled.div``
+export const WrapperInfoStyled = styled.div`
+  width: 130px;
+`
 
 export const TitleStyled = styled.h4``
 

@@ -7,6 +7,7 @@ export interface ILocation {
 }
 
 export interface IInitStateLocation {
+  isWeatherForCast: boolean
   error: string
   city: string
   location: ILocation | null
