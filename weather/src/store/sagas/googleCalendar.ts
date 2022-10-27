@@ -1,0 +1,37 @@
+import { call, put, takeEvery } from 'redux-saga/effects'
+
+import apiCalendar from '../../api/googleCalendarApi'
+import { IGoogleCalendar } from '../../api/types'
+import { getFinalDate } from '../../utils/date'
+import { getCalendarEventCreator, LocationAction } from '../actions/locationActions'
+
+function* signInGoogleWorker() {
+  yield call(apiCalendar.handleAuthClick)
+}
+
+function* signOutGoogleWorker() {
+  yield call(apiCalendar.handleSignoutClick)
+  yield put(getCalendarEventCreator(null))
+}
+
+function* getCalendar() {
+  try {
+    const data: IGoogleCalendar = yield call(apiCalendar.listEvents, {
+      timeMin: new Date().toISOString(),
+      timeMax: getFinalDate().toISOString(),
+      showDeleted: true,
+      maxResults: 10,
+      orderBy: 'updated',
+    })
+
+    yield put(getCalendarEventCreator(data))
+  } catch (error) {
+    console.log(error as Error)
+  }
+}
+
+export function* googleWatcher() {
+  yield takeEvery(LocationAction.LOG_IN_GOOGLE, signInGoogleWorker)
+  yield takeEvery(LocationAction.LOG_OUT_GOOGLE, signOutGoogleWorker)
+  yield takeEvery(LocationAction.CALL_CALENDAR, getCalendar)
+}

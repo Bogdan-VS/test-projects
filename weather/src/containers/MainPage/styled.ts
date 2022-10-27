@@ -15,12 +15,35 @@ const bgAnim = keyframes`
 `
 
 export const MainWrapperStyled = styled.div`
-  display: flex;
-  width: 100vw;
+  display: grid;
+  width: 100%;
   height: 100%;
-  justify-content: flex-end;
+  grid-template-columns: 1fr 340px;
   background: ${({ bg }: StyledProps) => `100% 100% / cover url('./assets/background/${bg}.jpg')`};
   animation: 0.5s ${bgAnim};
+`
+
+export const CalendarWrapperStyled = styled.div`
+  height: 375px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+  margin: 20px 0 20px 40px;
+  overflow: auto;
+  color: #fff;
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #607d8b;
+    border-radius: 3px;
+  }
 `
 
 export const InfoWrapperStyled = styled.div`
@@ -117,23 +140,42 @@ export const WeatherContainerStyled = styled.div`
   display: grid;
   width: 320px;
   grid-template-columns: 1fr 1fr;
-  height: calc(100vh - 105px);
+  height: calc(100vh - 145px);
   overflow: hidden;
 `
 
 export const SwitchBtnStyled = styled.button`
-  background: #607d8b;
+  background-color: transparent;
   border: 1px solid white;
   padding: 5px;
+  border: #fff 1px solid;
   border-radius: 4px;
   margin: 0 auto 10px auto;
-  color: white;
+  color: #fff;
   transition: 0.3s;
   cursor: pointer;
 
   &:hover {
-    border: 1px solid #607d8b;
-    background: white;
-    color: #607d8b;
+    box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, 0.6) inset;
   }
+`
+
+export const SignBtnStyled = styled.button`
+  background-color: transparent;
+  padding: 5px;
+  color: #fff;
+  border: #fff 2px solid;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, 0.6) inset;
+  }
+`
+
+export const SignBtnWrapperStyled = styled.div`
+  display: flex;
+  column-gap: 5px;
+  margin: 15px;
 `

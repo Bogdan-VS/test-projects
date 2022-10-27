@@ -34,7 +34,7 @@ export const IconStyled = styled.span`
 export const TymeInfoStyled = styled.span``
 
 export const WrapperInfoStyled = styled.div`
-  width: 130px;
+  width: 140px;
 `
 
 export const TitleStyled = styled.h4``

@@ -50,3 +50,15 @@ export interface IErrorVisualCrossing {
   errorCode: number
   message: string
 }
+
+export interface IGoogleCalendar {
+  result: {
+    items: {
+      id: string
+      start: {
+        dateTime: string
+      }
+      summary: string
+    }[]
+  }
+}

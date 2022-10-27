@@ -1,4 +1,9 @@
-import { IOpenWeatherForcast, IOpenWeatherMap, IWeatherVisualCrossing } from '../../api/types'
+import {
+  IGoogleCalendar,
+  IOpenWeatherForcast,
+  IOpenWeatherMap,
+  IWeatherVisualCrossing,
+} from '../../api/types'
 import { ILocation } from '../types/locationTypes'
 
 export enum LocationAction {
@@ -13,10 +18,35 @@ export enum LocationAction {
   GET_WEATHER_BY_DAYS = 'GET_WEATHER_BY_DAYS',
   SET_ERROR = 'SET_ERROR',
   SWITCH_CURRENT_WEATHER = 'SWITCH_CURRENT_WEATHER',
+  LOG_IN_GOOGLE = 'LOG_IN_GOOGLE',
+  LOG_OUT_GOOGLE = 'LOG_OUT_GOOGLE',
+  GET_CALENDAR_EVENTS = 'GET_CALENDAR_EVENTS',
+  CALL_CALENDAR = 'CALL_CALENDAR',
 }
 
 export const getLocationCreator = () => ({
   type: LocationAction.GET_LOCATION,
+})
+
+export const callCalendarCreator = () => ({
+  type: LocationAction.CALL_CALENDAR,
+})
+
+export const getCalendarEventCreator = (payload: IGoogleCalendar | null) => ({
+  type: LocationAction.GET_CALENDAR_EVENTS,
+  payload,
+})
+
+export const signGoogleCreator = () => ({
+  type: LocationAction.LOG_IN_GOOGLE,
+})
+
+export const signINGoogleCreator = () => ({
+  type: LocationAction.LOG_IN_GOOGLE,
+})
+
+export const signOutGoogleCreator = () => ({
+  type: LocationAction.LOG_OUT_GOOGLE,
 })
 
 export const switchWeatherCreator = () => ({

@@ -4,10 +4,13 @@ import { useSelector, useDispatch } from 'react-redux'
 import Weather from '../../components/Weather'
 import { RootState } from '../../store/reducers'
 import {
+  callCalendarCreator,
   getCurrentCityCreator,
   getLocationCreator,
   getWeatherCreator,
   setCityCreator,
+  signINGoogleCreator,
+  signOutGoogleCreator,
   switchWeatherCreator,
 } from '../../store/actions/locationActions'
 
@@ -21,15 +24,28 @@ import {
   MainWeatherContainerStyled,
   WeatherContainerStyled,
   SwitchBtnStyled,
+  CalendarWrapperStyled,
   ErrorMessageStyled,
+  SignBtnWrapperStyled,
+  SignBtnStyled,
 } from './styled'
 import { filterWeatherForDays } from '../../utils/filterWeatherForcast'
 import WeatherForcast from '../../components/WeatherForcast'
 import WeatherByDays from '../../components/WeatherByDays'
+import CalendarEvents from '../../components/CalendarEvents'
+import { SignState } from '../../constants/variables'
 
 const MainPage = () => {
-  const { currentWeather, location, weatherForCast, city, error, weatherByDays, isWeatherForCast } =
-    useSelector((state: RootState) => state.location)
+  const {
+    currentWeather,
+    location,
+    weatherForCast,
+    city,
+    error,
+    weatherByDays,
+    isWeatherForCast,
+    calendarEvents,
+  } = useSelector((state: RootState) => state.location)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -47,6 +63,10 @@ const MainPage = () => {
     dispatch(getCurrentCityCreator(e.target.value))
   }
 
+  useEffect(() => {
+    console.log(calendarEvents)
+  }, [calendarEvents])
+
   const handleSubmit = (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault()
     dispatch(setCityCreator())
@@ -56,8 +76,34 @@ const MainPage = () => {
     dispatch(switchWeatherCreator())
   }
 
+  const handleSign = (val: string) => () => {
+    if (val === SignState.signIn) {
+      console.log('sign in')
+      dispatch(signINGoogleCreator())
+    } else if (val === SignState.signOut) {
+      dispatch(signOutGoogleCreator())
+    }
+  }
+
+  const handleCalendar = () => {
+    dispatch(callCalendarCreator())
+  }
+
   return (
     <MainWrapperStyled bg={currentWeather && currentWeather.weather[0].description}>
+      <div>
+        <SignBtnWrapperStyled>
+          <SignBtnStyled onClick={handleSign(SignState.signIn)}>{SignState.signIn}</SignBtnStyled>
+          <SignBtnStyled onClick={handleSign(SignState.signOut)}>{SignState.signOut}</SignBtnStyled>
+          {!calendarEvents && <SignBtnStyled onClick={handleCalendar}>Calendar</SignBtnStyled>}
+        </SignBtnWrapperStyled>
+        <CalendarWrapperStyled>
+          {calendarEvents &&
+            calendarEvents.result.items.map(({ start, summary, id }) => (
+              <CalendarEvents key={id} title={summary} date={start.dateTime} />
+            ))}
+        </CalendarWrapperStyled>
+      </div>
       {currentWeather ? (
         <Weather
           temp={currentWeather.main.temp}

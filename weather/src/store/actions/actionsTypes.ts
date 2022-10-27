@@ -1,4 +1,9 @@
-import { IOpenWeatherForcast, IOpenWeatherMap, IWeatherVisualCrossing } from '../../api/types'
+import {
+  IGoogleCalendar,
+  IOpenWeatherForcast,
+  IOpenWeatherMap,
+  IWeatherVisualCrossing,
+} from '../../api/types'
 import { ILocation } from '../types/locationTypes'
 
 export interface ILocationAction {
@@ -30,6 +35,11 @@ export interface IWeatherVisualCrossingAction {
   payload: IWeatherVisualCrossing
 }
 
+export interface IGoogleCalendarAction {
+  type: string
+  payload: IGoogleCalendar | null
+}
+
 export type LocationType =
   | IWeatherAction
   | ILocationAction
@@ -37,3 +47,4 @@ export type LocationType =
   | ICity
   | IErrorAction
   | IWeatherVisualCrossingAction
+  | IGoogleCalendarAction
