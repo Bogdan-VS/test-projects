@@ -1,4 +1,4 @@
-import React, { useEffect, ChangeEvent } from 'react'
+import React, { useEffect, ChangeEvent, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 import Weather from '../../components/Weather'
@@ -28,6 +28,7 @@ import {
   ErrorMessageStyled,
   SignBtnWrapperStyled,
   SignBtnStyled,
+  SwitchIconStyled,
 } from './styled'
 import { filterWeatherForDays } from '../../utils/filterWeatherForcast'
 import WeatherForcast from '../../components/WeatherForcast'
@@ -47,6 +48,8 @@ const MainPage = () => {
     calendarEvents,
   } = useSelector((state: RootState) => state.location)
   const dispatch = useDispatch()
+
+  const [coef, setCoef] = useState(0)
 
   useEffect(() => {
     dispatch(getLocationCreator())
@@ -89,6 +92,12 @@ const MainPage = () => {
     dispatch(callCalendarCreator())
   }
 
+  const handleCoef = () => {
+    if (coef < 4) {
+      setCoef(coef + 1)
+    } else setCoef(0)
+  }
+
   return (
     <MainWrapperStyled bg={currentWeather && currentWeather.weather[0].description}>
       <div>
@@ -123,17 +132,24 @@ const MainPage = () => {
         <WeatherContainerStyled>
           {weatherForCast && (
             <InfoWrapperStyled className={`${!isWeatherForCast && 'activeLeft'}`}>
-              <DateStyled>{`Date: ${weatherForCast.list[0].dt_txt.slice(0, 11)}`}</DateStyled>
-              {filterWeatherForDays(weatherForCast).map(({ dt, main, weather, wind, dt_txt }) => (
-                <WeatherForcast
-                  key={dt}
-                  temp={main.temp}
-                  description={weather[0].description}
-                  icon={weather[0].icon}
-                  wind={wind.speed}
-                  time={dt_txt}
-                />
-              ))}
+              <SwitchIconStyled onClick={handleCoef}>⇨</SwitchIconStyled>
+              <DateStyled>
+                {new Date(filterWeatherForDays(weatherForCast, coef)[coef].dt_txt)
+                  .toUTCString()
+                  .slice(0, 16)}
+              </DateStyled>
+              {filterWeatherForDays(weatherForCast, coef).map(
+                ({ dt, main, weather, wind, dt_txt }) => (
+                  <WeatherForcast
+                    key={dt}
+                    temp={main.temp}
+                    description={weather[0].description}
+                    icon={weather[0].icon}
+                    wind={wind.speed}
+                    time={dt_txt}
+                  />
+                ),
+              )}
             </InfoWrapperStyled>
           )}
           {weatherByDays && (

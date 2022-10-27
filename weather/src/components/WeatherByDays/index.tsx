@@ -20,7 +20,7 @@ interface IWeatherByDaysProps {
 
 const WeatherByDays = ({ date, temp, icon, wind }: IWeatherByDaysProps) => (
   <WrapperStyled>
-    <DateStyled>{`Date: ${date.slice(0, 10)}`}</DateStyled>
+    <DateStyled>{new Date(date).toUTCString().slice(0, 16)}</DateStyled>
     <InfoWrapperStyled>
       <TempStyled>{`${Math.round(temp)}°`}</TempStyled>
       <IconContainerStyled>

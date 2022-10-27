@@ -179,3 +179,21 @@ export const SignBtnWrapperStyled = styled.div`
   column-gap: 5px;
   margin: 15px;
 `
+
+export const SwitchIconStyled = styled.button`
+  position: absolute;
+  display: flex;
+  top: 4px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  font-size: 40px;
+  color: #fff;
+  opacity: 0.7;
+  transition: 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 1;
+  }
+`
