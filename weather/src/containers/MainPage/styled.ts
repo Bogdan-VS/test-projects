@@ -197,3 +197,16 @@ export const SwitchIconStyled = styled.button`
     opacity: 1;
   }
 `
+
+export const ErrorSignMessageStyled = styled.span`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ff5722;
+  font-size: 30px;
+`
+
+export const LeftWrapperStyled = styled.div`
+  position: relative;
+`

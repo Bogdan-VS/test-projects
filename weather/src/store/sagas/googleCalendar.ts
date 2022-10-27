@@ -1,9 +1,13 @@
 import { call, put, takeEvery } from 'redux-saga/effects'
 
 import apiCalendar from '../../api/googleCalendarApi'
-import { IGoogleCalendar } from '../../api/types'
+import { IErrorGoogleApi, IGoogleCalendar } from '../../api/types'
 import { getFinalDate } from '../../utils/date'
-import { getCalendarEventCreator, LocationAction } from '../actions/locationActions'
+import {
+  getCalendarEventCreator,
+  LocationAction,
+  setErrorSignCreator,
+} from '../actions/locationActions'
 
 function* signInGoogleWorker() {
   yield call(apiCalendar.handleAuthClick)
@@ -25,8 +29,9 @@ function* getCalendar() {
     })
 
     yield put(getCalendarEventCreator(data))
+    yield put(setErrorSignCreator(''))
   } catch (error) {
-    console.log(error as Error)
+    yield put(setErrorSignCreator((error as IErrorGoogleApi).result.error.message))
   }
 }
 

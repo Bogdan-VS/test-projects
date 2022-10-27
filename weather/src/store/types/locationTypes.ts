@@ -14,6 +14,7 @@ export interface ILocation {
 export interface IInitStateLocation {
   isWeatherForCast: boolean
   error: string
+  errorSign: string
   city: string
   location: ILocation | null
   currentWeather: IOpenWeatherMap | null

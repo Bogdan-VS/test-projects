@@ -9,6 +9,7 @@ import {
   getLocationCreator,
   getWeatherCreator,
   setCityCreator,
+  setErrorSignCreator,
   signINGoogleCreator,
   signOutGoogleCreator,
   switchWeatherCreator,
@@ -29,6 +30,8 @@ import {
   SignBtnWrapperStyled,
   SignBtnStyled,
   SwitchIconStyled,
+  ErrorSignMessageStyled,
+  LeftWrapperStyled,
 } from './styled'
 import { filterWeatherForDays } from '../../utils/filterWeatherForcast'
 import WeatherForcast from '../../components/WeatherForcast'
@@ -46,6 +49,7 @@ const MainPage = () => {
     weatherByDays,
     isWeatherForCast,
     calendarEvents,
+    errorSign,
   } = useSelector((state: RootState) => state.location)
   const dispatch = useDispatch()
 
@@ -62,13 +66,17 @@ const MainPage = () => {
     }
   }, [location])
 
+  useEffect(() => {
+    if (errorSign) {
+      setTimeout(() => {
+        dispatch(setErrorSignCreator(''))
+      }, 5000)
+    }
+  }, [errorSign])
+
   const handleCityName = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch(getCurrentCityCreator(e.target.value))
   }
-
-  useEffect(() => {
-    console.log(calendarEvents)
-  }, [calendarEvents])
 
   const handleSubmit = (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -81,7 +89,6 @@ const MainPage = () => {
 
   const handleSign = (val: string) => () => {
     if (val === SignState.signIn) {
-      console.log('sign in')
       dispatch(signINGoogleCreator())
     } else if (val === SignState.signOut) {
       dispatch(signOutGoogleCreator())
@@ -100,7 +107,7 @@ const MainPage = () => {
 
   return (
     <MainWrapperStyled bg={currentWeather && currentWeather.weather[0].description}>
-      <div>
+      <LeftWrapperStyled>
         <SignBtnWrapperStyled>
           <SignBtnStyled onClick={handleSign(SignState.signIn)}>{SignState.signIn}</SignBtnStyled>
           <SignBtnStyled onClick={handleSign(SignState.signOut)}>{SignState.signOut}</SignBtnStyled>
@@ -111,8 +118,13 @@ const MainPage = () => {
             calendarEvents.result.items.map(({ start, summary, id }) => (
               <CalendarEvents key={id} title={summary} date={start.dateTime} />
             ))}
+          {errorSign && (
+            <ErrorSignMessageStyled>
+              The events of calendar will be access after registration
+            </ErrorSignMessageStyled>
+          )}
         </CalendarWrapperStyled>
-      </div>
+      </LeftWrapperStyled>
       {currentWeather ? (
         <Weather
           temp={currentWeather.main.temp}

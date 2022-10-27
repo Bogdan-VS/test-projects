@@ -16,7 +16,7 @@ interface IWeatherProps {
   weather: string
 }
 
-const Weather = ({ temp, icon, city, weather }: IWeatherProps) => {
+const Weather = React.memo(function Weather({ temp, icon, city, weather }: IWeatherProps) {
   return (
     <WrapperStyled>
       <TempStyled>{`${Math.floor(temp)}°`}</TempStyled>
@@ -27,6 +27,6 @@ const Weather = ({ temp, icon, city, weather }: IWeatherProps) => {
       </InfoStyled>
     </WrapperStyled>
   )
-}
+})
 
 export default Weather

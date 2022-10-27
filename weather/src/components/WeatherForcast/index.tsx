@@ -19,7 +19,13 @@ interface IWeatherForcastProps {
   time: string
 }
 
-const WeatherForcast = ({ temp, wind, icon, description, time }: IWeatherForcastProps) => {
+const WeatherForcast = React.memo(function WeatherForcast({
+  temp,
+  wind,
+  icon,
+  description,
+  time,
+}: IWeatherForcastProps) {
   return (
     <WrapperContainerStyled>
       <TempStyled>{`${Math.round(temp)}°`}</TempStyled>
@@ -33,6 +39,6 @@ const WeatherForcast = ({ temp, wind, icon, description, time }: IWeatherForcast
       <TymeInfoStyled>{time.slice(11, time.length - 3)}</TymeInfoStyled>
     </WrapperContainerStyled>
   )
-}
+})
 
 export default WeatherForcast

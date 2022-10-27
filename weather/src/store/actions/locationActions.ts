@@ -22,6 +22,7 @@ export enum LocationAction {
   LOG_OUT_GOOGLE = 'LOG_OUT_GOOGLE',
   GET_CALENDAR_EVENTS = 'GET_CALENDAR_EVENTS',
   CALL_CALENDAR = 'CALL_CALENDAR',
+  SET_ERROR_SIGN = 'SET_ERROR_SIGN',
 }
 
 export const getLocationCreator = () => ({
@@ -55,6 +56,11 @@ export const switchWeatherCreator = () => ({
 
 export const setErrorCreator = (payload: string) => ({
   type: LocationAction.SET_ERROR,
+  payload,
+})
+
+export const setErrorSignCreator = (payload: string) => ({
+  type: LocationAction.SET_ERROR_SIGN,
   payload,
 })
 

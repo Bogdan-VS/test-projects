@@ -62,3 +62,11 @@ export interface IGoogleCalendar {
     }[]
   }
 }
+
+export interface IErrorGoogleApi {
+  result: {
+    error: {
+      message: string
+    }
+  }
+}

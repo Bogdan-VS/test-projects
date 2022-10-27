@@ -8,12 +8,14 @@ interface ICalendarEvents {
   date: string
 }
 
-const CalendarEvents = ({ title, date }: ICalendarEvents) => (
-  <CalendarWrapperStyled>
-    <TitleStyled>{title}</TitleStyled>
-    <SubtitleStyled>{getEventDate(date).date}</SubtitleStyled>
-    <SubtitleStyled>{`Time: ${getEventDate(date).time}`}</SubtitleStyled>
-  </CalendarWrapperStyled>
-)
+const CalendarEvents = React.memo(function CalendarEvents({ title, date }: ICalendarEvents) {
+  return (
+    <CalendarWrapperStyled>
+      <TitleStyled>{title}</TitleStyled>
+      <SubtitleStyled>{getEventDate(date).date}</SubtitleStyled>
+      <SubtitleStyled>{`Time: ${getEventDate(date).time}`}</SubtitleStyled>
+    </CalendarWrapperStyled>
+  )
+})
 
 export default CalendarEvents
