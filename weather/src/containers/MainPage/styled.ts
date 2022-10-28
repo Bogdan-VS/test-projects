@@ -1,7 +1,9 @@
 import styled, { keyframes } from 'styled-components'
+import { IGoogleCalendar } from '../../api/types'
 
 interface StyledProps {
-  bg: string | null
+  bg?: string | null
+  calendar?: IGoogleCalendar | null
 }
 
 const bgAnim = keyframes`
@@ -21,16 +23,27 @@ export const MainWrapperStyled = styled.div`
   grid-template-columns: 1fr 340px;
   background: ${({ bg }: StyledProps) => `100% 100% / cover url('./assets/background/${bg}.jpg')`};
   animation: 0.5s ${bgAnim};
+
+  @media (max-width: 800px) {
+    height: fit-content;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    grid-gap: ${({ calendar }: StyledProps) => (calendar ? '0px' : '100px')};
+  }
 `
 
 export const CalendarWrapperStyled = styled.div`
-  height: 375px;
-  display: flex;
+  max-height: 375px;
+  display: ${({ calendar }: StyledProps) => (calendar ? 'flex' : 'none')};
   flex-direction: column;
   row-gap: 15px;
   margin: 20px 0 20px 40px;
   overflow: auto;
   color: #fff;
+
+  @media (max-width: 800px) {
+    margin: 110px 0 20px 40px;
+  }
 
   ::-webkit-scrollbar {
     width: 10px;
@@ -86,7 +99,7 @@ export const InfoWrapperStyled = styled.div`
 
 export const FormStyled = styled.form`
   position: relative;
-  margin: 30px 0;
+  margin: 30px auto;
   padding: 0 20px;
 `
 
@@ -133,6 +146,10 @@ export const MainWeatherContainerStyled = styled.div`
   display: flex;
   flex-direction: column;
   background-color: #2a282870;
+
+  @media (max-width: 800px) {
+    background: none;
+  }
 `
 
 export const WeatherContainerStyled = styled.div`
@@ -142,6 +159,12 @@ export const WeatherContainerStyled = styled.div`
   grid-template-columns: 1fr 1fr;
   height: calc(100vh - 145px);
   overflow: hidden;
+
+  @media (max-width: 800px) {
+    width: 290px;
+    height: calc(100vh - 300px);
+    margin: 0 auto;
+  }
 `
 
 export const SwitchBtnStyled = styled.button`

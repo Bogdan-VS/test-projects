@@ -13,6 +13,13 @@ export const WrapperStyled = styled.div`
   display: flex;
   column-gap: 20px;
   color: #fff;
+
+  @media (max-width: 800px) {
+    right: 10%;
+    top: 10%;
+    bottom: auto;
+    left: auto;
+  }
 `
 
 export const TempStyled = styled.h3`

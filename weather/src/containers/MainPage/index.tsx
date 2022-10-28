@@ -106,14 +106,14 @@ const MainPage = () => {
   }
 
   return (
-    <MainWrapperStyled bg={currentWeather && currentWeather.weather[0].description}>
+    <MainWrapperStyled calendar={calendarEvents} bg={currentWeather && currentWeather.weather[0].description}>
       <LeftWrapperStyled>
         <SignBtnWrapperStyled>
           <SignBtnStyled onClick={handleSign(SignState.signIn)}>{SignState.signIn}</SignBtnStyled>
           <SignBtnStyled onClick={handleSign(SignState.signOut)}>{SignState.signOut}</SignBtnStyled>
           {!calendarEvents && <SignBtnStyled onClick={handleCalendar}>Calendar</SignBtnStyled>}
         </SignBtnWrapperStyled>
-        <CalendarWrapperStyled>
+        <CalendarWrapperStyled calendar={calendarEvents}>
           {calendarEvents &&
             calendarEvents.result.items.map(({ start, summary, id }) => (
               <CalendarEvents key={id} title={summary} date={start.dateTime} />
@@ -146,7 +146,7 @@ const MainPage = () => {
             <InfoWrapperStyled className={`${!isWeatherForCast && 'activeLeft'}`}>
               <SwitchIconStyled onClick={handleCoef}>⇨</SwitchIconStyled>
               <DateStyled>
-                {new Date(filterWeatherForDays(weatherForCast, coef)[coef].dt_txt)
+                {new Date(filterWeatherForDays(weatherForCast, coef)[coef]?.dt_txt)
                   .toUTCString()
                   .slice(0, 16)}
               </DateStyled>
