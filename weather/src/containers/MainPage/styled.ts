@@ -228,6 +228,12 @@ export const ErrorSignMessageStyled = styled.span`
   transform: translate(-50%, -50%);
   color: #ff5722;
   font-size: 30px;
+
+  @media (max-width: 800px) {
+    top: 135px;
+    font-size: 16px;
+    transform: translate(-50%, 0%);
+  }
 `
 
 export const LeftWrapperStyled = styled.div`
