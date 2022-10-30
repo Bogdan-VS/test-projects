@@ -1,21 +1,16 @@
 import { takeEvery, put, call, select, take } from 'redux-saga/effects'
-import { getWeatherByCity, getWeatherForcast } from '../../api/openWeatherMap'
+
+import { getWeatherByCity, getWeatherForcast } from '@/api/openWeatherMap'
 import {
   IError,
   IErrorVisualCrossing,
   IOpenWeatherForcast,
   IOpenWeatherMap,
   IWeatherVisualCrossing,
-} from '../../api/types'
-import { getWeatherForDays } from '../../api/weatherVisualCrossing'
-import { ErrorCode } from '../../constants/errorCode'
-import {
-  getCurrentWeatherCreator,
-  getWeatherByDaysCreator,
-  getWeatherForcastCreator,
-  LocationAction,
-  setErrorCreator,
-} from '../actions/locationActions'
+} from '@/api/types'
+import { getWeatherForDays } from '@/api/weatherVisualCrossing'
+import { ErrorCode } from '@/constants/errorCode'
+import { creator, LocationAction } from '../actions/locationActions'
 
 import { RootState } from '../reducers'
 import { ILocation } from '../types/locationTypes'
@@ -35,10 +30,10 @@ function* currentWeatherWorker() {
       throw Error((weather as IError).message)
     }
 
-    yield put(getCurrentWeatherCreator(weather as IOpenWeatherMap))
-    yield put(setErrorCreator(''))
+    yield put(creator.getCurrentWeatherCreator(weather as IOpenWeatherMap))
+    yield put(creator.setErrorCreator(''))
   } catch (error) {
-    yield put(setErrorCreator((error as Error).message))
+    yield put(creator.setErrorCreator((error as Error).message))
   }
 }
 
@@ -51,9 +46,9 @@ function* currentWeatherForcastWorker() {
       loc.longitude,
     )
 
-    yield put(getWeatherForcastCreator(weather as IOpenWeatherForcast))
+    yield put(creator.getWeatherForcastCreator(weather as IOpenWeatherForcast))
   } catch (error) {
-    yield put(setErrorCreator((error as Error).message))
+    yield put(creator.setErrorCreator((error as Error).message))
   }
 }
 
@@ -70,9 +65,9 @@ function* currentWeatherByDaysWorker() {
       throw Error((weather as IErrorVisualCrossing).message)
     }
 
-    yield put(getWeatherByDaysCreator(weather as IWeatherVisualCrossing))
+    yield put(creator.getWeatherByDaysCreator(weather as IWeatherVisualCrossing))
   } catch (error) {
-    yield put(setErrorCreator((error as Error).message))
+    yield put(creator.setErrorCreator((error as Error).message))
   }
 }
 

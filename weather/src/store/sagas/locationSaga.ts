@@ -1,15 +1,10 @@
 import { takeEvery, put, call, select, take } from 'redux-saga/effects'
-import { getIp } from '../../api/getIp'
-import { getWeather, getWeatherForcast } from '../../api/openWeatherMap'
-import { IOpenWeatherForcast, IOpenWeatherMap, IWeatherVisualCrossing } from '../../api/types'
-import { getWeatherForDays } from '../../api/weatherVisualCrossing'
-import {
-  getCurrentWeatherCreator,
-  getWeatherByDaysCreator,
-  getWeatherForcastCreator,
-  LocationAction,
-  setLocationCreator,
-} from '../actions/locationActions'
+
+import { getIp } from '@/api/getIp'
+import { getWeather, getWeatherForcast } from '@/api/openWeatherMap'
+import { IOpenWeatherForcast, IOpenWeatherMap, IWeatherVisualCrossing } from '@/api/types'
+import { getWeatherForDays } from '@/api/weatherVisualCrossing'
+import { creator, LocationAction } from '../actions/locationActions'
 import { RootState } from '../reducers'
 import { ILocation } from '../types/locationTypes'
 
@@ -17,13 +12,13 @@ const currentState = (state: RootState) => state.location.location
 
 export function* workerGetLocation() {
   const location: ILocation = yield getIp()
-  yield put(setLocationCreator(location))
+  yield put(creator.setLocationCreator(location))
 }
 
 export function* workerGetCurrentWeather() {
   const location: ILocation = yield select(currentState)
   const weather: IOpenWeatherMap = yield call(getWeather, location.latitude, location.longitude)
-  yield put(getCurrentWeatherCreator(weather))
+  yield put(creator.getCurrentWeatherCreator(weather))
 }
 
 export function* workerGetWeatherForCast() {
@@ -33,7 +28,7 @@ export function* workerGetWeatherForCast() {
     location.latitude,
     location.longitude,
   )
-  yield put(getWeatherForcastCreator(weather))
+  yield put(creator.getWeatherForcastCreator(weather))
 }
 
 export function* workerGetWeatherByDays() {
@@ -43,7 +38,7 @@ export function* workerGetWeatherByDays() {
     location.latitude,
     location.longitude,
   )
-  yield put(getWeatherByDaysCreator(weather))
+  yield put(creator.getWeatherByDaysCreator(weather))
 }
 
 export function* handleWeather() {

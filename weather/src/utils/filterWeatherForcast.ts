@@ -2,13 +2,17 @@ import { IOpenWeatherForcast } from '../api/types'
 import { IfilterWeatherData } from './types'
 
 export const filterWeatherForDays = (data: IOpenWeatherForcast, coef: number) => {
-  const currentDay = new Date().getDate()
+  const today = new Date()
+
+  const year = today.getFullYear()
+  const month = today.getMonth()
+  const day = today.getDate()
+
+  const date = new Date(year, month, day + coef + 1).toISOString()
 
   const weather: IfilterWeatherData[] = data.list.filter((el) => {
-    return +el.dt_txt.slice(8, 10) === currentDay + coef
+    return el.dt_txt.slice(0, 10) === date.slice(0, 10)
   })
 
   return weather
 }
-
-// export const filterDays = (data: IOpenWeatherForcast, coef: number)

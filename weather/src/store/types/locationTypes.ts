@@ -3,7 +3,7 @@ import {
   IOpenWeatherForcast,
   IOpenWeatherMap,
   IWeatherVisualCrossing,
-} from '../../api/types'
+} from '@/api/types'
 
 export interface ILocation {
   latitude: number

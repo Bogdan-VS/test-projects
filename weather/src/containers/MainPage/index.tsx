@@ -1,19 +1,15 @@
 import React, { useEffect, ChangeEvent, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import Weather from '../../components/Weather'
-import { RootState } from '../../store/reducers'
-import {
-  callCalendarCreator,
-  getCurrentCityCreator,
-  getLocationCreator,
-  getWeatherCreator,
-  setCityCreator,
-  setErrorSignCreator,
-  signINGoogleCreator,
-  signOutGoogleCreator,
-  switchWeatherCreator,
-} from '../../store/actions/locationActions'
+import Weather from '@/components/Weather'
+import WeatherForcast from '@/components/WeatherForcast'
+import WeatherByDays from '@/components/WeatherByDays'
+import CalendarEvents from '@/components/CalendarEvents'
+import { RootState } from '@/store/reducers'
+import { filterWeatherForDays } from '@/utils/filterWeatherForcast'
+
+import { SignState } from '@/constants/variables'
+import { creator } from '@/store/actions/locationActions'
 
 import {
   MainWrapperStyled,
@@ -33,11 +29,6 @@ import {
   ErrorSignMessageStyled,
   LeftWrapperStyled,
 } from './styled'
-import { filterWeatherForDays } from '../../utils/filterWeatherForcast'
-import WeatherForcast from '../../components/WeatherForcast'
-import WeatherByDays from '../../components/WeatherByDays'
-import CalendarEvents from '../../components/CalendarEvents'
-import { SignState } from '../../constants/variables'
 
 const MainPage = () => {
   const {
@@ -56,47 +47,47 @@ const MainPage = () => {
   const [coef, setCoef] = useState(0)
 
   useEffect(() => {
-    dispatch(getLocationCreator())
+    dispatch(creator.getLocationCreator())
   }, [])
 
   useEffect(() => {
     if (location) {
-      dispatch(getWeatherCreator())
-      dispatch(getCurrentCityCreator(location.city))
+      dispatch(creator.getWeatherCreator())
+      dispatch(creator.getCurrentCityCreator(location.city))
     }
   }, [location])
 
   useEffect(() => {
     if (errorSign) {
       setTimeout(() => {
-        dispatch(setErrorSignCreator(''))
+        dispatch(creator.setErrorSignCreator(''))
       }, 5000)
     }
   }, [errorSign])
 
   const handleCityName = (e: ChangeEvent<HTMLInputElement>) => {
-    dispatch(getCurrentCityCreator(e.target.value))
+    dispatch(creator.getCurrentCityCreator(e.target.value))
   }
 
   const handleSubmit = (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault()
-    dispatch(setCityCreator())
+    dispatch(creator.setCityCreator())
   }
 
   const handleSwitchWeather = () => {
-    dispatch(switchWeatherCreator())
+    dispatch(creator.switchWeatherCreator())
   }
 
   const handleSign = (val: string) => () => {
     if (val === SignState.signIn) {
-      dispatch(signINGoogleCreator())
+      dispatch(creator.signINGoogleCreator())
     } else if (val === SignState.signOut) {
-      dispatch(signOutGoogleCreator())
+      dispatch(creator.signOutGoogleCreator())
     }
   }
 
   const handleCalendar = () => {
-    dispatch(callCalendarCreator())
+    dispatch(creator.callCalendarCreator())
   }
 
   const handleCoef = () => {
