@@ -5,6 +5,7 @@ export interface IfilterWeatherData {
   weather: {
     description: string
     icon: string
+    main: string
   }[]
   wind: { speed: number }
 }

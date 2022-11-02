@@ -9,7 +9,7 @@ import {
   WrapperStyled,
 } from './styled'
 
-interface IWeatherProps {
+export interface IWeatherProps {
   temp: number
   icon: string
   city: string

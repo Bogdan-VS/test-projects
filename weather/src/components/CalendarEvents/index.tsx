@@ -3,7 +3,7 @@ import { getEventDate } from '../../utils/date'
 
 import { CalendarWrapperStyled, SubtitleStyled, TitleStyled } from './styled'
 
-interface ICalendarEvents {
+export interface ICalendarEvents {
   title: string
   date: string
 }

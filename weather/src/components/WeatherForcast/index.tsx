@@ -11,7 +11,7 @@ import {
   TymeInfoStyled,
 } from './styled'
 
-interface IWeatherForcastProps {
+export interface IWeatherForcastProps {
   temp: number
   wind: number
   icon: string
