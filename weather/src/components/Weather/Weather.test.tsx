@@ -1,7 +1,8 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 
-import Weather, { IWeatherProps } from '.'
+import Weather from '.'
+import { IWeatherProps } from './interface'
 
 const props: IWeatherProps = {
   temp: 6,
@@ -11,7 +12,7 @@ const props: IWeatherProps = {
 }
 
 it('Display weather components', () => {
-  const component = renderer.create(<Weather temp={props.temp} />).toJSON()
+  const component = renderer.create(<Weather {...props} />).toJSON()
 
   expect(component).toMatchInlineSnapshot(`
     <div

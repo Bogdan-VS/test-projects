@@ -1,4 +1,6 @@
 import React from 'react'
+
+import { IWeatherByDaysProps } from './interface'
 import {
   DateStyled,
   IconContainerStyled,
@@ -10,13 +12,6 @@ import {
   WrapperStyled,
   InfoWrapperStyled,
 } from './styled'
-
-export interface IWeatherByDaysProps {
-  date: string
-  temp: number
-  icon: string
-  wind: number
-}
 
 const WeatherByDays = React.memo(function WeatherByDays({
   date,

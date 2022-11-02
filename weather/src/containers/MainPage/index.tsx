@@ -6,7 +6,7 @@ import WeatherForcast from '@/components/WeatherForcast'
 import WeatherByDays from '@/components/WeatherByDays'
 import CalendarEvents from '@/components/CalendarEvents'
 import { RootState } from '@/store/reducers'
-import { filterWeatherForDays } from '@/utils/filterWeatherForcast'
+import { checkCityName, filterWeatherForDays } from '@/utils/filterWeatherForcast'
 
 import { SignState } from '@/constants/variables'
 import { creator } from '@/store/actions/locationActions'
@@ -71,7 +71,12 @@ const MainPage = () => {
 
   const handleSubmit = (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault()
-    dispatch(creator.setCityCreator())
+
+    if (checkCityName(city)) {
+      dispatch(creator.setErrorCreator('Uncorrect value'))
+    } else {
+      dispatch(creator.setCityCreator())
+    }
   }
 
   const handleSwitchWeather = () => {
@@ -137,7 +142,7 @@ const MainPage = () => {
         <SwitchBtnStyled onClick={handleSwitchWeather}>Switch weather</SwitchBtnStyled>
         <WeatherContainerStyled>
           {weatherForCast && (
-            <InfoWrapperStyled className={`${!isWeatherForCast && 'activeLeft'}`}>
+            <InfoWrapperStyled currentWeather={!isWeatherForCast}>
               <SwitchIconStyled onClick={handleCoef}>⇨</SwitchIconStyled>
               <DateStyled>
                 {new Date(filterWeatherForDays(weatherForCast, coef)[coef]?.dt_txt)
@@ -159,7 +164,7 @@ const MainPage = () => {
             </InfoWrapperStyled>
           )}
           {weatherByDays && (
-            <InfoWrapperStyled className={`${isWeatherForCast && 'activeRight'}`}>
+            <InfoWrapperStyled currentWeather={isWeatherForCast}>
               {weatherByDays.location.values.map(({ temp, icon, datetimeStr, wspd }) => (
                 <WeatherByDays
                   key={datetimeStr}

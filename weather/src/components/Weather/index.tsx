@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { IWeatherProps } from './interface'
+
 import {
   IconStyled,
   InfoStyled,
@@ -8,13 +10,6 @@ import {
   TempStyled,
   WrapperStyled,
 } from './styled'
-
-export interface IWeatherProps {
-  temp: number
-  icon: string
-  city: string
-  weather: string
-}
 
 const Weather = React.memo(function Weather({ temp, icon, city, weather }: IWeatherProps) {
   return (

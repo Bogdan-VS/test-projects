@@ -1,9 +1,10 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 
-import CalendarEvents, { ICalendarEvents } from '.'
+import CalendarEvents from '.'
+import { ICalendarEventsProps } from './interface'
 
-const props: ICalendarEvents = {
+const props: ICalendarEventsProps = {
   title: 'Make codewars',
   date: '2022-11-01T21:30:00+03:00',
 }

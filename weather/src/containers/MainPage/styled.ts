@@ -4,6 +4,7 @@ import { IGoogleCalendar } from '../../api/types'
 interface StyledProps {
   bg?: string | null
   calendar?: IGoogleCalendar | null
+  currentWeather?: boolean
 }
 
 const bgAnim = keyframes`
@@ -62,7 +63,7 @@ export const CalendarWrapperStyled = styled.div`
 export const InfoWrapperStyled = styled.div`
   position: absolute;
   top: 0;
-  left: 0;
+  left: ${({ currentWeather }: StyledProps) => (currentWeather ? '0' : '-320px')};
   display: flex;
   width: 100%;
   height: 100%;
@@ -72,16 +73,6 @@ export const InfoWrapperStyled = styled.div`
   padding: 20px;
   overflow: auto;
   transition: 0.5s ease-in-out;
-
-  &.activeLeft {
-    visibility: hidden;
-    left: -320px;
-  }
-
-  &.activeRight {
-    visibility: hidden;
-    left: 320px;
-  }
 
   ::-webkit-scrollbar {
     width: 10px;

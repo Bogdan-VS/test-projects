@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { IWeatherForcastProps } from './interface'
 import {
   IconContainerStyled,
   IconStyled,
@@ -10,14 +11,6 @@ import {
   WrapperInfoStyled,
   TymeInfoStyled,
 } from './styled'
-
-export interface IWeatherForcastProps {
-  temp: number
-  wind: number
-  icon: string
-  description: string
-  time: string
-}
 
 const WeatherForcast = React.memo(function WeatherForcast({
   temp,

@@ -1,7 +1,8 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 
-import WeatherForcast, { IWeatherForcastProps } from '.'
+import WeatherForcast from '.'
+import { IWeatherForcastProps } from './interface'
 
 const props: IWeatherForcastProps = {
   temp: 2.11,

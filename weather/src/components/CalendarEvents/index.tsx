@@ -1,14 +1,11 @@
 import React from 'react'
-import { getEventDate } from '../../utils/date'
+
+import { getEventDate } from '@/utils/date'
+import { ICalendarEventsProps } from './interface'
 
 import { CalendarWrapperStyled, SubtitleStyled, TitleStyled } from './styled'
 
-export interface ICalendarEvents {
-  title: string
-  date: string
-}
-
-const CalendarEvents = React.memo(function CalendarEvents({ title, date }: ICalendarEvents) {
+const CalendarEvents = React.memo(function CalendarEvents({ title, date }: ICalendarEventsProps) {
   return (
     <CalendarWrapperStyled>
       <TitleStyled>{title}</TitleStyled>

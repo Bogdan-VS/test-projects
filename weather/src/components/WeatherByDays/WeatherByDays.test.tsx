@@ -1,7 +1,8 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 
-import WeatherByDays, { IWeatherByDaysProps } from '.'
+import WeatherByDays from '.'
+import { IWeatherByDaysProps } from './interface'
 
 const props: IWeatherByDaysProps = {
   date: '2022-11-01T00:00:00+03:00',

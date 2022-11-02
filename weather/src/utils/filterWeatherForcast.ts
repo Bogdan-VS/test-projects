@@ -16,3 +16,36 @@ export const filterWeatherForDays = (data: IOpenWeatherForcast, coef: number) =>
 
   return weather
 }
+
+export const checkCityName = (city: string) => {
+  const alphabet = [
+    'A',
+    'B',
+    'C',
+    'D',
+    'E',
+    'F',
+    'G',
+    'H',
+    'I',
+    'J',
+    'K',
+    'L',
+    'M',
+    'N',
+    'O',
+    'P',
+    'Q',
+    'R',
+    'S',
+    'T',
+    'U',
+    'V',
+    'W',
+    'X',
+    'Y',
+    'Z',
+  ]
+
+  return city.split('').some((el) => !alphabet.includes(el.toUpperCase()))
+}
