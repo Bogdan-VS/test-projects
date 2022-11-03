@@ -21,7 +21,7 @@ export const MainWrapperStyled = styled.div`
   display: grid;
   width: 100%;
   height: 100%;
-  grid-template-columns: 1fr 340px;
+  grid-template-columns: 1fr 320px;
   background: ${({ bg }: StyledProps) => `100% 100% / cover url('./assets/background/${bg}.jpg')`};
   animation: 0.5s ${bgAnim};
 
@@ -61,12 +61,9 @@ export const CalendarWrapperStyled = styled.div`
 `
 
 export const InfoWrapperStyled = styled.div`
-  position: absolute;
-  top: 0;
-  left: ${({ currentWeather }: StyledProps) => (currentWeather ? '0' : '-320px')};
+  position: relative;
   display: flex;
   width: 100%;
-  height: 100%;
   flex-direction: column;
   row-gap: 10px;
   color: #fff;
@@ -147,7 +144,7 @@ export const WeatherContainerStyled = styled.div`
   position: relative;
   display: grid;
   width: 320px;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   height: calc(100vh - 145px);
   overflow: hidden;
 
@@ -155,6 +152,20 @@ export const WeatherContainerStyled = styled.div`
     width: 290px;
     height: calc(100vh - 300px);
     margin: 0 auto;
+  }
+`
+export const WeatherWrapperStyled = styled.div`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: ${({ currentWeather }: StyledProps) => (currentWeather ? '0px' : '-320px')};
+  display: flex;
+  width: 640px;
+  transition: 0.5s;
+
+  @media (max-width: 800px) {
+    left: ${({ currentWeather }: StyledProps) => (currentWeather ? '0px' : '-290px')};
+    width: 580px;
   }
 `
 

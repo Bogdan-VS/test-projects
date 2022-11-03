@@ -28,6 +28,7 @@ import {
   SwitchIconStyled,
   ErrorSignMessageStyled,
   LeftWrapperStyled,
+  WeatherWrapperStyled,
 } from './styled'
 
 const MainPage = () => {
@@ -141,41 +142,43 @@ const MainPage = () => {
         </FormStyled>
         <SwitchBtnStyled onClick={handleSwitchWeather}>Switch weather</SwitchBtnStyled>
         <WeatherContainerStyled>
-          {weatherForCast && (
-            <InfoWrapperStyled currentWeather={!isWeatherForCast}>
-              <SwitchIconStyled onClick={handleCoef}>⇨</SwitchIconStyled>
-              <DateStyled>
-                {new Date(filterWeatherForDays(weatherForCast, coef)[coef]?.dt_txt)
-                  .toUTCString()
-                  .slice(0, 16)}
-              </DateStyled>
-              {filterWeatherForDays(weatherForCast, coef).map(
-                ({ dt, main, weather, wind, dt_txt }) => (
-                  <WeatherForcast
-                    key={dt}
-                    temp={main.temp}
-                    description={weather[0].description}
-                    icon={weather[0].icon}
-                    wind={wind.speed}
-                    time={dt_txt}
+          <WeatherWrapperStyled currentWeather={isWeatherForCast}>
+            {weatherForCast && (
+              <InfoWrapperStyled>
+                <SwitchIconStyled onClick={handleCoef}>⇨</SwitchIconStyled>
+                <DateStyled>
+                  {new Date(filterWeatherForDays(weatherForCast, coef)[coef]?.dt_txt)
+                    .toUTCString()
+                    .slice(0, 16)}
+                </DateStyled>
+                {filterWeatherForDays(weatherForCast, coef).map(
+                  ({ dt, main, weather, wind, dt_txt }) => (
+                    <WeatherForcast
+                      key={dt}
+                      temp={main.temp}
+                      description={weather[0].description}
+                      icon={weather[0].icon}
+                      wind={wind.speed}
+                      time={dt_txt}
+                    />
+                  ),
+                )}
+              </InfoWrapperStyled>
+            )}
+            {weatherByDays && (
+              <InfoWrapperStyled>
+                {weatherByDays.location.values.map(({ temp, icon, datetimeStr, wspd }) => (
+                  <WeatherByDays
+                    key={datetimeStr}
+                    icon={icon}
+                    temp={temp}
+                    wind={wspd}
+                    date={datetimeStr}
                   />
-                ),
-              )}
-            </InfoWrapperStyled>
-          )}
-          {weatherByDays && (
-            <InfoWrapperStyled currentWeather={isWeatherForCast}>
-              {weatherByDays.location.values.map(({ temp, icon, datetimeStr, wspd }) => (
-                <WeatherByDays
-                  key={datetimeStr}
-                  icon={icon}
-                  temp={temp}
-                  wind={wspd}
-                  date={datetimeStr}
-                />
-              ))}
-            </InfoWrapperStyled>
-          )}
+                ))}
+              </InfoWrapperStyled>
+            )}
+          </WeatherWrapperStyled>
         </WeatherContainerStyled>
       </MainWeatherContainerStyled>
     </MainWrapperStyled>
