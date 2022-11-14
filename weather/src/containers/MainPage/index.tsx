@@ -136,7 +136,7 @@ const MainPage = () => {
         <LoadingStyled>Loading...</LoadingStyled>
       )}
       <MainWeatherContainerStyled>
-        <FormStyled onSubmit={handleSubmit}>
+        <FormStyled onSubmit={handleSubmit} role='form'>
           <InputStyled type='text' value={city} onChange={handleCityName} />
           {error && <ErrorMessageStyled>{error}</ErrorMessageStyled>}
         </FormStyled>

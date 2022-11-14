@@ -1,5 +1,5 @@
 import React from 'react'
-import renderer from 'react-test-renderer'
+import { render, screen } from '@testing-library/react'
 
 import CalendarEvents from '.'
 import { ICalendarEventsProps } from './interface'
@@ -10,27 +10,8 @@ const props: ICalendarEventsProps = {
 }
 
 it('Display CalendarEvents component', () => {
-  const component = renderer.create(<CalendarEvents {...props} />).toJSON()
+  render(<CalendarEvents {...props} />)
 
-  expect(component).toMatchInlineSnapshot(`
-    <div
-      className="sc-bcXHqe"
-    >
-      <h3
-        className="sc-gswNZR kcxGmB"
-      >
-        Make codewars
-      </h3>
-      <p
-        className="sc-dkrFOg"
-      >
-        Tue, 01 Nov 2022
-      </p>
-      <p
-        className="sc-dkrFOg"
-      >
-        Time:  21:30
-      </p>
-    </div>
-  `)
+  expect(screen.getByText(/Make codewars/i)).toBeInTheDocument()
+  expect(screen.getByText(/21:30/i)).toBeInTheDocument()
 })

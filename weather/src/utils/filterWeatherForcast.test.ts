@@ -6,7 +6,7 @@ const mockData: IOpenWeatherForcast = {
   list: [
     {
       dt: 1667314800,
-      dt_txt: '2022-11-01 15:00:00',
+      dt_txt: new Date().toISOString(),
       main: {
         temp: 6.15,
       },
@@ -25,7 +25,7 @@ const mockData: IOpenWeatherForcast = {
 const mockFilterData: IfilterWeatherData[] = [
   {
     dt: 1667314800,
-    dt_txt: '2022-11-01 15:00:00',
+    dt_txt: mockData.list[0].dt_txt,
     main: { temp: 6.15 },
     weather: [
       {

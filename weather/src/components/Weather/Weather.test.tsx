@@ -1,5 +1,5 @@
 import React from 'react'
-import renderer from 'react-test-renderer'
+import { render, screen } from '@testing-library/react'
 
 import Weather from '.'
 import { IWeatherProps } from './interface'
@@ -11,31 +11,10 @@ const props: IWeatherProps = {
   weather: 'Clouds',
 }
 
-it('Display weather components', () => {
-  const component = renderer.create(<Weather {...props} />).toJSON()
+it('should render weather components', () => {
+  render(<Weather {...props} />)
 
-  expect(component).toMatchInlineSnapshot(`
-    <div
-      className="sc-bcXHqe cXthlW"
-    >
-      <h3
-        className="sc-gswNZR dGmjPe"
-      >
-        6°
-      </h3>
-      <div
-        className="sc-dkrFOg gzfGJn"
-      >
-        <h3
-          className="sc-hLBbgP hYsGWb"
-        />
-        <p
-          className="sc-eDvSVe cdtZTk"
-        />
-        <span
-          className="sc-jSUZER hQzvrN"
-        />
-      </div>
-    </div>
-  `)
+  expect(screen.getByText(/Zhlobin/i)).toBeInTheDocument()
+  expect(screen.getByText(/6/i)).toBeInTheDocument()
+  expect(screen.getByText(/Clouds/i)).toBeInTheDocument()
 })

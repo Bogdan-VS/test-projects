@@ -1,5 +1,5 @@
 import React from 'react'
-import renderer from 'react-test-renderer'
+import { render, screen } from '@testing-library/react'
 
 import WeatherForcast from '.'
 import { IWeatherForcastProps } from './interface'
@@ -12,44 +12,11 @@ const props: IWeatherForcastProps = {
   time: '2022-11-01 18:00:00',
 }
 
-it('Display WeatherForcast component', () => {
-  const component = renderer.create(<WeatherForcast {...props} />).toJSON()
+it('should render WeatherForcast component', () => {
+  render(<WeatherForcast {...props} />)
 
-  expect(component).toMatchInlineSnapshot(`
-    <div
-      className="sc-bcXHqe lelDff"
-    >
-      <h3
-        className="sc-gswNZR wlhdo"
-      >
-        2°
-      </h3>
-      <div
-        className="sc-dkrFOg jVVALV"
-      >
-        <span
-          className="sc-hLBbgP jjkcmh"
-        />
-      </div>
-      <div
-        className="sc-jSUZER cLQhTA"
-      >
-        <h4
-          className="sc-gKPRtg bVHpQQ"
-        >
-          overcast clouds
-        </h4>
-        <p
-          className="sc-iBYQkv bdJrpf"
-        >
-          wind speed: 6.07 m/s
-        </p>
-      </div>
-      <span
-        className="sc-eDvSVe flHQlm"
-      >
-        18:00
-      </span>
-    </div>
-  `)
+  expect(screen.getByText(/2/i)).toBeInTheDocument()
+  expect(screen.getByText(/6.07/i)).toBeInTheDocument()
+  expect(screen.getByText(/overcast clouds/i)).toBeInTheDocument()
+  expect(screen.getByText(/18:00/i)).toBeInTheDocument()
 })
