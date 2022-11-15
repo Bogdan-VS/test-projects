@@ -8,7 +8,7 @@ import { LocationType } from '../../actions/actionsTypes'
 import { LocationAction } from '../../actions/locationActions'
 import { IInitStateLocation, ILocation } from '../../types/locationTypes'
 
-const initState: IInitStateLocation = {
+export const initState: IInitStateLocation = {
   isWeatherForCast: true,
   errorSign: '',
   error: '',
@@ -21,7 +21,7 @@ const initState: IInitStateLocation = {
 }
 
 // eslint-disable-next-line @typescript-eslint/default-param-last
-const locationReducer = (state = initState, action: LocationType): IInitStateLocation => {
+export const locationReducer = (state = initState, action: LocationType): IInitStateLocation => {
   switch (action.type) {
     case LocationAction.SET_LOCATION:
       return { ...state, location: action.payload as ILocation }
@@ -40,7 +40,6 @@ const locationReducer = (state = initState, action: LocationType): IInitStateLoc
     case LocationAction.SWITCH_CURRENT_WEATHER:
       return { ...state, isWeatherForCast: !state.isWeatherForCast }
     case LocationAction.GET_CALENDAR_EVENTS:
-      console.log(action.payload)
       return { ...state, calendarEvents: action.payload as IGoogleCalendar }
     default:
       return { ...state }

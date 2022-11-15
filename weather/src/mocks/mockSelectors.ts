@@ -1,3 +1,4 @@
+import { IGoogleCalendar } from '@/api/types'
 import { IInitStateLocation } from '@/store/types/locationTypes'
 
 export const mockInitWeather: IInitStateLocation = {
@@ -63,7 +64,7 @@ export const mockWeatherByIp = {
   calendarEvents: null,
 }
 
-export const mockCalendarEvents = {
+export const mockCalendarEvents: IGoogleCalendar = {
   calendarEvents: {
     result: {
       items: [
