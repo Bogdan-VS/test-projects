@@ -8,10 +8,10 @@ import { creator, LocationAction } from '../actions/locationActions'
 import { RootState } from '../reducers'
 import { ILocation } from '../types/locationTypes'
 
-const currentState = (state: RootState) => state.location.location
+export const currentState = (state: RootState) => state.location.location
 
 export function* workerGetLocation() {
-  const location: ILocation = yield getIp()
+  const location: ILocation = yield call(getIp)
   yield put(creator.setLocationCreator(location))
 }
 
