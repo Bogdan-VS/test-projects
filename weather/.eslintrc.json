@@ -1,0 +1,46 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "airbnb-typescript",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "overrides": [],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["react", "import", "react-hooks", "@typescript-eslint", "prettier"],
+  "settings": {
+    "import/extensions": [".js", ".jsx", ".tsx", ".ts"],
+    "import/resolver": {
+      "typescript": { "alwaysTryTypes": true },
+      "alias": {
+        "map": [["@", "./src"]],
+        "extensions": [".ts", ".js", ".jsx", ".json", ".tsx"]
+      }
+    },
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    }
+  },
+  "rules": {
+    "import/no-unresolved": "error",
+    "no-return-await": "off",
+    "@typescript-eslint/return-await": "warn",
+    "default-param-last": "off",
+    "@typescript-eslint/default-param-last": "warn",
+    "no-shadow": "off",
+    "@typescript-eslint/no-shadow": "warn"
+  }
+}
