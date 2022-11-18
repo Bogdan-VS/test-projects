@@ -5,16 +5,16 @@ import { IErrorGoogleApi, IGoogleCalendar } from '@/api/types'
 import { getFinalDate } from '@/utils/date'
 import { creator, LocationAction } from '../actions/locationActions'
 
-function* signInGoogleWorker() {
+export function* signInGoogleWorker() {
   yield call(apiCalendar.handleAuthClick)
 }
 
-function* signOutGoogleWorker() {
+export function* signOutGoogleWorker() {
   yield call(apiCalendar.handleSignoutClick)
   yield put(creator.getCalendarEventCreator(null))
 }
 
-function* getCalendar() {
+export function* getCalendar() {
   try {
     const data: IGoogleCalendar = yield call(apiCalendar.listEvents, {
       timeMin: new Date().toISOString(),

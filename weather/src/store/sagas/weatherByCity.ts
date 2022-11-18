@@ -15,10 +15,10 @@ import { creator, LocationAction } from '../actions/locationActions'
 import { RootState } from '../reducers'
 import { ILocation } from '../types/locationTypes'
 
-const currentState = (state: RootState) => state.location.city
-const currentLocation = (state: RootState) => state.location.location
+export const currentState = (state: RootState) => state.location.city
+export const currentLocation = (state: RootState) => state.location.location
 
-function* currentWeatherWorker() {
+export function* currentWeatherWorker() {
   try {
     const city: string = yield select(currentState)
     const weather: IOpenWeatherMap | IError = yield call(getWeatherByCity, city)
@@ -37,7 +37,7 @@ function* currentWeatherWorker() {
   }
 }
 
-function* currentWeatherForcastWorker() {
+export function* currentWeatherForcastWorker() {
   try {
     const loc: ILocation = yield select(currentLocation)
     const weather: IOpenWeatherForcast | IError = yield call(
@@ -52,7 +52,7 @@ function* currentWeatherForcastWorker() {
   }
 }
 
-function* currentWeatherByDaysWorker() {
+export function* currentWeatherByDaysWorker() {
   try {
     const loc: ILocation = yield select(currentLocation)
     const weather: IWeatherVisualCrossing | IErrorVisualCrossing = yield call(
@@ -71,7 +71,7 @@ function* currentWeatherByDaysWorker() {
   }
 }
 
-function* weatherWatcher() {
+export function* weatherWatcher() {
   yield call(currentWeatherWorker)
   yield take(LocationAction.GET_CURRENT_WEATHER)
   yield call(currentWeatherForcastWorker)
