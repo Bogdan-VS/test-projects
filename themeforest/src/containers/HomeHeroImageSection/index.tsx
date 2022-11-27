@@ -1,5 +1,7 @@
 import React from 'react'
 
+import Subtitle from '@/components/Subtitle'
+
 import {
   ButtonStyled,
   ButtonTitleStyled,
@@ -10,7 +12,6 @@ import {
   ImageStyled,
   ImageWrapperStyled,
   SelectStyled,
-  SubtitleStyled,
   TitleStyled,
 } from './styled'
 
@@ -21,10 +22,12 @@ const HomeHeroImageSection = () => (
         <TitleStyled>
           Find true power in your data with {<SelectStyled>Ensome</SelectStyled>}
         </TitleStyled>
-        <SubtitleStyled>
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-          lauda, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi.
-        </SubtitleStyled>
+        <Subtitle
+          text='Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+          lauda, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi.'
+          width='350'
+          fontSize='14'
+        />
       </ContentStyled>
     </ContentWrapperStyled>
     <ImageWrapperStyled>
