@@ -5,6 +5,7 @@ interface IProps {
   theme: IThemes
   width: string
   fontSize: string
+  lineHeight: string
 }
 
 export const SubtitleStyled = styled.p`
@@ -12,7 +13,7 @@ export const SubtitleStyled = styled.p`
   font-family: ${({ theme }: IProps) => theme.lightTheme.fontFamily.openSans};
   font-weight: ${({ theme }: IProps) => theme.lightTheme.fontWeight[400]};
   font-size: ${({ fontSize }: IProps) => fontSize}px;
-  line-height: 28px;
+  line-height: ${({ lineHeight }: IProps) => lineHeight}px;
   letter-spacing: -0.015em;
   color: ${({ theme }: IProps) => theme.lightTheme.colors.grey};
 `

@@ -17,4 +17,13 @@ export const iconsData = {
     SocialIcons.dribble,
     SocialIcons.behance,
   ],
+
+  LogoIcon: [
+    './assets/logo/logo_1.png',
+    './assets/logo/logo_7.png',
+    './assets/logo/logo_3.png',
+    './assets/logo/logo_4.png',
+    './assets/logo/logo_5.png',
+    './assets/logo/logo_6.png',
+  ],
 }

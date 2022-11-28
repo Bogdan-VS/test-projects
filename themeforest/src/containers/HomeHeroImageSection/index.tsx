@@ -26,6 +26,7 @@ const HomeHeroImageSection = () => (
           text='Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
           lauda, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi.'
           width='350'
+          lineHeight='28'
           fontSize='14'
         />
       </ContentStyled>

@@ -26,6 +26,7 @@ const HomeFeaturesSection = () => (
           width='540'
           text='Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.'
           fontSize='20'
+          lineHeight='28'
         />
         <Button text='Discover more' />
       </TopRightContainerStyled>
@@ -42,6 +43,7 @@ const HomeFeaturesSection = () => (
         <Subtitle
           fontSize='20'
           width='540'
+          lineHeight='28'
           text='Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.'
         />
         <Button text='Learn more' />
