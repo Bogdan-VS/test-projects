@@ -5,7 +5,7 @@ import { IProps } from './interfaces'
 import { PathStyled, SvgStyled } from '@/theme/styled'
 import { IconLinkStyled, IconStyled } from './styled'
 
-const SocialLink = ({ d, color, colorHover, link }: IProps) => (
+const SocialLink = ({ d, color, colorHover, colorDisabled, link, disabled }: IProps) => (
   <IconStyled>
     <IconLinkStyled href={link}>
       <SvgStyled
@@ -15,7 +15,13 @@ const SocialLink = ({ d, color, colorHover, link }: IProps) => (
         fill='none'
         xmlns='http://www.w3.org/2000/svg'
       >
-        <PathStyled d={d} color={color} colorHover={colorHover} />
+        <PathStyled
+          d={d}
+          color={color}
+          colorHover={colorHover}
+          disabled={disabled}
+          colorDisabled={colorDisabled}
+        />
       </SvgStyled>
     </IconLinkStyled>
   </IconStyled>

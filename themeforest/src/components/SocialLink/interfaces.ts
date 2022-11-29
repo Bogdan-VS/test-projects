@@ -2,5 +2,7 @@ export interface IProps {
   d: string
   color: string
   colorHover: string
-  link: string
+  colorDisabled?: string
+  link?: string
+  disabled?: boolean
 }
