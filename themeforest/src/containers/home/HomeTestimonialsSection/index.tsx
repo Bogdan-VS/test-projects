@@ -1,8 +1,10 @@
+import React from 'react'
+
+import { useSlider } from '@/hooks/hooks'
 import SliderControls from '@/components/SliderControls'
 import Subtitle from '@/components/Subtitle'
 import { iconsData } from '@/constants/iconData'
-import { themes } from '@/theme/theme'
-import React, { useEffect, useState } from 'react'
+
 import {
   BottomContainerStyled,
   CardContainerStyled,
@@ -19,40 +21,8 @@ import {
 } from './styled'
 
 const HomeTestimonialsSection = () => {
-  const { black, grey, white } = themes.lightTheme.colors
-  const { ArrowIcons } = iconsData
-
-  const [koef, setKoef] = useState(0)
-  const [incDisabled, setIncDisabled] = useState(false)
-  const [decDisabled, setDecDisabled] = useState(true)
-
-  useEffect(() => {
-    console.log('left: ', decDisabled, 'right: ', incDisabled, koef)
-  }, [incDisabled, decDisabled, koef])
-
-  const handleInc = () => {
-    setKoef(koef + 1)
-
-    if (koef === 4) {
-      setIncDisabled(true)
-    }
-
-    if (koef >= 0) {
-      setDecDisabled(false)
-    }
-  }
-
-  const handleDec = () => {
-    setKoef(koef - 1)
-
-    if (koef === 1) {
-      setDecDisabled(true)
-    }
-
-    if (koef <= 5) {
-      setIncDisabled(false)
-    }
-  }
+  const { black, white, grey, incDisabled, decDisabled, handleDec, handleInc, ArrowIcons } =
+    useSlider()
 
   return (
     <TestimonialsWrapperStyled>

@@ -24,6 +24,16 @@ export interface IServicesPoints {
   enterprises: string[]
 }
 
+export interface IBlog {
+  id: number
+  img: string
+  time: string
+  title: string
+  subtitle: string
+  link: string
+  linkText: string
+}
+
 export interface IIconsData {
   SocialIcons: string[]
   LogoIcon: string[]
@@ -31,4 +41,5 @@ export interface IIconsData {
   ArrowIcons: IArrowIcons
   Testimonials: ITestimonials[]
   ServicesPoints: IServicesPoints
+  Blogs: IBlog[]
 }

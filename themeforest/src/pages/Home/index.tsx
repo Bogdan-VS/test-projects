@@ -7,6 +7,9 @@ import HomeOverviewSection from '@/containers/home/HomeOverviewSection'
 import HomeBenefitsSection from '@/containers/home/HomeBenefitsSection'
 import HomeTestimonialsSection from '@/containers/home/HomeTestimonialsSection'
 import HomePricingSection from '@/containers/home/HomePricingSection'
+import HomeBlogSection from '@/containers/home/HomeBlogSection'
+import HomeContactsUsSection from '@/containers/home/HomeContactsUsSection'
+import HomeSubscribeSection from '@/containers/home/HomeSubscribeSection'
 
 const Home = () => (
   <WrapperStyled>
@@ -16,6 +19,9 @@ const Home = () => (
     <HomeBenefitsSection />
     <HomeTestimonialsSection />
     <HomePricingSection />
+    <HomeBlogSection />
+    <HomeContactsUsSection />
+    <HomeSubscribeSection />
   </WrapperStyled>
 )
 

@@ -32,6 +32,39 @@ export const iconsData: IIconsData = {
     SocialIcons.behance,
   ],
 
+  Blogs: [
+    {
+      id: 1,
+      img: './assets/images/img_8.png',
+      time: '22 June 2022',
+      title: 'ISO 13485 compliance of medical devices',
+      subtitle:
+        'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas. Quis autem vel eum iure...',
+      link: '#',
+      linkText: 'Read more',
+    },
+    {
+      id: 2,
+      img: './assets/images/img_9.png',
+      time: '22 June 2022',
+      title: 'Business analysis helps you  in finance',
+      subtitle:
+        'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas. Quis autem vel eum iure...',
+      link: '#',
+      linkText: 'Read more',
+    },
+    {
+      id: 3,
+      img: './assets/images/img_10.png',
+      time: '22 June 2022',
+      title: '5 web portal examples your business can learn from',
+      subtitle:
+        'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas. Quis autem vel eum iure...',
+      link: '#',
+      linkText: 'Read more',
+    },
+  ],
+
   LogoIcon: [
     './assets/logo/logo_1.png',
     './assets/logo/logo_7.png',
