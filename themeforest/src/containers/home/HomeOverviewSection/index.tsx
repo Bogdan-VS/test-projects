@@ -1,6 +1,9 @@
+import React from 'react'
+
 import Subtitle from '@/components/Subtitle'
 import { iconsData } from '@/constants/iconData'
-import React from 'react'
+
+import { TitleH3Styled } from '@/theme/styled'
 import {
   LeftSubtitleStyled,
   LeftTitleStyled,
@@ -11,13 +14,12 @@ import {
   SubtitleContainerLeftStyled,
   SubtitleContainerStyled,
   SubtitleItemContainerStyled,
-  TitleStyled,
 } from './styled'
 
 const HomeOverviewSection = () => (
   <OverviewWrapperStyled>
     <OverviewContainerStyled>
-      <TitleStyled>We provide services that guarantee your success</TitleStyled>
+      <TitleH3Styled>We provide services that guarantee your success</TitleH3Styled>
       <SubtitleContainerStyled>
         <SubtitleContainerLeftStyled>
           <SubtitleItemContainerStyled>

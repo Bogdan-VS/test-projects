@@ -35,5 +35,32 @@ export interface IThemes {
     borderRadius: {
       '6px': string
     }
+    fontSize: {
+      '16px': string
+      '20px': string
+      '22px': string
+      '38px': string
+      '46px': string
+      '57px': string
+    }
+    lineHeight: {
+      '24px': string
+      '30px': string
+      '33px': string
+      '56px': string
+      '60px': string
+      '65.5px': string
+    }
   }
+}
+
+export interface IPropsIcon {
+  color?: string
+  colorHover?: string
+  colorDisabled?: string
+  disabled?: boolean
+}
+
+export interface IPropsTitle {
+  theme: IThemes
 }

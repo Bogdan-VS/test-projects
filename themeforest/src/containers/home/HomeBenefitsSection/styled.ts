@@ -24,14 +24,6 @@ export const LeftContainerStyled = styled.div`
   row-gap: 30px;
 `
 
-export const TitleStyled = styled.h3`
-  font-weight: ${({ theme }: IProps) => theme.lightTheme.fontWeight[800]};
-  font-size: 38px;
-  line-height: 56px;
-  letter-spacing: -0.015em;
-  color: ${({ theme }: IProps) => theme.lightTheme.colors.black};
-`
-
 export const CardContainerStyled = styled.div`
   display: flex;
   width: 540px;
@@ -71,6 +63,10 @@ export const CardItemStyled = styled.div`
   &:last-child {
     margin-bottom: 0;
   }
+
+  & h5 {
+    margin-bottom: 10px;
+  }
 `
 
 export const CardlogoStyled = styled.span`
@@ -79,4 +75,9 @@ export const CardlogoStyled = styled.span`
 
 export const CardTitleStyled = styled.h5`
   margin-bottom: 10px;
+  font-weight: ${({ theme }: IProps) => theme.lightTheme.fontWeight[700]};
+  font-size: 20px;
+  line-height: 30px;
+  letter-spacing: -0.015em;
+  color: ${({ theme }: IProps) => theme.lightTheme.colors.black};
 `

@@ -1,11 +1,13 @@
+import React from 'react'
+
 import SliderControls from '@/components/SliderControls'
 import Subtitle from '@/components/Subtitle'
 import { iconsData } from '@/constants/iconData'
+import { IBlog } from '@/constants/interfaces'
 import { useSlider } from '@/hooks/hooks'
-import { PathStyled, SvgStyled } from '@/theme/styled'
 import { themes } from '@/theme/theme'
-import React from 'react'
-import { TopLeftTitleStyled } from '../HomeFeaturesSection/styled'
+
+import { PathStyled, SvgStyled, TitleH3Styled } from '@/theme/styled'
 import {
   BlogContentStyled,
   BlogWrapperStyled,
@@ -21,14 +23,14 @@ import {
 } from './styled'
 
 const HomeBlogSection = () => {
-  const { black, white, grey, incDisabled, decDisabled, handleDec, handleInc, ArrowIcons } =
-    useSlider()
+  const { black, white, grey, incDisabled, decDisabled, handleDec, handleInc, ArrowIcons, data } =
+    useSlider(iconsData.Blogs, 3)
 
   return (
     <BlogWrapperStyled>
       <BlogContentStyled>
         <TopContainerStyled>
-          <TopLeftTitleStyled>Our blog</TopLeftTitleStyled>
+          <TitleH3Styled>Our blog</TitleH3Styled>
           <SliderControls
             handleInc={handleInc}
             handleDec={handleDec}
@@ -42,7 +44,7 @@ const HomeBlogSection = () => {
           />
         </TopContainerStyled>
         <BottomContainerStyled>
-          {iconsData.Blogs.map(({ id, img, title, time, subtitle, link, linkText }) => (
+          {(data as IBlog[]).map(({ id, img, title, time, subtitle, link, linkText }) => (
             <CardContainerStyled key={id}>
               <ImgContainerStyled>
                 <ImgStyled src={img} alt={title} />

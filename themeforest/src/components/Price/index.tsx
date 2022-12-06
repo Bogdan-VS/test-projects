@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
-import { themes } from '@/theme/theme'
 import { IProps } from './interfaces'
+
 import {
   ButtonContainerStyled,
   ButtonStyled,

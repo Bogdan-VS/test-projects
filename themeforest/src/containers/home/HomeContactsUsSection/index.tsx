@@ -1,6 +1,8 @@
+import React from 'react'
+
 import Button from '@/components/Button'
 import Subtitle from '@/components/Subtitle'
-import React from 'react'
+
 import { ContactsContentStyled, ContactsWrapperStyled, TitleStyled } from './styled'
 
 const HomeContactsUsSection = () => (

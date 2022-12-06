@@ -19,10 +19,11 @@ import {
   TopContainerStyled,
   TopTitleStyled,
 } from './styled'
+import { ITestimonials } from '@/constants/interfaces'
 
 const HomeTestimonialsSection = () => {
-  const { black, white, grey, incDisabled, decDisabled, handleDec, handleInc, ArrowIcons } =
-    useSlider()
+  const { black, white, grey, incDisabled, decDisabled, handleDec, handleInc, ArrowIcons, data } =
+    useSlider(iconsData.Testimonials, 3)
 
   return (
     <TestimonialsWrapperStyled>
@@ -42,7 +43,7 @@ const HomeTestimonialsSection = () => {
           />
         </TopContainerStyled>
         <BottomContainerStyled>
-          {iconsData.Testimonials.map(({ logo, text, title, subtitle, id }) => (
+          {(data as ITestimonials[]).map(({ logo, text, title, subtitle, id }) => (
             <CardContainerStyled key={id}>
               <TitleContainerStyled>
                 <LogoContainerStyled>

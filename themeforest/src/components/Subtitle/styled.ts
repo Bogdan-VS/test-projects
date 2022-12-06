@@ -1,5 +1,7 @@
-import { IThemes } from '@/theme/interfaces'
 import styled from 'styled-components'
+
+import { Opasity } from '@/containers/home/HomeTestimonialsSection/styled'
+import { IThemes } from '@/theme/interfaces'
 
 interface IProps {
   theme: IThemes
@@ -16,4 +18,6 @@ export const SubtitleStyled = styled.p`
   line-height: ${({ lineHeight }: IProps) => lineHeight}px;
   letter-spacing: -0.015em;
   color: ${({ theme }: IProps) => theme.lightTheme.colors.grey};
+  animation: 0.5s;
+  ${Opasity}
 `

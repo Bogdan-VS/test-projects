@@ -34,6 +34,20 @@ export interface IBlog {
   linkText: string
 }
 
+export interface IServiceCards {
+  id: number
+  img: string
+  title: string
+  subtitle: string
+  link: string
+  linkText: string
+}
+
+export interface IIconLogoCustomers {
+  id: number
+  url: string
+}
+
 export interface IIconsData {
   SocialIcons: string[]
   LogoIcon: string[]
@@ -42,4 +56,6 @@ export interface IIconsData {
   Testimonials: ITestimonials[]
   ServicesPoints: IServicesPoints
   Blogs: IBlog[]
+  ServiceCards: IServiceCards[]
+  LogoIconCustomers: IIconLogoCustomers[]
 }

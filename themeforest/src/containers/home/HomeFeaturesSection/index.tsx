@@ -1,6 +1,9 @@
+import React from 'react'
+
 import Button from '@/components/Button'
 import Subtitle from '@/components/Subtitle'
-import React from 'react'
+
+import { TitleH2Styled, TitleH3Styled } from '@/theme/styled'
 import {
   BottomRightWrapperStyled,
   FeaturesBottomWrapperStyled,
@@ -9,18 +12,16 @@ import {
   ImageStyled,
   ImageWrapperStyled,
   SeparatorStyled,
-  TitleStyled,
   TopLeftSelectStyled,
-  TopLeftTitleStyled,
   TopRightContainerStyled,
 } from './styled'
 
 const HomeFeaturesSection = () => (
   <FeaturesWrapperStyled>
     <FeaturesTopWrapperStyled>
-      <TopLeftTitleStyled>
+      <TitleH2Styled>
         The <TopLeftSelectStyled>newest</TopLeftSelectStyled> business analytics platform
-      </TopLeftTitleStyled>
+      </TitleH2Styled>
       <TopRightContainerStyled>
         <Subtitle
           width='540'
@@ -36,10 +37,10 @@ const HomeFeaturesSection = () => (
         <ImageStyled src='./assets/images/img_10.jpg' />
       </ImageWrapperStyled>
       <BottomRightWrapperStyled>
-        <TitleStyled>
+        <TitleH3Styled>
           Radically new solutions <SeparatorStyled />
           for data
-        </TitleStyled>
+        </TitleH3Styled>
         <Subtitle
           fontSize='20'
           width='540'

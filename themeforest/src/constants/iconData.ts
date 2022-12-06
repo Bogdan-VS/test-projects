@@ -32,6 +32,63 @@ export const iconsData: IIconsData = {
     SocialIcons.behance,
   ],
 
+  ServiceCards: [
+    {
+      id: 1,
+      img: './assets/icons/icon_brain_isometric_3d.svg',
+      title: 'Machine learning',
+      subtitle:
+        'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas. Quis autem vel eum iure.',
+      link: '#',
+      linkText: 'Read more',
+    },
+    {
+      id: 2,
+      img: './assets/icons/icon_trending_lines_isometric_3d.svg',
+      title: 'Embed analytics',
+      subtitle:
+        'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas. Quis autem vel eum iure.',
+      link: '#',
+      linkText: 'Read more',
+    },
+    {
+      id: 3,
+      img: './assets/icons/icon_key_isometric_3d.svg',
+      title: 'Access control',
+      subtitle:
+        'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas. Quis autem vel eum iure.',
+      link: '#',
+      linkText: 'Read more',
+    },
+    {
+      id: 4,
+      img: './assets/icons/icon_data_area_isometric_3d.svg',
+      title: 'Data analytics',
+      subtitle:
+        'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas. Quis autem vel eum iure.',
+      link: '#',
+      linkText: 'Read more',
+    },
+    {
+      id: 5,
+      img: './assets/icons/icon_data_pie_isometric_3d.svg',
+      title: 'Big data consulting',
+      subtitle:
+        'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas. Quis autem vel eum iure.',
+      link: '#',
+      linkText: 'Read more',
+    },
+    {
+      id: 6,
+      img: './assets/icons/icon_bot_isometric_3d.svg',
+      title: 'Artificial intelligence',
+      subtitle:
+        'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas. Quis autem vel eum iure.',
+      link: '#',
+      linkText: 'Read more',
+    },
+  ],
+
   Blogs: [
     {
       id: 1,
@@ -63,6 +120,56 @@ export const iconsData: IIconsData = {
       link: '#',
       linkText: 'Read more',
     },
+    {
+      id: 4,
+      img: './assets/images/img_8.png',
+      time: '22 June 2022',
+      title: 'ISO 13485 compliance of medical devices',
+      subtitle:
+        'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas. Quis autem vel eum iure...',
+      link: '#',
+      linkText: 'Read more',
+    },
+    {
+      id: 5,
+      img: './assets/images/img_9.png',
+      time: '22 June 2022',
+      title: 'Business analysis helps you  in finance',
+      subtitle:
+        'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas. Quis autem vel eum iure...',
+      link: '#',
+      linkText: 'Read more',
+    },
+    {
+      id: 6,
+      img: './assets/images/img_10.png',
+      time: '22 June 2022',
+      title: '5 web portal examples your business can learn from',
+      subtitle:
+        'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas. Quis autem vel eum iure...',
+      link: '#',
+      linkText: 'Read more',
+    },
+    {
+      id: 7,
+      img: './assets/images/img_8.png',
+      time: '22 June 2022',
+      title: 'ISO 13485 compliance of medical devices',
+      subtitle:
+        'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas. Quis autem vel eum iure...',
+      link: '#',
+      linkText: 'Read more',
+    },
+    {
+      id: 8,
+      img: './assets/images/img_9.png',
+      time: '22 June 2022',
+      title: 'Business analysis helps you  in finance',
+      subtitle:
+        'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas. Quis autem vel eum iure...',
+      link: '#',
+      linkText: 'Read more',
+    },
   ],
 
   LogoIcon: [
@@ -72,6 +179,33 @@ export const iconsData: IIconsData = {
     './assets/logo/logo_4.png',
     './assets/logo/logo_5.png',
     './assets/logo/logo_6.png',
+  ],
+
+  LogoIconCustomers: [
+    {
+      id: 1,
+      url: './assets/logo/customers/logo_1.png',
+    },
+    {
+      id: 2,
+      url: './assets/logo/customers/logo_2.png',
+    },
+    {
+      id: 3,
+      url: './assets/logo/customers/logo_3.png',
+    },
+    {
+      id: 4,
+      url: './assets/logo/customers/logo_4.png',
+    },
+    {
+      id: 5,
+      url: './assets/logo/customers/logo_5.png',
+    },
+    {
+      id: 6,
+      url: './assets/logo/customers/logo_6.png',
+    },
   ],
 
   ServicesPoints: {
@@ -114,6 +248,20 @@ export const iconsData: IIconsData = {
       logo: './assets/images/img_person_3.png',
       title: 'Tigran Nazaret',
       subtitle: 'Data analyst',
+      text: '“Ut enim ad minima veniam, quis nostrum exercitationem ullam corpor suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis utem vel eum iure reprehender qui in ea voluptate velit esse quam nihil molesti consequatur, vel illum.”',
+    },
+    {
+      id: 4,
+      logo: './assets/images/img_person_1.png',
+      title: 'Alex Bern',
+      subtitle: 'CEO by PixelPerfect',
+      text: '“Ut enim ad minima veniam, quis nostrum exercitationem ullam corpor suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis utem vel eum iure reprehender qui in ea voluptate velit esse quam nihil molesti consequatur, vel illum.”',
+    },
+    {
+      id: 5,
+      logo: './assets/images/img_person_2.png',
+      title: 'Ruben Chifundo',
+      subtitle: 'CEO by NOX',
       text: '“Ut enim ad minima veniam, quis nostrum exercitationem ullam corpor suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis utem vel eum iure reprehender qui in ea voluptate velit esse quam nihil molesti consequatur, vel illum.”',
     },
   ],

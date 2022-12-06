@@ -1,10 +1,21 @@
+import styled, { keyframes } from 'styled-components'
+
 import { IThemes } from '@/theme/interfaces'
-import styled from 'styled-components'
 
 interface IProps {
   theme: IThemes
   logo: string
 }
+
+export const Opasity = keyframes`
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+`
 
 export const TestimonialsWrapperStyled = styled.section`
   background-color: ${({ theme }: Omit<IProps, 'logo'>) => theme.lightTheme.colors.white};
@@ -45,11 +56,13 @@ export const CardContainerStyled = styled.div`
   row-gap: 25px;
   padding: 35px;
   box-shadow: ${({ theme }: Omit<IProps, 'logo'>) => theme.lightTheme.shadows.shadow_card_3};
+  animation: 0.5s ${Opasity};
 `
 
 export const TitleContainerStyled = styled.div`
   display: flex;
   column-gap: 25px;
+  animation: 0.5s ${Opasity};
 `
 
 export const LogoContainerStyled = styled.div`
@@ -57,6 +70,7 @@ export const LogoContainerStyled = styled.div`
   display: flex;
   width: 80px;
   height: 80px;
+  animation: 0.5s ${Opasity};
 `
 
 export const LogoStyled = styled.span`
@@ -65,10 +79,12 @@ export const LogoStyled = styled.span`
   height: 100%;
   border-radius: 50%;
   background: 100% 100% url(${({ logo }: Omit<IProps, 'theme'>) => logo});
+  animation: 0.5s ${Opasity};
 `
 
 export const InfoContainerStyled = styled.div`
   padding: 14px 0;
+  animation: 0.5s ${Opasity};
 `
 
 export const TitleStyled = styled.h4`
@@ -77,6 +93,7 @@ export const TitleStyled = styled.h4`
   line-height: 24px;
   letter-spacing: -0.015em;
   color: ${({ theme }: Omit<IProps, 'logo'>) => theme.lightTheme.colors.black};
+  animation: 0.5s ${Opasity};
 `
 
 export const SubtitleStyled = styled.p`
@@ -85,4 +102,5 @@ export const SubtitleStyled = styled.p`
   line-height: 24px;
   letter-spacing: -0.01em;
   color: ${({ theme }: Omit<IProps, 'logo'>) => theme.lightTheme.colors.grey};
+  animation: 0.5s ${Opasity};
 `

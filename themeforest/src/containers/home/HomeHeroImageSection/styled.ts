@@ -1,5 +1,5 @@
-import { IThemes } from '@/theme/interfaces'
 import styled from 'styled-components'
+import { IThemes } from '@/theme/interfaces'
 
 interface IProps {
   theme: IThemes
@@ -20,29 +20,14 @@ export const ContentStyled = styled.div`
   width: 1110px;
   margin: 73px 0 90px 0;
   justify-content: space-between;
-`
 
-export const TitleStyled = styled.h2`
-  max-width: 540px;
-  font-weight: ${({ theme }: IProps) => theme.lightTheme.fontWeight[800]};
-  font-size: 46px;
-  line-height: 60px;
-  letter-spacing: -0.015em;
-  color: ${({ theme }: IProps) => theme.lightTheme.colors.black};
+  & h2 {
+    max-width: 540px;
+  }
 `
 
 export const SelectStyled = styled.span`
   color: ${({ theme }: IProps) => theme.lightTheme.colors.primary};
-`
-
-export const SubtitleStyled = styled.p`
-  max-width: 400px;
-  font-family: ${({ theme }: IProps) => theme.lightTheme.fontFamily.openSans};
-  font-weight: ${({ theme }: IProps) => theme.lightTheme.fontWeight[400]};
-  font-size: 16px;
-  line-height: 28px;
-  letter-spacing: -0.015em;
-  color: ${({ theme }: IProps) => theme.lightTheme.colors.grey};
 `
 
 export const ImageWrapperStyled = styled.div`

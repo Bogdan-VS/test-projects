@@ -47,8 +47,8 @@ const Footer = () => (
         <LinkWrapperStyled>
           <LinkTitleStyled>Quick link</LinkTitleStyled>
           <LinkConteinerStyled>
-            {linkData.quickLink.map((el) => (
-              <PageLink key={el} name={el} link='#' />
+            {linkData.quickLink.map(({ title, link }) => (
+              <PageLink key={title} name={title} link={link} />
             ))}
           </LinkConteinerStyled>
         </LinkWrapperStyled>

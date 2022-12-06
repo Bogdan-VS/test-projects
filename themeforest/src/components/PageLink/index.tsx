@@ -1,12 +1,15 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import { IProps } from './interfaces'
 
-import { IconLinkStyled, IconStyled } from './styled'
+import { IconStyled } from './styled'
 
-const PageLink = ({ link, name }: IProps) => (
+const PageLink = ({ link, name, handleClick }: IProps) => (
   <IconStyled>
-    <IconLinkStyled href={link}>{name}</IconLinkStyled>
+    <Link to={link} className='link' onClick={handleClick}>
+      {name}
+    </Link>
   </IconStyled>
 )
 

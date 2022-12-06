@@ -35,5 +35,21 @@ export const themes = {
     borderRadius: {
       '6px': '6px',
     },
+    fontSize: {
+      '16px': '16px',
+      '20px': '20px',
+      '22px': '22px',
+      '38px': '38px',
+      '46px': '46px',
+      '57px': '57px',
+    },
+    lineHeight: {
+      '24px': '24px',
+      '30px': '30px',
+      '33px': '33px',
+      '56px': '56px',
+      '60px': '60px',
+      '65.5px': '65.5px',
+    },
   },
 }

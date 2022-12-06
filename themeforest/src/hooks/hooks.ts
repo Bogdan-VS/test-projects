@@ -2,19 +2,21 @@ import { useState } from 'react'
 
 import { themes } from '@/theme/theme'
 import { iconsData } from '@/constants/iconData'
+import { CardsFilter, IData } from '@/utils/cardsFilter'
 
-export const useSlider = () => {
+export const useSlider = (arr: IData, cardsLimit: number) => {
   const { black, grey, white } = themes.lightTheme.colors
   const { ArrowIcons } = iconsData
 
   const [koef, setKoef] = useState(0)
-  const [incDisabled, setIncDisabled] = useState(false)
+  const { limit, data } = CardsFilter(arr, cardsLimit, koef)
+  const [incDisabled, setIncDisabled] = useState(koef >= limit - 1)
   const [decDisabled, setDecDisabled] = useState(true)
 
   const handleInc = () => {
     setKoef(koef + 1)
 
-    if (koef === 4) {
+    if (koef === limit - 2) {
       setIncDisabled(true)
     }
 
@@ -30,7 +32,7 @@ export const useSlider = () => {
       setDecDisabled(true)
     }
 
-    if (koef <= 5) {
+    if (koef <= limit) {
       setIncDisabled(false)
     }
   }
@@ -44,5 +46,6 @@ export const useSlider = () => {
     decDisabled,
     handleDec,
     handleInc,
+    data,
   }
 }

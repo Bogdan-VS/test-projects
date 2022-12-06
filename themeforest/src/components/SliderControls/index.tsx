@@ -1,6 +1,8 @@
 import React from 'react'
+
 import SocialLink from '../SocialLink'
 import { IProps } from './interfaces'
+
 import { ButtonStyled, ControlsWrapperStyled } from './styled'
 
 const SliderControls = ({
@@ -13,31 +15,27 @@ const SliderControls = ({
   color,
   colorHover,
   colorDisabled,
-}: IProps) => {
-  console.log(colorDisabled, decDisabled)
-
-  return (
-    <ControlsWrapperStyled>
-      <ButtonStyled onClick={handleDec} disabled={decDisabled}>
-        <SocialLink
-          d={dLeft}
-          color={color}
-          colorHover={colorHover}
-          disabled={decDisabled}
-          colorDisabled={colorDisabled}
-        />
-      </ButtonStyled>
-      <ButtonStyled onClick={handleInc} disabled={incDisabled}>
-        <SocialLink
-          d={dRight}
-          color={color}
-          colorHover={colorHover}
-          disabled={incDisabled}
-          colorDisabled={colorDisabled}
-        />
-      </ButtonStyled>
-    </ControlsWrapperStyled>
-  )
-}
+}: IProps) => (
+  <ControlsWrapperStyled>
+    <ButtonStyled onClick={handleDec} disabled={decDisabled}>
+      <SocialLink
+        d={dLeft}
+        color={color}
+        colorHover={colorHover}
+        disabled={decDisabled}
+        colorDisabled={colorDisabled}
+      />
+    </ButtonStyled>
+    <ButtonStyled onClick={handleInc} disabled={incDisabled}>
+      <SocialLink
+        d={dRight}
+        color={color}
+        colorHover={colorHover}
+        disabled={incDisabled}
+        colorDisabled={colorDisabled}
+      />
+    </ButtonStyled>
+  </ControlsWrapperStyled>
+)
 
 export default SliderControls

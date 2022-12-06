@@ -1,8 +1,10 @@
+import React from 'react'
+
 import Subtitle from '@/components/Subtitle'
 import { iconsData } from '@/constants/iconData'
-import { PathStyled, SvgStyled } from '@/theme/styled'
 import { themes } from '@/theme/theme'
-import React from 'react'
+
+import { PathStyled, SvgStyled, TitleH3Styled } from '@/theme/styled'
 import {
   BenefitsContainerStyled,
   BenefitsWrapperStyled,
@@ -11,14 +13,13 @@ import {
   CardlogoStyled,
   CardTitleStyled,
   LeftContainerStyled,
-  TitleStyled,
 } from './styled'
 
 const HomeBenefitsSection = () => (
   <BenefitsWrapperStyled>
     <BenefitsContainerStyled>
       <LeftContainerStyled>
-        <TitleStyled>The benefits of Ensome</TitleStyled>
+        <TitleH3Styled>The benefits of Ensome</TitleH3Styled>
         <Subtitle
           fontSize='20'
           width='540'

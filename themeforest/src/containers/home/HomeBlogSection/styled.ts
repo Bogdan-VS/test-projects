@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 import { IThemes } from '@/theme/interfaces'
+import { Opasity } from '../HomeTestimonialsSection/styled'
 
 interface IProps {
   theme: IThemes
@@ -23,6 +24,10 @@ export const TopContainerStyled = styled.div`
   width: 1110px;
   margin: 0 auto;
   justify-content: space-between;
+
+  & h3 {
+    padding-top: 17px;
+  }
 `
 
 export const TopTitleStyled = styled.h3`
@@ -44,16 +49,20 @@ export const CardContainerStyled = styled.div`
   width: 350px;
   flex-direction: column;
   row-gap: 20px;
+  animation: 0.5s ${Opasity};
 `
 
 export const ImgContainerStyled = styled.div``
 
-export const ImgStyled = styled.img``
+export const ImgStyled = styled.img`
+  animation: 0.5s ${Opasity};
+`
 
 export const ContentContainerStyled = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 12px;
+  animation: 0.5s ${Opasity};
 `
 
 export const TimeStyled = styled.span`
@@ -63,6 +72,7 @@ export const TimeStyled = styled.span`
   line-height: 24px;
   letter-spacing: -0.015em;
   color: ${({ theme }: IProps) => theme.lightTheme.colors.grey};
+  animation: 0.5s ${Opasity};
 `
 
 export const TitleStyled = styled.h4`
@@ -71,6 +81,7 @@ export const TitleStyled = styled.h4`
   line-height: 33px;
   letter-spacing: -0.015em;
   color: ${({ theme }: IProps) => theme.lightTheme.colors.black};
+  animation: 0.5s ${Opasity};
 `
 
 export const LinkStyled = styled.a`
@@ -83,12 +94,14 @@ export const LinkStyled = styled.a`
   text-decoration: none;
   transition: 0.3s;
   cursor: pointer;
+  animation: 0.5s ${Opasity};
 
   svg {
     position: absolute;
     top: 50%;
     left: 73px;
     transform: translateY(-50%);
+    animation: 0.5s ${Opasity};
   }
 
   &:hover {
