@@ -34,6 +34,7 @@ export const DescriptionContainerStyled = styled.div`
   padding: 0 48px;
   flex-direction: column;
   row-gap: 20px;
+  align-items: center;
 `
 
 export const DescriptionTytleStyled = styled.h4`
