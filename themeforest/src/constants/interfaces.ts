@@ -48,6 +48,21 @@ export interface IIconLogoCustomers {
   url: string
 }
 
+export interface IArticleContent {
+  id: number
+  type: string
+  text: string
+  decorate: {
+    type: string
+    text: string
+  }
+}
+
+interface IArticleTag {
+  id: number
+  title: string
+}
+
 export interface IIconsData {
   SocialIcons: string[]
   LogoIcon: string[]
@@ -58,4 +73,16 @@ export interface IIconsData {
   Blogs: IBlog[]
   ServiceCards: IServiceCards[]
   LogoIconCustomers: IIconLogoCustomers[]
+}
+
+export interface IArticles {
+  id: number
+  img: string
+  date: string
+  person: string
+  title: string
+  content: IArticleContent[]
+  views: number
+  share: string[]
+  tags: IArticleTag[]
 }
