@@ -63,8 +63,39 @@ interface IArticleTag {
   title: string
 }
 
+interface IPopularPosts {
+  id: number
+  img: string
+  date: string
+  title: string
+  link: string
+  linkText: string
+  view: number
+}
+
+interface ICategories {
+  id: number
+  title: string
+}
+
+interface ITags {
+  id: number
+  tag: string
+}
+
+export interface IRelatedPost {
+  id: number
+  img: string
+  date: string
+  title: string
+  text: string
+  tag: string
+  link: string
+}
+
 export interface IIconsData {
   SocialIcons: string[]
+  ShareSocialIcons: string[]
   LogoIcon: string[]
   HomeBenefits: IHomeBenefits[]
   ArrowIcons: IArrowIcons
@@ -73,6 +104,10 @@ export interface IIconsData {
   Blogs: IBlog[]
   ServiceCards: IServiceCards[]
   LogoIconCustomers: IIconLogoCustomers[]
+  PopularPosts: IPopularPosts[]
+  RelatedPost: IRelatedPost[]
+  Categories: ICategories[]
+  Tags: ITags[]
 }
 
 export interface IArticles {
@@ -85,4 +120,21 @@ export interface IArticles {
   views: number
   share: string[]
   tags: IArticleTag[]
+}
+
+export interface ITagsItems {
+  'All topics': boolean
+  App: boolean
+  Management: boolean
+  CMR: boolean
+  'Big data': boolean
+  Media: boolean
+  Future: boolean
+  CIO: boolean
+  Startup: boolean
+  Team: boolean
+  Data: boolean
+  'Data analytics': boolean
+  'Information security': boolean
+  Proxy: boolean
 }

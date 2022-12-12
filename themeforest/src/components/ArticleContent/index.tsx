@@ -1,5 +1,7 @@
-import { IArticleContent } from '@/constants/interfaces'
 import React from 'react'
+
+import { IArticleContent } from '@/constants/interfaces'
+
 import {
   BoldItemStyled,
   CursiveItemStyled,
@@ -21,7 +23,7 @@ const ArticleContent = ({ content }: IProps) => (
             <SubtitleItemStyled key={el.id}>
               {el.text}
               {el.decorate.type && el.decorate.type === 'a' ? (
-                <LinkItemStyled>{el.decorate.text}</LinkItemStyled>
+                <LinkItemStyled href='#'>{el.decorate.text}</LinkItemStyled>
               ) : el.decorate.type === 'bold' ? (
                 <BoldItemStyled>{el.decorate.text}</BoldItemStyled>
               ) : (

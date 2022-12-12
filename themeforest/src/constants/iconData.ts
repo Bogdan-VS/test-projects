@@ -22,6 +22,23 @@ enum ArrowIcons {
   rightArrow_24 = 'M13.704 4.2838C13.6116 4.1869 13.5006 4.10957 13.3777 4.05638C13.2548 4.00319 13.1224 3.97523 12.9885 3.97415C12.8546 3.97308 12.7218 3.99892 12.5981 4.05013C12.4743 4.10134 12.3622 4.17689 12.2682 4.27229C12.1742 4.36768 12.1003 4.48099 12.0509 4.60548C12.0016 4.72997 11.9777 4.8631 11.9808 4.99699C11.9838 5.13088 12.0138 5.26278 12.0688 5.38489C12.1238 5.50699 12.2027 5.6168 12.301 5.7078L17.67 10.9998H4C3.73478 10.9998 3.48043 11.1052 3.29289 11.2927C3.10536 11.4802 3 11.7346 3 11.9998C3 12.265 3.10536 12.5194 3.29289 12.7069C3.48043 12.8944 3.73478 12.9998 4 12.9998H17.665L12.3 18.2848C12.1206 18.4728 12.0214 18.7233 12.0235 18.9831C12.0256 19.243 12.1288 19.4918 12.3112 19.677C12.4935 19.8621 12.7408 19.9689 13.0006 19.9749C13.2604 19.9808 13.5123 19.8854 13.703 19.7088L20.628 12.8868C20.7459 12.7705 20.8396 12.6319 20.9035 12.4792C20.9674 12.3264 21.0003 12.1624 21.0003 11.9968C21.0003 11.8312 20.9674 11.6672 20.9035 11.5144C20.8396 11.3616 20.7459 11.2231 20.628 11.1068L13.703 4.2838H13.704Z',
 }
 
+export const tags = {
+  'All topics': true,
+  App: false,
+  Management: false,
+  CMR: false,
+  'Big data': false,
+  Media: false,
+  Future: false,
+  CIO: false,
+  Startup: false,
+  Team: false,
+  Data: false,
+  'Data analytics': false,
+  'Information security': false,
+  Proxy: false,
+}
+
 export const iconsData: IIconsData = {
   SocialIcons: [
     SocialIcons.facebook,
@@ -30,6 +47,228 @@ export const iconsData: IIconsData = {
     SocialIcons.youtube,
     SocialIcons.dribble,
     SocialIcons.behance,
+  ],
+
+  ShareSocialIcons: [
+    SocialIcons.linkedin,
+    SocialIcons.facebook,
+    SocialIcons.twitter,
+    SocialIcons.google,
+    SocialIcons.youtube,
+  ],
+
+  PopularPosts: [
+    {
+      id: 1,
+      img: './assets/images/popular_1.png',
+      date: '22 June 2022',
+      title: 'ISO 13485 compliance of medical devices',
+      link: '#',
+      linkText: 'Read more',
+      view: 424,
+    },
+    {
+      id: 2,
+      img: './assets/images/popular_2.png',
+      date: '22 June 2022',
+      title: 'Business analysis helps you  in finance',
+      link: '#',
+      linkText: 'Read more',
+      view: 324,
+    },
+    {
+      id: 3,
+      img: './assets/images/popular_3.png',
+      date: '22 June 2022',
+      title: 'Benefits of telemedicine in nursing homes',
+      link: '#',
+      linkText: 'Read more',
+      view: 224,
+    },
+    {
+      id: 4,
+      img: './assets/images/popular_4.png',
+      date: '22 June 2022',
+      title: '5 web portal examples your business can learn from',
+      link: '#',
+      linkText: 'Read more',
+      view: 124,
+    },
+  ],
+
+  RelatedPost: [
+    {
+      id: 1,
+      img: './assets/images/related_1.png',
+      date: '22 June 2022',
+      title: 'Sed ut perspiciatis unde omnis at vero blanditils',
+      text: 'Mauris purus diam, iaculis non leo nec, ultricies fringilla odio. Fusce feugiat elit facilisis volutpat venenatis. Vestibulum tempor ligula vel orci consectetur, euismod augue bibendum...',
+      tag: 'App',
+      link: '#',
+    },
+    {
+      id: 2,
+      img: './assets/images/related_2.png',
+      date: '22 June 2022',
+      title: 'Sed ut perspiciatis unde omnis at vero blanditils',
+      text: 'Mauris purus diam, iaculis non leo nec, ultricies fringilla odio. Fusce feugiat elit facilisis volutpat venenatis. Vestibulum tempor ligula vel orci consectetur, euismod augue bibendum...',
+      tag: 'App',
+      link: '#',
+    },
+    {
+      id: 3,
+      img: './assets/images/related_3.png',
+      date: '22 June 2022',
+      title: 'Sed ut perspiciatis unde omnis at vero blanditils',
+      text: 'Mauris purus diam, iaculis non leo nec, ultricies fringilla odio. Fusce feugiat elit facilisis volutpat venenatis. Vestibulum tempor ligula vel orci consectetur, euismod augue bibendum...',
+      tag: 'CIO',
+      link: '#',
+    },
+    {
+      id: 4,
+      img: './assets/images/related_1.png',
+      date: '22 June 2022',
+      title: 'Sed ut perspiciatis unde omnis at vero blanditils',
+      text: 'Mauris purus diam, iaculis non leo nec, ultricies fringilla odio. Fusce feugiat elit facilisis volutpat venenatis. Vestibulum tempor ligula vel orci consectetur, euismod augue bibendum...',
+      tag: 'Media',
+      link: '#',
+    },
+    {
+      id: 5,
+      img: './assets/images/related_2.png',
+      date: '22 June 2022',
+      title: 'Sed ut perspiciatis unde omnis at vero blanditils',
+      text: 'Mauris purus diam, iaculis non leo nec, ultricies fringilla odio. Fusce feugiat elit facilisis volutpat venenatis. Vestibulum tempor ligula vel orci consectetur, euismod augue bibendum...',
+      tag: 'App',
+      link: '#',
+    },
+    {
+      id: 6,
+      img: './assets/images/related_3.png',
+      date: '22 June 2022',
+      title: 'Sed ut perspiciatis unde omnis at vero blanditils',
+      text: 'Mauris purus diam, iaculis non leo nec, ultricies fringilla odio. Fusce feugiat elit facilisis volutpat venenatis. Vestibulum tempor ligula vel orci consectetur, euismod augue bibendum...',
+      tag: 'App',
+      link: '#',
+    },
+    {
+      id: 7,
+      img: './assets/images/related_1.png',
+      date: '22 June 2022',
+      title: 'Sed ut perspiciatis unde omnis at vero blanditils',
+      text: 'Mauris purus diam, iaculis non leo nec, ultricies fringilla odio. Fusce feugiat elit facilisis volutpat venenatis. Vestibulum tempor ligula vel orci consectetur, euismod augue bibendum...',
+      tag: 'Media',
+      link: '#',
+    },
+    {
+      id: 8,
+      img: './assets/images/related_2.png',
+      date: '22 June 2022',
+      title: 'Sed ut perspiciatis unde omnis at vero blanditils',
+      text: 'Mauris purus diam, iaculis non leo nec, ultricies fringilla odio. Fusce feugiat elit facilisis volutpat venenatis. Vestibulum tempor ligula vel orci consectetur, euismod augue bibendum...',
+      tag: 'App',
+      link: '#',
+    },
+    {
+      id: 9,
+      img: './assets/images/related_3.png',
+      date: '22 June 2022',
+      title: 'Sed ut perspiciatis unde omnis at vero blanditils',
+      text: 'Mauris purus diam, iaculis non leo nec, ultricies fringilla odio. Fusce feugiat elit facilisis volutpat venenatis. Vestibulum tempor ligula vel orci consectetur, euismod augue bibendum...',
+      tag: 'App',
+      link: '#',
+    },
+    {
+      id: 10,
+      img: './assets/images/related_1.png',
+      date: '22 June 2022',
+      title: 'Sed ut perspiciatis unde omnis at vero blanditils',
+      text: 'Mauris purus diam, iaculis non leo nec, ultricies fringilla odio. Fusce feugiat elit facilisis volutpat venenatis. Vestibulum tempor ligula vel orci consectetur, euismod augue bibendum...',
+      tag: 'Management',
+      link: '#',
+    },
+  ],
+
+  Tags: [
+    {
+      id: 1,
+      tag: 'All topics',
+    },
+    {
+      id: 2,
+      tag: 'App',
+    },
+    {
+      id: 3,
+      tag: 'Management',
+    },
+    {
+      id: 4,
+      tag: 'CMR',
+    },
+    {
+      id: 5,
+      tag: 'Big Data',
+    },
+    {
+      id: 6,
+      tag: 'Media',
+    },
+    {
+      id: 7,
+      tag: 'Future',
+    },
+    {
+      id: 8,
+      tag: 'CIO',
+    },
+    {
+      id: 9,
+      tag: 'Startup',
+    },
+    {
+      id: 10,
+      tag: 'Team',
+    },
+    {
+      id: 11,
+      tag: 'Data',
+    },
+    {
+      id: 12,
+      tag: 'Data analytics',
+    },
+    {
+      id: 13,
+      tag: 'Information security',
+    },
+    {
+      id: 14,
+      tag: 'Proxy',
+    },
+  ],
+
+  Categories: [
+    {
+      id: 1,
+      title: 'Software development',
+    },
+    {
+      id: 2,
+      title: 'Information security',
+    },
+    {
+      id: 3,
+      title: 'Internet of things',
+    },
+    {
+      id: 4,
+      title: 'Digital transformation',
+    },
+    {
+      id: 5,
+      title: 'Healthcare it',
+    },
   ],
 
   ServiceCards: [

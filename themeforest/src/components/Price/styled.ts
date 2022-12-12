@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Bg, BgMain, Color, ColorText, Month, Theme } from './interfaces'
+import { Bg, BgMain, Color, ColorText, Month } from './interfaces'
 
 export const PriceWrapperStyled = styled.div`
   display: flex;
