@@ -38,7 +38,11 @@ export const SubtitleContainerLeftStyled = styled.div`
   column-gap: 30px;
 `
 
-export const SubtitleItemContainerStyled = styled.div``
+export const SubtitleItemContainerStyled = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
 
 export const LeftTitleStyled = styled.h4`
   font-family: ${({ theme }: Omit<IProps, 'bg'>) => theme.lightTheme.fontFamily.openSans};
